@@ -1,0 +1,25 @@
+#globalfooter {
+  margin-top: 2%;
+  background-color: #00096e;
+}
+
+#ini {
+  display: flex;
+}
+
+#logo2 {
+  height: 40px;
+  width: 40px;
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 991px) {
+  #globalfooter {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  #ini {
+    justify-content: center;
+  }
+}
