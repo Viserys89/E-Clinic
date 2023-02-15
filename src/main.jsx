@@ -27,7 +27,7 @@ import "./css/register.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter basename="/">
-      {2 % 2 == 1 ? (
+      {1 % 2 == 1 ? (
         <Routes>
           <Route exact path="/" element={<Logins />} />
           <Route path="/ForgotPassword" element={<ForgotPassword />} />
