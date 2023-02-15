@@ -1,14 +1,21 @@
 body {
-  background-color: #ecf9ff;
+  background-image: url(../../public/img/HomePage.svg);
   background-size: cover;
 }
 
 #containersatu {
-  display: flex;
+  margin-top: 100px;
   background-color: white;
   display: block;
-  border-radius: 10px;
-  box-shadow: 0px 0px 5px 2px black;
+  border-radius: 30px;
+  box-shadow: 0px 0px 10px 5px black;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+#logo {
+  margin-top: 10px;
+  float: left;
 }
 
 #welcome {
@@ -20,22 +27,13 @@ body {
 }
 
 #clinic {
-  padding-top: 10px;
+  padding-top: 14px;
   margin-left: 60px;
   color: #0076bf;
 }
 
-@media (max-width: 480px) {
-  #clinic {
-    font-size: 20px;
-    margin-left: 50px;
-  }
-  #logo {
-    width: 40px;
-  }
-}
-
 #aplaystore {
+  margin-top: 30px;
   display: flex;
   justify-content: center;
 }
@@ -58,8 +56,25 @@ body {
 }
 
 #register {
+  color: white;
+  background-color: black;
   margin-left: 20px;
   text-align: center;
+}
+
+#register:hover {
+  opacity: 75%;
+  transition: opacity 500ms;
+}
+
+#btnLogin {
+  color: white;
+  border: 0%;
+  background-color: #00096e;
+}
+#btnLogin:hover {
+  opacity: 75%;
+  transition: opacity 500ms;
 }
 
 /* Responsive */
@@ -70,12 +85,27 @@ body {
   height: 1px;
   background: #eee;
 }
-.h-custom {
-  height: calc(100% - 73px);
-}
-@media (max-width: 450px) {
-  .h-custom {
-    height: 100%;
+
+@media (max-width: 1200px) {
+  #containersatu {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+  }
+  .col-md-9 {
+    flex: 0 0 auto;
+    width: 75%;
+  }
+  #gambar1 {
+    display: flex;
+    justify-content: center;
+  }
+  #clinic {
+    margin-left: 0;
+  }
+  #aplaystore {
+    padding: 0;
+    margin: 0;
   }
 }
 
