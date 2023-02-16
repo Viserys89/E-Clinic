@@ -5,7 +5,6 @@ id = 82097bca-11b6-4049-9c03-d8bef364e44c
 
 [relations.collections]
 rootDirectory = postman/collections
-files[] = {"id":"25883081-6d9f1172-f7d8-44f0-b04e-1dd29c47adc0","path":"E-clinic.json","metaData":{}}
 
 [relations.collections.metaData]
 
