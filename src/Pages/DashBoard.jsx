@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Footer from "../components/footer";
 import "../css/DashBoard.css";
+import { Link } from "react-router-dom";
 
 const DashBoard = () => {
   var jumlahPasien = 1039;
@@ -11,6 +12,30 @@ const DashBoard = () => {
   var sakitgigi = 600;
   var sakitmata = 550;
   var sakittenggorokan = 450;
+  const [jumlah, setJumlah] = useState();
+  useEffect(() => {
+    async function setUsers() {
+      const res = await fetch("http://10.10.10.91:5000/users", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then(async (res) => {
+        try {
+          const jsonRest = await res.json();
+          console.log(jsonRest);
+          if (res.status == 200) {
+            setJumlah(jsonRest.id);
+          } else {
+            alert(jsonRest.alert);
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      });
+    }
+    setUsers();
+  }, []);
   return (
     <>
       <div id="content">
@@ -43,15 +68,15 @@ const DashBoard = () => {
               <ul className="navbar-nav  justify-content-end">
                 <li className="nav-item d-flex align-items-center">
                   <i className="fa fa-bell cursor-pointer mx-lg-2 " />
-                  <a
-                    href="./Profile"
+                  <Link
+                    to="/Profile"
                     className="nav-link text-body  font-weight-bold px-0"
                   >
                     <span className="d-sm-inline d-none m-lg-2">
                       Mukhammad Vicky
                     </span>
                     <i className="fa fa-user me-sm-1 ml-2" />
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item px-3 d-flex align-items-center">
                   <a href="" className="nav-link text-body p-0">
@@ -75,7 +100,7 @@ const DashBoard = () => {
                       <div className="card-body text-center">
                         <img id="borderimage" src="../public/img/orang.svg" />
                         <h1 id="number" className="display-4 white">
-                          36
+                          {jumlah}
                         </h1>
                         <span id="descnumber" className="white">
                           Jumlah orang yang telah registrasi

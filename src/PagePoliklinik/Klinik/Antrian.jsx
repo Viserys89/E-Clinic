@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "../../components/footer";
+import { Link } from "react-router-dom";
 
 const Antrian = () => {
   return (
@@ -52,15 +53,15 @@ const Antrian = () => {
               <ul className="navbar-nav  justify-content-end">
                 <li className="nav-item d-flex align-items-center">
                   <i className="fa fa-bell cursor-pointer mx-lg-2 " />
-                  <a
-                    href="./Profile"
+                  <Link
+                    to="/Profile"
                     className="nav-link text-body  font-weight-bold px-0"
                   >
                     <span className="d-sm-inline d-none m-lg-2">
                       Mukhammad Vicky
                     </span>
                     <i className="fa fa-user me-sm-1 ml-2" />
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item px-3 d-flex align-items-center">
                   <a href="javascript:;" className="nav-link text-body p-0">
@@ -91,12 +92,12 @@ const Antrian = () => {
             <div className="row">
               <div className="col-12 d-flex justify-content-center mb-4">
                 <div className="card text-center mt-4" id="cardantrian">
-                  <a href="/Hasil">
+                  <Link to="/Hasil">
                     <h5 id="mendaftarpada" className="p-3">
                       Untuk ke page selanjutnya kamu harus menyelesaikan sesi
                       diagnosis bersama dokter
                     </h5>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
