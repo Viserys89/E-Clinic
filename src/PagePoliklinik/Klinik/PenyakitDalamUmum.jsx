@@ -1,6 +1,7 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import Footer from "../../components/footer";
+import { Link } from "react-router-dom";
 
 const PenyakitDalamUmum = () => {
   return (
@@ -44,15 +45,15 @@ const PenyakitDalamUmum = () => {
             <ul className="navbar-nav  justify-content-end">
               <li className="nav-item d-flex align-items-center">
                 <i className="fa fa-bell cursor-pointer mx-lg-2 " />
-                <a
-                  href="./Profile"
+                <Link
+                  to="/Profile"
                   className="nav-link text-body  font-weight-bold px-0"
                 >
                   <span className="d-sm-inline d-none m-lg-2">
                     Mukhammad Vicky
                   </span>
                   <i className="fa fa-user me-sm-1 ml-2" />
-                </a>
+                </Link>
               </li>
               <li className="nav-item px-3 d-flex align-items-center">
                 <a href="javascript:;" className="nav-link text-body p-0">
@@ -88,11 +89,11 @@ const PenyakitDalamUmum = () => {
                         Senin, 30 Januari 2023 <br />
                         Pendaftaran 07:00 - 10:00
                       </p>
-                      <a href="/Antrian">
+                      <Link to="/Antrian">
                         <button id="tblambilnomor" className="btn btn-dark">
                           Ambil Nomor
                         </button>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div

@@ -228,6 +228,11 @@
   margin-left: 8.8%;
 }
 
+#theadObat {
+  color: white;
+  background-color: #000;
+}
+
 @media (max-width: 1000px) {
   #hasilPage {
     margin-left: 0;

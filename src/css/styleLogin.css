@@ -109,6 +109,12 @@ body {
   }
 }
 
+@media (max-width: 460px) {
+  #containerLogin {
+    margin-right: 50px;
+  }
+}
+
 /* ForgotPassword Page */
 #kartuforgot {
   display: block;
