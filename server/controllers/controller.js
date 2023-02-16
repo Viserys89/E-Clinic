@@ -4,7 +4,7 @@ exports.create = async (req, res) => {
     try {
         const { dokter_id, nama, nik, jenis_kelamin, keahlian_id} = req.body
 
-        const dokter = await dokter.create({
+        const Dokter = await dokter.create({
             dokter_id, 
             nama,
             nik,
@@ -17,7 +17,7 @@ exports.create = async (req, res) => {
             success: true,
             message: "Dokter was created",
             data: {
-                dokter: dokter,
+                dokter: Dokter,
             },
             error: null
         })
