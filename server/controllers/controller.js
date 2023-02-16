@@ -60,13 +60,13 @@ exports.all = async (req, res) => {
 exports.find = async (req, res) => {
     try {
         const { id } = req.params
-        const dokter = await dokter.findOne({
+        const Dokter = await dokter.findOne({
             where: {
-                id: id
+                dokter_id: id
             },
         })
 
-        if (!dokter) {
+        if (!Dokter) {
             return res.status(404).json({
                 status: 404,
                 success: false,
@@ -81,7 +81,7 @@ exports.find = async (req, res) => {
             success: true,
             message: "ok",
             data: {
-                dokter: dokter,
+                dokter: Dokter,
             },
             error: null
         })
@@ -103,7 +103,7 @@ exports.update = async (req, res) => {
 
         const updated = await dokter.update(req.body, {
             where: {
-                id: id,
+                dokter_id: id,
             }
         })
 
@@ -143,7 +143,7 @@ exports.destroy = async (req, res) => {
 
         const destroyed = await dokter.destroy({
             where: {
-                id: id,
+                dokter_id: id,
             }
         })
 

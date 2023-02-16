@@ -13,6 +13,13 @@ database.sync({ force: false }).then(() => {
     console.error("failed to sync database: " + err.message)
 })
 
-app.use("/routes/", Route)
+app.get("/", (req, res) => {
+    res.json({
+        message: "Node.js Book REST API Server"
+    })
+})
+
+app.use("/api/books", Route)
+
 
 app.listen(port, () => console.log(`Server up and running on port ${port}`))
