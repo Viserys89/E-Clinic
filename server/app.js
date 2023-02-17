@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
     })
 })
 
-app.use("/api/books", Route)
+app.use("/route", Route)
 
 
 app.listen(port, () => console.log(`Server up and running on port ${port}`))

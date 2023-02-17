@@ -1,5 +1,5 @@
-const { Sequelize } = require("sequelize")
-const database = require("../database")
+const { Sequelize } = require("sequelize");
+const database = require("../database");
 
 const dokter = database.define("dokter", {
     dokter_id: {
@@ -17,7 +17,7 @@ const dokter = database.define("dokter", {
         allowNull: true
       },
       jenis_kelamin: {
-        type: Sequelize.CHAR(1),
+        type: Sequelize.STRING(255),
         allowNull: true
       },
       keahlian_id: {
@@ -26,4 +26,4 @@ const dokter = database.define("dokter", {
       }
 })
 
-module.exports = dokter
+module.exports = dokter;
