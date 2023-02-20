@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Forms from "./Form";
 import Tables from "./Table";
 import Footer from "../components/footer";
@@ -86,15 +87,15 @@ export default class Crud extends Component {
                 <ul className="navbar-nav  justify-content-end">
                   <li className="nav-item d-flex align-items-center">
                     <i className="fa fa-bell cursor-pointer mx-lg-2 " />
-                    <a
-                      href="./Profile"
+                    <Link
+                      to="/Profile"
                       className="nav-link text-body  font-weight-bold px-0"
                     >
                       <span className="d-sm-inline d-none m-lg-2">
                         Mukhammad Vicky
                       </span>
                       <i className="fa fa-user me-sm-1 ml-2" />
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item px-3 d-flex align-items-center">
                     <a href="" className="nav-link text-body p-0">
@@ -141,7 +142,7 @@ export default class Crud extends Component {
                   <div className="modal-content">
                     <div className="modal-header">
                       <h5 className="modal-title" id="exampleModalLabel">
-                        New message
+                        Isi Formulir
                       </h5>
                       <button
                         type="button"

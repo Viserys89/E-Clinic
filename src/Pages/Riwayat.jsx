@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "../components/footer";
+import { Link } from "react-router-dom";
 
 const Riwayat = () => {
   return (
@@ -34,15 +35,15 @@ const Riwayat = () => {
               <ul className="navbar-nav  justify-content-end">
                 <li className="nav-item d-flex align-items-center">
                   <i className="fa fa-bell cursor-pointer mx-lg-2 " />
-                  <a
-                    href="./Profile"
+                  <Link
+                    to="/Profile"
                     className="nav-link text-body  font-weight-bold px-0"
                   >
                     <span className="d-sm-inline d-none m-lg-2">
                       Mukhammad Vicky
                     </span>
                     <i className="fa fa-user me-sm-1 ml-2" />
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item px-3 d-flex align-items-center">
                   <a href="javascript:;" className="nav-link text-body p-0">
@@ -63,7 +64,7 @@ const Riwayat = () => {
             <h5 style={{ borderBottom: "1px solid black" }}>
               <b>Januari 2023</b>
             </h5>
-            <a href="./Hasil" style={{ color: "black" }}>
+            <Link to="/Hasil" style={{ color: "black" }}>
               <div
                 className="container-lg mb-3"
                 style={{ border: "2px solid black", borderRadius: "8px" }}
@@ -73,8 +74,8 @@ const Riwayat = () => {
                   Kamu mengidap penyakit <b>Diabetes</b>
                 </p>
               </div>
-            </a>
-            <a href="./Hasil" style={{ color: "black" }}>
+            </Link>
+            <Link to="/Hasil" style={{ color: "black" }}>
               <div
                 className="container-lg mb-3"
                 style={{
@@ -88,7 +89,7 @@ const Riwayat = () => {
                   Kamu mengidap penyakit <b>Diabetes</b>
                 </p>
               </div>
-            </a>
+            </Link>
           </div>
           <div
             className="container-lg mt-4"
@@ -97,7 +98,7 @@ const Riwayat = () => {
             <h5 style={{ borderBottom: "1px solid black" }}>
               <b>Ferbuari 2023</b>
             </h5>
-            <a href="./Hasil" style={{ color: "black" }}>
+            <Link to="/Hasil" style={{ color: "black" }}>
               <div
                 className="container-lg mb-3"
                 style={{ border: "2px solid black", borderRadius: "8px" }}
@@ -106,8 +107,8 @@ const Riwayat = () => {
                 <p>
                   Kamu mengidap penyakit <b>Diabetes</b>
                 </p>
-              </div>{" "}
-            </a>
+              </div>
+            </Link>
           </div>
           <div
             className="container-lg mt-4"
@@ -116,7 +117,7 @@ const Riwayat = () => {
             <h5 style={{ borderBottom: "1px solid black" }}>
               <b>Maret 2023</b>
             </h5>
-            <a href="./Hasil" style={{ color: "black" }}>
+            <Link to="/Hasil" style={{ color: "black" }}>
               <div
                 className="container-fluid mb-3"
                 style={{ border: "2px solid black", borderRadius: "8px" }}
@@ -126,8 +127,8 @@ const Riwayat = () => {
                   Kamu mengidap penyakit <b>Diabetes</b>
                 </p>
               </div>
-            </a>
-            <a href="./Hasil" style={{ color: "black" }}>
+            </Link>
+            <Link to="/Hasil" style={{ color: "black" }}>
               <div
                 className="container-lg mb-3"
                 style={{
@@ -141,7 +142,7 @@ const Riwayat = () => {
                   Kamu mengidap penyakit <b>Diabetes</b>
                 </p>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
         <Footer />

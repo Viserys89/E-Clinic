@@ -83,7 +83,7 @@ const Forms = ({
               >
                 Close
               </button>
-              <Button className="btn btn-primary" type="submit">
+              <Button id="btnSubmit" className="btn" type="submit">
                 Submit
               </Button>
             </div>
