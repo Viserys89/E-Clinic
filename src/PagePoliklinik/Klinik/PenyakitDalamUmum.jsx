@@ -76,9 +76,9 @@ const PenyakitDalamUmum = () => {
               <button id="tblbesok">Besok</button>
             </a>
           </div>
-          <div className="col-12 mt-3">
+          <div className="col-lg-12 mt-3">
             <div className="row">
-              <div className="col-6" id="colambilnomor">
+              <div className="col-md-6">
                 <div className="row" style={{ border: "2px solid black" }}>
                   <div className="col-6">
                     <div style={{ marginTop: "15px" }}>
@@ -189,7 +189,7 @@ const PenyakitDalamUmum = () => {
               </div>
               <div
                 id="kotakhari"
-                className="col-6 overflow "
+                className="col-md-6 overflow "
                 style={{ border: "2px solid black" }}
               >
                 <div className="row">
