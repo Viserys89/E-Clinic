@@ -1,231 +1,32 @@
-/* Register Page */
-#backlogin2 {
-  color: black;
-  margin-top: 30px;
-}
-
-.user3 {
-  margin-top: -30px;
-  position: relative;
-  width: 100%;
-}
-.user3 .inputText3 {
-  background-color: #dfdfdf;
-  width: 100%;
-  height: 80px;
-  font-size: 30px;
-  padding-left: 8px;
-}
-
-.user3 .floating-label3 {
-  position: absolute;
-  pointer-events: none;
-  top: 43px;
-  left: 10px;
-  width: auto;
-  font-size: 30px;
-  transition: 0.2s ease all;
-  color: #949494;
-  font-family: Roboto, sans-serif;
-}
-.user3 #input3:focus ~ .floating-label3,
-.user3 #input3:not(:focus):valid ~ .floating-label3 {
-  top: 30px;
-  left: 10px;
-  font-size: 13px;
-  opacity: 1;
-}
-
-.user4 {
-  margin-top: -25px;
-  position: relative;
-  width: 100%;
-}
-.user4 .inputText4 {
-  background-color: #dfdfdf;
-  width: 100%;
-  height: 80px;
-  font-size: 30px;
-  padding-left: 8px;
-}
-
-.user4 .floating-label4 {
-  position: absolute;
-  pointer-events: none;
-  top: 44px;
-  left: 10px;
-  width: auto;
-  font-size: 30px;
-  transition: 0.2s ease all;
-  color: #949494;
-  font-family: Roboto, sans-serif;
-}
-.user4 #input4:focus ~ .floating-label4,
-.user4 #input4:not(:focus):valid ~ .floating-label4 {
-  top: 30px;
-  left: 10px;
-  font-size: 13px;
-  opacity: 1;
-}
-
-.user5 {
-  margin-top: -25px;
-  position: relative;
-  width: 100%;
-}
-.user5 .inputText5 {
-  background-color: #dfdfdf;
-  width: 100%;
-  height: 80px;
-  font-size: 30px;
-  padding-left: 8px;
-}
-
-.user5 .floating-label5 {
-  position: absolute;
-  pointer-events: none;
-  top: 44px;
-  left: 10px;
-  width: auto;
-  font-size: 30px;
-  transition: 0.2s ease all;
-  color: #949494;
-  font-family: Roboto, sans-serif;
-}
-.user5 #input5:focus ~ .floating-label5,
-.user5 #input5:not(:focus):valid ~ .floating-label5 {
-  top: 30px;
-  left: 10px;
-  font-size: 13px;
-  opacity: 1;
-}
-
-.user6 {
-  margin-top: -25px;
-  position: relative;
-  width: 100%;
-}
-.user6 .inputText6 {
-  background-color: #dfdfdf;
-  width: 100%;
-  height: 80px;
-  font-size: 30px;
-  padding-left: 8px;
-}
-
-.user6 .floating-label6 {
-  position: absolute;
-  pointer-events: none;
-  top: 45px;
-  left: 10px;
-  width: auto;
-  font-size: 30px;
-  transition: 0.2s ease all;
-  color: #949494;
-  font-family: Roboto, sans-serif;
-}
-.user6 #input6:focus ~ .floating-label6,
-.user6 #input6:not(:focus):valid ~ .floating-label6 {
-  top: 30px;
-  left: 10px;
-  font-size: 13px;
-  opacity: 1;
-}
-
-.user7 {
-  margin-top: -25px;
-  position: relative;
-  width: 100%;
-}
-.user7 .inputText7 {
-  background-color: #dfdfdf;
-  width: 100%;
-  height: 80px;
-  font-size: 30px;
-  padding-left: 8px;
-}
-
-.user7 .floating-label7 {
-  position: absolute;
-  pointer-events: none;
-  top: 44px;
-  left: 10px;
-  width: auto;
-  font-size: 30px;
-  transition: 0.2s ease all;
-  color: #949494;
-  font-family: Roboto, sans-serif;
-}
-.user7 #input7:focus ~ .floating-label7,
-.user7 #input7:not(:focus):valid ~ .floating-label7 {
-  top: 30px;
-  left: 10px;
-  font-size: 13px;
-  opacity: 1;
-}
-
-.user8 {
-  margin-top: -25px;
-  position: relative;
-  width: 100%;
-}
-.user8 .inputText8 {
-  background-color: #dfdfdf;
-  width: 100%;
-  height: 80px;
-  font-size: 30px;
-  padding-left: 8px;
-}
-
-.user8 .floating-label8 {
-  position: absolute;
-  pointer-events: none;
-  top: 45px;
-  left: 10px;
-  width: auto;
-  font-size: 30px;
-  transition: 0.2s ease all;
-  color: #949494;
-  font-family: Roboto, sans-serif;
-}
-.user8 #input8:focus ~ .floating-label8,
-.user8 #input8:not(:focus):valid ~ .floating-label8 {
-  top: 30px;
-  left: 10px;
-  font-size: 13px;
-  opacity: 1;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-#resetbutton2 {
-  font-size: 20px;
-  background-color: #000000;
-  margin-top: 10px;
-  width: 100%;
-  height: 60px;
-}
-
-#apa2 {
-  margin-bottom: 60px;
-  margin-left: -30px;
-}
-
-#gambar2 {
-  display: flex;
-  justify-content: center;
-}
-
 #containerdua {
-  margin-top: 150px;
+  margin-top: 50px;
   background-color: white;
   display: block;
   border-radius: 30px;
   box-shadow: 0px 0px 10px 5px black;
-  margin-left: 20em;
-  margin-right: 20em;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+#gambarRegister {
+  display: flex;
+  justify-content: center;
+}
+#resetButtonRegister {
+  font-size: 20px;
+  margin-top: 10px;
+  width: 100%;
+  height: 60px;
+}
+#imgRegister {
+  width: 100%;
+}
+#containerRegister {
+  margin-bottom: 50px;
+}
+
+@media (max-width: 990px) {
+  #containerRegister {
+    margin: 0px;
+  }
 }
