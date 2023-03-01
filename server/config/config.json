@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "harun",
-    "password": "gulaiayam",
-    "database": "database_eclinic",
+    "password": "15122005",
+    "database": "db_eclinic",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
