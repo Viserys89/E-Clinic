@@ -7,7 +7,11 @@ const dataDokter = require('./models/dokterdata');
 const login = require('./controller/LoginControl');
 const klinik = require('./controller/KlinikControl');
 const profile = require('./controller/ProfileControl');
+const daftar = require('./controller/DaftarControl');
+var useragent = require('express-useragent');
+
 app.use(express.urlencoded({extended: true}));
+app.use(useragent.express());
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -31,7 +35,7 @@ app.use((_, res, next) => {
 app.get('/users', data.findAll);
 app.post('/signup', data.signup);
 app.post('/login', login.login);
-app.get('/auth', login.auth);
+app.post('/auth', login.auth);
 app.get('/rememberauth', login.rememberauth);
 app.post('/update', profile.update);
 app.get('/updatetoken', profile.updatetoken);
@@ -40,10 +44,12 @@ app.post('/logout', login.logout);
 app.get('/wilayah', data.wilayah);
 app.post('/klinik', klinik.klinik);
 app.get('/poliklinik', klinik.getPoliklinik);
-app.post('/ambil', klinik.ambilNomor);
+app.post('/ambil', klinik.antrianDokter);
 app.post('/dokter', klinik.getDokter)
 app.get('/keahlian', klinik.getKeahlian)
-
+app.get('/darah', data.getGolonganDarah)
+app.post('/daftar', daftar.daftar)
+app.post('/nodaftar', daftar.nomorPendaftaran)
 
 const PORT = 5000;
 
