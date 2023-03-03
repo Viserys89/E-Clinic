@@ -1,6 +1,7 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import Footer from "../../components/footer";
+import { Link } from "react-router-dom";
 
 const PenyakitDalamUmum = () => {
   return (
@@ -44,15 +45,15 @@ const PenyakitDalamUmum = () => {
             <ul className="navbar-nav  justify-content-end">
               <li className="nav-item d-flex align-items-center">
                 <i className="fa fa-bell cursor-pointer mx-lg-2 " />
-                <a
-                  href="./Profile"
+                <Link
+                  to="/Profile"
                   className="nav-link text-body  font-weight-bold px-0"
                 >
                   <span className="d-sm-inline d-none m-lg-2">
                     Mukhammad Vicky
                   </span>
                   <i className="fa fa-user me-sm-1 ml-2" />
-                </a>
+                </Link>
               </li>
               <li className="nav-item px-3 d-flex align-items-center">
                 <a href="javascript:;" className="nav-link text-body p-0">
@@ -75,9 +76,9 @@ const PenyakitDalamUmum = () => {
               <button id="tblbesok">Besok</button>
             </a>
           </div>
-          <div className="col-12 mt-3">
+          <div className="col-lg-12 mt-3">
             <div className="row">
-              <div className="col-6" id="colambilnomor">
+              <div className="col-md-6">
                 <div className="row" style={{ border: "2px solid black" }}>
                   <div className="col-6">
                     <div style={{ marginTop: "15px" }}>
@@ -88,11 +89,11 @@ const PenyakitDalamUmum = () => {
                         Senin, 30 Januari 2023 <br />
                         Pendaftaran 07:00 - 10:00
                       </p>
-                      <a href="/Antrian">
+                      <Link to="/Antrian">
                         <button id="tblambilnomor" className="btn btn-dark">
                           Ambil Nomor
                         </button>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div
@@ -188,7 +189,7 @@ const PenyakitDalamUmum = () => {
               </div>
               <div
                 id="kotakhari"
-                className="col-6 overflow "
+                className="col-md-6 overflow "
                 style={{ border: "2px solid black" }}
               >
                 <div className="row">

@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "../components/footer";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   return (
@@ -33,15 +34,15 @@ const Profile = () => {
             <ul className="navbar-nav  justify-content-end">
               <li className="nav-item d-flex align-items-center">
                 <i className="fa fa-bell cursor-pointer mx-lg-2 " />
-                <a
-                  href="./Profile"
+                <Link
+                  to="/Profile"
                   className="nav-link text-body  font-weight-bold px-0"
                 >
                   <span className="d-sm-inline d-none m-lg-2">
                     Mukhammad Vicky
                   </span>
                   <i className="fa fa-user me-sm-1 ml-2" />
-                </a>
+                </Link>
               </li>
               <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
                 <a
@@ -78,9 +79,72 @@ const Profile = () => {
           <div className="col12">
             <div className="card" id="profilecard">
               <div className="card-content">
-                <a href="">
-                  <img id="profilepicture" src="../../public/img/profile.png" />
+                <a
+                  style={{ cursor: "pointer" }}
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  <img id="profilepicture" src="../../public/img/profile.jpg" />
                 </a>
+                <div>
+                  <div
+                    className="modal fade"
+                    id="exampleModal"
+                    tabIndex={-1}
+                    role="dialog"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div className="modal-dialog" role="document">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5 className="modal-title" id="exampleModalLabel">
+                            Edit Profile
+                          </h5>
+                          <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          />
+                        </div>
+                        <div className="modal-body justify-content-center d-flex">
+                          <button
+                            type="button"
+                            className="btn btn-dark mx-lg-2"
+                          >
+                            View
+                          </button>
+                          <button
+                            type="button"
+                            className="btn btn-primary mx-lg-2"
+                          >
+                            Upload
+                          </button>
+                          <button
+                            type="button"
+                            className="btn btn-danger mx-lg-2"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                        <div className="modal-footer">
+                          <button
+                            type="button"
+                            className="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button type="button" className="btn btn-primary">
+                            Save changes
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="container-lg">
                   <div className="row">
                     <div className="col12">

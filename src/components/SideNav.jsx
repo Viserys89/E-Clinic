@@ -1,6 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../css/SideNav.css";
-// import DashBoard from "../DashBoard";
 
 const SideNav = (props) => {
   return (
@@ -16,53 +16,53 @@ const SideNav = (props) => {
               </span>
             </a>
           </h1>
-          <a href="/Poliklinik">
+          <Link to="/Poliklinik">
             <button className="btn btn-primary mb-3" id="btnpendaftaran">
               Pendaftaran
             </button>
-          </a>
+          </Link>
           <ul className="list-unstyled components mb-5">
             <li className="active">
-              <a href="/DashBoard">
+              <Link to="/DashBoard">
                 <span id="sideBarIcon" className="fa fa-home mr-3" />
                 Dashboard
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/Doctor">
+              <Link to="/Doctor">
                 <span id="sideBarIcon" className="fa fa-user-md mr-3" /> Doctor
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/Aplikasi">
+              <Link to="/Aplikasi">
                 <span id="sideBarIcon" className="fa fa-briefcase mr-3" />{" "}
                 Aplikasi
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/Obat">
+              <Link to="/Obat">
                 <span id="sideBarIcon" className="fa fa-plus-square mr-3" />{" "}
                 Obat
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/MainPasien">
+              <Link to="/MainPasien">
                 <span id="sideBarIcon" className="fa fa-stethoscope mr-3" />{" "}
                 Daftar Pasien
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/Riwayat">
+              <Link to="/Riwayat">
                 <span
                   id="sideBarIcon"
                   className="far fa-clock"
                   style={{ marginRight: "22px" }}
                 />
                 Riwayat
-              </a>
+              </Link>
             </li>
             <li id="logout">
-              <a href="#">
+              <a href="/">
                 <span id="sideBarIcon" className="fa fa-sign-out mr-3" /> Logout
               </a>
             </li>

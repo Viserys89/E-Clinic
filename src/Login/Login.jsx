@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
+import { loginContext } from "../App";
 
 const Logins = () => {
   const [nik, setNIK] = useState("");
   const [pass, setPassword] = useState("");
-  const payload = { nik, pass };
-  const Login = () => {
-    fetch("http://10.10.10.91:5000/login", {
+  const [isLogin, setIsLogin] = useContext(loginContext);
+  async function setLogin(nik, pass) {
+    const payload = { nik, pass };
+    const res = await fetch("http://10.10.10.91:5000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,7 +19,7 @@ const Logins = () => {
         const jsonRest = await res.json();
         console.log(jsonRest);
         if (res.status == 200) {
-          alert(jsonRest.alert);
+          setIsLogin(2);
         } else {
           alert(jsonRest.alert);
         }
@@ -25,7 +27,8 @@ const Logins = () => {
         console.error(error);
       }
     });
-  };
+    return res;
+  }
 
   return (
     <Container-fluid id="containersatu" className="vh-100">
@@ -104,7 +107,7 @@ const Logins = () => {
               <div id="tombol" className="text-center text-lg-start mt-4 pt-2">
                 <button
                   id="btnLogin"
-                  onClick={() => Login()}
+                  onClick={() => setLogin(nik, pass)}
                   type="button"
                   className="btn btn-lg"
                   style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}

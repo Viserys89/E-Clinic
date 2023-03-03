@@ -1,12 +1,13 @@
 {
   "development": {
-    "username": "me",
-    "password": "password",
-    "database": "users",
-    "host": "127.0.0.1",
-    "dialect": "postgres",
-    "define": {
-      "freezeTableName": true
+  "username": "me",
+  "password": "password",
+  "database": "users",
+
+  "host": "127.0.0.1",
+  "dialect": "postgres",
+  "define": {
+  "freezeTableName": true
     }
   },
   "test": {

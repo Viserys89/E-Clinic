@@ -299,7 +299,15 @@
 #pasienPage {
   margin-left: 8.8%;
 }
-
+#btnSubmit {
+  color: white;
+  background-color: #00096e;
+  border: 0;
+}
+#btnSubmit:hover {
+  opacity: 80%;
+  animation: opacity 500ms;
+}
 @media (max-width: 1000px) {
   #pasienPage {
     margin-left: 0;
