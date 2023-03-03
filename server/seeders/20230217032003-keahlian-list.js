@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -12,29 +12,24 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert({tableName: 'daftar_penyakit', schema: 'ref'}, [
+    await queryInterface.bulkInsert({tableName: 'keahlian', schema: 'ref'}, [
       {
-        nama: "Diare"
+        nama_keahlian: 'Dokter Umum',
       },
       {
-        nama: "Influenza"
-      },
-      {
-        nama: "Anemia"
-      },
-      {
-        nama: "Tumor"
-      },
+        nama_keahlian: 'Dokter Anak',
+      }
     ], {});
   },
 
-  async down(queryInterface, Sequelize) {
+  async down (queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete({tableName: 'daftar_penyakit', schema: 'ref'}, null, {});
+    await queryInterface.bulkDelete({tableName: 'keahlian', schema: 'ref'}, null, {});
+
   }
 };

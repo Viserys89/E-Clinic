@@ -9,57 +9,44 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable('dokter', {
-      dokter_id: {
+    await queryInterface.createTable('antrian', {
+      antrian_id: {
         type: Sequelize.UUID,
         allowNull: false,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true
       },
-      nama: {
-        type: Sequelize.STRING(255),
-        allowNull: true
-      },
-      nik: {
-        type: Sequelize.STRING(255),
-        allowNull: true
-      },
-      jenis_kelamin: {
-        type: Sequelize.CHAR(1),
-        allowNull: true
-      },
-      keahlian_id: {
-        type: Sequelize.BIGINT,
+      pendaftaran_id: {
+        type: Sequelize.UUID,
         allowNull: false,
         references: {
-          model: {tableName: 'keahlian', schema: 'ref'},
-          key: 'keahlian_id'
+          model: { tableName: 'pendaftaran', schema: 'public' },
+          key: 'pendaftaran_id'
         }
       },
-      create_date: {
+      pasien_id: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        references: {
+          model: { tableName: 'userdata', schema: 'public' },
+          key: 'pasen_id'
+        }
+      },
+      waktu_antrian: {
         type: Sequelize.DATE,
-        allowNull: true,
+        allowNull: false,
         defaultValue: Sequelize.Sequelize.fn('now')
       },
-      last_update: {
-        type: Sequelize.DATE,
-        allowNull: true
-      },
-      soft_delete: {
-        type: Sequelize.SMALLINT,
-        allowNull: true,
-        defaultValue: 0
-      }
     }, {
-      tableName: 'dokter',
+      tableName: 'antrian',
       schema: 'public',
       timestamps: false,
       indexes: [
         {
-          name: "dokter_pkey",
+          name: "antrian_pkey",
           unique: true,
           fields: [
-            { name: "dokter_id" },
+            { name: "antrian_id" },
           ]
         },
       ]
@@ -73,6 +60,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable({tableName: 'dokter', schema: 'public'});
+    await queryInterface.dropTable({ tableName: 'antrian', schema: 'public' });
   }
 };

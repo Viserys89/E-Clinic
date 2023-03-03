@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     /**
      * Add altering commands here.
      *
@@ -11,26 +11,27 @@ module.exports = {
      */
     return await queryInterface.sequelize.transaction(t => {
       return Promise.all([
-        queryInterface.createSchema('config', { transaction: t }),
+        queryInterface.sequelize.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";'),
         queryInterface.createSchema('ref', { transaction: t }),
         queryInterface.createSchema('users', { transaction: t })
       ]);
     });
+
   },
 
-  async down(queryInterface, Sequelize) {
+  async down (queryInterface, Sequelize) {
     /**
      * Add reverting commands here.
      *
      * Example:
      * await queryInterface.dropTable('users');
      */
-     return await queryInterface.sequelize.transaction(t => {
+    return await queryInterface.sequelize.transaction(t => {
       return Promise.all([
-        queryInterface.dropSchema('config', { transaction: t }),
         queryInterface.dropSchema('ref', { transaction: t }),
         queryInterface.dropSchema('users', { transaction: t })
       ]);
     });
+
   }
 };

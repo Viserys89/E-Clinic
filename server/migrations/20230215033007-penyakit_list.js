@@ -9,8 +9,8 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable('pekerjaan', {
-      pekerjaan_id: {
+    await queryInterface.createTable('daftar_penyakit', {
+      penyakit_id: {
         autoIncrement: true,
         type: Sequelize.BIGINT,
         allowNull: false,
@@ -20,30 +20,15 @@ module.exports = {
         type: Sequelize.STRING(255),
         allowNull: true
       },
-      create_date: {
-        type: Sequelize.DATE,
-        allowNull: true,
-        defaultValue: Sequelize.Sequelize.fn('now')
-      },
-      last_update: {
-        type: Sequelize.DATE,
-        allowNull: true
-      },
-      soft_delete: {
-        type: Sequelize.SMALLINT,
-        allowNull: true,
-        defaultValue: 0
-      }
     }, {
-      tableName: 'pekerjaan',
-      schema: 'ref',
       timestamps: false,
+      schema: 'ref',
       indexes: [
         {
-          name: "pekerjaan_pkey",
+          name: "daftar_penyakit_pkey",
           unique: true,
           fields: [
-            { name: "pekerjaan_id" },
+            { name: "penyakit_id" },
           ]
         },
       ]
@@ -57,6 +42,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable({tableName: 'pekerjaan', schema: 'ref'});
+    await queryInterface.dropTable({tableName: 'daftar_penyakit', schema: 'ref'});
   }
 };

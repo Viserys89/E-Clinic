@@ -12,19 +12,15 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert({tableName: 'golongan_darah', schema: 'ref'}, [
+     await queryInterface.bulkInsert({tableName: 'klinik_poliklinik', schema: 'ref'}, [
       {
-        nama: "A"
+        klinik_id: 'c1ec8c67-f41d-45dd-93a5-16e506402e89',
+        poliklinik_id: '1'
       },
       {
-        nama: "B"
-      },
-      {
-        nama: "AB"
-      },
-      {
-        nama: "O"
-      },
+        klinik_id: 'c1ec8c67-f41d-45dd-93a5-16e506402e89',
+        poliklinik_id: '2'
+      }
     ], {});
   },
 
@@ -35,6 +31,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete({tableName: 'golongan_darah', schema: 'ref'}, null, {});
+    await queryInterface.bulkDelete({tableName: 'klinik_poliklinik', schema: 'ref'}, null, {});
   }
 };
