@@ -1,16 +1,16 @@
 const {data, user_controls} = require('../models/datas');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
-const crypto = require('crypto');
-const secret_key = process.env.JWT_SECRET;
+require('dotenv').config()
+const crypto = require('crypto')
+const secret_key = process.env.JWT_SECRET
 const {wilayah, golongan_darah} = require('../models/dokterdata');
 const { body, validationResult } = require('express-validator');
 
 exports.findAll = (req, res) => {
   data
     .count('pasen_id')
-    .then(id => {
+    .then(id => { 
       res.json({id: id});
     })
     .catch(err => {
@@ -110,6 +110,7 @@ exports.signup = [
                   data.findOne({where : {email: req.body.email}}).then(user => {
                     user_controls.create({
                       id_user: user.pasen_id,
+                      level: 1
                     })
                   })
                   res.status(200).json({alert: 'Berhasil membuat akun'});

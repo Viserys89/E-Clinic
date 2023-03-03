@@ -7,15 +7,11 @@
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "rkl",
+  "author": "Arun",
   "license": "ISC",
   "dependencies": {
-    "moment": "^2.29.4",
-    "nodemon": "^2.0.20"
-  },
-  "devDependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.20.2",
+    "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "device-detector-js": "^3.0.3",
     "dotenv": "^16.0.3",
@@ -23,9 +19,14 @@
     "express-useragent": "^1.0.15",
     "express-validator": "^6.15.0",
     "jsonwebtoken": "^9.0.0",
-    "pg": "^8.9.0",
+    "moment": "^2.29.4",
+    "nodemon": "^2.0.20",
+    "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.29.0",
+    "sequelize": "^6.28.0",
+    "ws": "^8.12.1"
+  },
+  "devDependencies": {
     "sequelize-cli": "^6.6.0"
   }
 }
