@@ -15,27 +15,19 @@ const Antrian = () => {
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                 <li className="breadcrumb-item text-sm">
-                  <a className="opacity-5 text-dark" href="/DashBoard">
+                  <Link className="opacity-5 text-dark" to="/DashBoard">
                     Pages
-                  </a>
+                  </Link>
                 </li>
                 <li className="breadcrumb-item text-sm">
-                  <a className="opacity-5 text-dark" href="/Poliklinik">
+                  <Link className="opacity-5 text-dark" to="/Poliklinik">
                     Poliklinik
-                  </a>
+                  </Link>
                 </li>
                 <li className="breadcrumb-item text-sm">
-                  <a
-                    className="opacity-5 text-dark"
-                    href="/KlinikPenyakitDalam"
-                  >
-                    Klinik
-                  </a>
-                </li>
-                <li className="breadcrumb-item text-sm">
-                  <a className="opacity-5 text-dark" href="/PenyakitDalamUmum">
+                  <Link className="opacity-5 text-dark" to="/PenyakitDalamUmum">
                     Penyakit Dalam
-                  </a>
+                  </Link>
                 </li>
                 <li
                   className="breadcrumb-item text-sm text-dark active"
@@ -64,7 +56,7 @@ const Antrian = () => {
                   </Link>
                 </li>
                 <li className="nav-item px-3 d-flex align-items-center">
-                  <a href="javascript:;" className="nav-link text-body p-0">
+                  <a to="javascript:;" className="nav-link text-body p-0">
                     <i className="fa fa-cog fixed-plugin-button-nav cursor-pointer" />
                   </a>
                 </li>
@@ -74,7 +66,7 @@ const Antrian = () => {
         </nav>
         {/* body */}
         <div className="container-fluid">
-          <h2 id="titledashboard">Antrian</h2>
+          <h2 id="titledashboard">Nomor Pendaftaran</h2>
           <div class="container mt-5">
             <div className="row ">
               <div className="col-12 d-flex justify-content-center">

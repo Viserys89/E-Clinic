@@ -15,9 +15,9 @@ const Aplikasi = () => {
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                 <li className="breadcrumb-item text-sm">
-                  <a className="opacity-5 text-dark" href="/DashBoard">
+                  <Link className="opacity-5 text-dark" to="/DashBoard">
                     Pages
-                  </a>
+                  </Link>
                 </li>
                 <li
                   className="breadcrumb-item text-sm text-dark active"
@@ -73,9 +73,9 @@ const Aplikasi = () => {
                   Sekarang kamu sudah bisa menggunakan E-CLinic <br /> di
                   smartphone kesayangan anda
                 </h5>
-                <a href="" id="playstore">
+                <Link to="/" id="playstore">
                   <img className="mt-5" src="../../public/img/play store.png" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
