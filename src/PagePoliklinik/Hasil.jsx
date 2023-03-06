@@ -14,25 +14,25 @@ const Hasil = () => {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
               <li className="breadcrumb-item text-sm">
-                <a className="opacity-5 text-dark" href="/DashBoard">
+                <Link className="opacity-5 text-dark" to="/DashBoard">
                   Pages
-                </a>
+                </Link>
               </li>
               <li className="breadcrumb-item text-sm">
-                <a className="opacity-5 text-dark" href="/Poliklinik">
+                <Link className="opacity-5 text-dark" to="/Poliklinik">
                   Poliklinik
-                </a>
+                </Link>
               </li>
               <li className="breadcrumb-item text-sm">
-                <a className="opacity-5 text-dark" href="/KlinikPenyakitDalam">
-                  Klinik
-                </a>
+                <Link className="opacity-5 text-dark" to="/PenyakitDalamUmum">
+                  Penyakit Dalam
+                </Link>
               </li>
               <li
                 className="breadcrumb-item text-sm text-dark active"
                 aria-current="page"
               >
-                <b>Penyakit Dalam</b>
+                <b>Hasil & Pembayaran</b>
               </li>
             </ol>
           </nav>
@@ -68,7 +68,7 @@ const Hasil = () => {
           Hasil & Pembayaran
         </h2>
         <div className="container">
-          <div className="col-12 mb-5">
+          <div className="col-12 mb-3">
             <div className="row mt-5">
               <div
                 style={{
@@ -135,6 +135,34 @@ const Hasil = () => {
                   </tr>
                 </tbody>
               </table>
+              <div className="card">
+                <div className="card-body">
+                  <h4 id="titledashboard" className="mx-0">
+                    Catatan Dokter
+                  </h4>
+                  <p className="text-secondary">
+                    Kamu di rekomendasikan untuk ke klinik lagi setelah obatmu
+                    habis jika sakit kamu tidak kunjung sembuh Saran saya kamu
+                    harus mengurangi mengkonsumsi mie instant <br />
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Omnis sequi nisi soluta cum voluptatum temporibus
+                    distinctio! Dolorum deleniti suscipit illum nam dignissimos
+                    soluta, impedit vitae quasi, hic, adipisci sunt commodi?
+                  </p>
+                </div>
+              </div>
+              <div className="card mt-3">
+                <div className="card-body text-center">
+                  <h5>
+                    <b>
+                      Silahkan lakukan pembayaran obat di apoteker lalu klik{" "}
+                      <br />
+                      <Link to="/BuktiPembayaran">link ini </Link> untuk membuka
+                      bukti pembayaran
+                    </b>
+                  </h5>
+                </div>
+              </div>
             </div>
           </div>
         </div>

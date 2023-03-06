@@ -79,13 +79,13 @@ const Profile = () => {
           <div className="col12">
             <div className="card" id="profilecard">
               <div className="card-content">
-                <a
+                <img
+                  id="profilepicture"
                   style={{ cursor: "pointer" }}
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
-                >
-                  <img id="profilepicture" src="../../public/img/profile.jpg" />
-                </a>
+                  src="../../public/img/profile.jpg"
+                />
                 <div>
                   <div
                     className="modal fade"

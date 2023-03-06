@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Footer from "../components/footer";
-import "../css/DashBoard.css";
-import { Link } from "react-router-dom";
 
-const DashBoard = () => {
+const DashBoard = () => { 
   var jumlahPasien = 1039;
   var covid = 700;
   var demam = 750;
@@ -48,9 +47,9 @@ const DashBoard = () => {
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                 <li className="breadcrumb-item text-sm">
-                  <a className="opacity-5 text-dark" href="/DashBoard">
+                  <Link className="opacity-5 text-dark" to="/DashBoard">
                     Pages
-                  </a>
+                  </Link>
                 </li>
                 <li
                   className="breadcrumb-item text-sm text-dark active"
@@ -146,15 +145,11 @@ const DashBoard = () => {
                     <div id="topbar">
                       <h2 id="titlestatistik">Statistik Penyakit Pasien</h2>
                       <div id="statbutton">
-                        <a href="">
-                          <button id="yearbutton">Year</button>
-                        </a>
-                        <a href="">
-                          <button id="monthbutton">Month</button>
-                        </a>
-                        <a href="">
-                          <button id="weekbutton">Week</button>
-                        </a>
+                        <button id="yearbutton">Year</button>
+
+                        <button id="monthbutton">Month</button>
+
+                        <button id="weekbutton">Week</button>
                       </div>
                       <div id="progressbar">
                         <p>
@@ -271,15 +266,9 @@ const DashBoard = () => {
                             Statistik Perkerjaan Pasien
                           </h3>
                           <div id="statbutton">
-                            <a href="">
-                              <button id="yearbutton">Year</button>
-                            </a>
-                            <a href="">
-                              <button id="monthbutton">Month</button>
-                            </a>
-                            <a href="">
-                              <button id="weekbutton">Week</button>
-                            </a>
+                            <button id="yearbutton">Year</button>
+                            <button id="monthbutton">Month</button>
+                            <button id="weekbutton">Week</button>
                           </div>
                         </div>
                       </div>
@@ -367,15 +356,9 @@ const DashBoard = () => {
                         <div id="statperkerjaanpasien">
                           <h3 id="titlestatistik">Statistik Golongan Darah</h3>
                           <div id="statbutton">
-                            <a href="">
-                              <button id="yearbutton">Year</button>
-                            </a>
-                            <a href="">
-                              <button id="monthbutton">Month</button>
-                            </a>
-                            <a href="">
-                              <button id="weekbutton">Week</button>
-                            </a>
+                            <button id="yearbutton">Year</button>
+                            <button id="monthbutton">Month</button>
+                            <button id="weekbutton">Week</button>
                           </div>
                         </div>
                         <div id="progressbar3">

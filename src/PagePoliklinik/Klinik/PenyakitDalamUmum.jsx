@@ -15,19 +15,14 @@ const PenyakitDalamUmum = () => {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
               <li className="breadcrumb-item text-sm">
-                <a className="opacity-5 text-dark" href="/DashBoard">
+                <Link className="opacity-5 text-dark" to="/DashBoard">
                   Pages
-                </a>
+                </Link>
               </li>
               <li className="breadcrumb-item text-sm">
-                <a className="opacity-5 text-dark" href="/Poliklinik">
+                <Link className="opacity-5 text-dark" to="/Poliklinik">
                   Poliklinik
-                </a>
-              </li>
-              <li className="breadcrumb-item text-sm">
-                <a className="opacity-5 text-dark" href="/KlinikPenyakitDalam">
-                  Klinik
-                </a>
+                </Link>
               </li>
               <li
                 className="breadcrumb-item text-sm text-dark active"
@@ -56,7 +51,7 @@ const PenyakitDalamUmum = () => {
                 </Link>
               </li>
               <li className="nav-item px-3 d-flex align-items-center">
-                <a href="javascript:;" className="nav-link text-body p-0">
+                <a to="javascript:;" className="nav-link text-body p-0">
                   <i className="fa fa-cog fixed-plugin-button-nav cursor-pointer" />
                 </a>
               </li>
@@ -69,10 +64,10 @@ const PenyakitDalamUmum = () => {
         <h2 id="titledashboard">Klinik Penyakit Dalam</h2>
         <div className="container">
           <div id="tbl">
-            <a href="">
+            <a to="">
               <button id="tblhariini">Hari ini</button>
             </a>
-            <a href="">
+            <a to="">
               <button id="tblbesok">Besok</button>
             </a>
           </div>
@@ -297,15 +292,15 @@ const PenyakitDalamUmum = () => {
                   </tbody>
                 </Table>
                 <div id="tbldatanomor">
-                  <a href="">
+                  <a to="">
                     <button id="arrowleft">
                       <i class="fas fa-arrow-left"></i>
                     </button>
                   </a>
-                  <a href="">
+                  <a to="">
                     <button id="currentnumber">1</button>
                   </a>
-                  <a href="">
+                  <a to="">
                     <button id="arrowright">
                       <i class="fas fa-arrow-right"></i>
                     </button>

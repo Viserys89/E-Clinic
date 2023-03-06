@@ -130,28 +130,89 @@ const Doctor = () => {
                 </p>
               </div>
             </div>
-              <div className="card" style={{ border: "2px solid black" }}>
-                <img
-                  src="../../public/img/doctor.jpg"
-                  className="card-img-top"
-                  alt="..."
-                />
-                <div className="card-body">
-                  <h5 className="card-title">
-                    <b>Dr. Secillia Pradjiwaksono</b>
-                  </h5>
-                  <p className="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <p className="card-text">
-                    <b>Spesialis THT</b>
-                  </p>
-                </div>
+            <div className="card" style={{ border: "2px solid black" }}>
+              <img
+                src="../../public/img/doctor.jpg"
+                className="card-img-top"
+                alt="..."
+              />
+              <div className="card-body">
+                <h5 className="card-title">
+                  <b>Dr. Secillia Pradjiwaksono</b>
+                </h5>
+                <p className="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+                <p className="card-text">
+                  <b>Spesialis THT</b>
+                </p>
               </div>
             </div>
-            <div className="card-group text-center gap-5 mt-4"></div>
+          </div>
+          <div className="card-group text-center gap-5 mt-4">
+            <div className="card" style={{ border: "2px solid black" }}>
+              <img
+                src="../../public/img/doctor.jpg"
+                className="card-img-top"
+                alt="..."
+              />
+              <div className="card-body">
+                <h5 className="card-title">
+                  <b>Dr. Erica Carlina</b>
+                </h5>
+                <p className="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+                <p className="card-text">
+                  <b>Spesialis Jantung</b>
+                </p>
+              </div>
+            </div>
+            <div className="card" style={{ border: "2px solid black" }}>
+              <img
+                src="../../public/img/doctor.jpg"
+                className="card-img-top"
+                alt="..."
+              />
+              <div className="card-body">
+                <h5 className="card-title">
+                  <b>Dr. Hasan Iskandar</b>
+                </h5>
+                <p className="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+                <p className="card-text">
+                  <b>Spesialis Kulit</b>
+                </p>
+              </div>
+            </div>
+            <div className="card" style={{ border: "2px solid black" }}>
+              <img
+                src="../../public/img/doctor.jpg"
+                className="card-img-top"
+                alt="..."
+              />
+              <div className="card-body">
+                <h5 className="card-title">
+                  <b>Pandji Akmaludin</b>
+                </h5>
+                <p className="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+                <p className="card-text">
+                  <b>Spesialis Kandungan</b>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <Footer />

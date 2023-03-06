@@ -3,7 +3,6 @@ import { createContext } from "react";
 import { useState } from "react";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import KlinikPenyakitDalam from "./PagePoliklinik/Klinik/KlinikPenyakitDalam";
 import PenyakitDalamUmum from "./PagePoliklinik/Klinik/PenyakitDalamUmum";
 import MainPasien from "./PageDaftarPasien/MainPasien";
 import Poliklinik from "./PagePoliklinik/Poliklinik";
@@ -20,10 +19,11 @@ import Logins from "./Login/Login";
 import ForgotPassword from "./Login/ForgotPassword";
 import ResetPassword from "./Login/ResetPassword";
 import Register from "./Login/Register";
+import BuktiPembayaran from "./PagePoliklinik/BuktiPembayaran";
+import PembayaranBerhasil from "./PagePoliklinik/PembayaranBerhasil";
 import "./css/Poliklinik.css";
 import "./css/global.css";
 import "./css/styleLogin.css";
-import "./css/register.css";
 
 export const loginContext = createContext();
 
@@ -52,15 +52,16 @@ function App() {
               <Route path="/Profile" element={<Profile />} />
               <Route path="/Poliklinik" element={<Poliklinik />} />
               <Route
-                path="/KlinikPenyakitDalam"
-                element={<KlinikPenyakitDalam />}
-              />
-              <Route
                 path="/PenyakitDalamUmum"
                 element={<PenyakitDalamUmum />}
               />
               <Route path="/Antrian" element={<Antrian />} />
               <Route path="/Hasil" element={<Hasil />} />
+              <Route path="/BuktiPembayaran" element={<BuktiPembayaran />} />
+              <Route
+                path="/PembayaranBerhasil"
+                element={<PembayaranBerhasil />}
+              />
             </Routes>
           </SideNav>
         )}
