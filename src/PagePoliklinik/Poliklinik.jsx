@@ -14,9 +14,9 @@ const Poliklinik = () => {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
               <li className="breadcrumb-item text-sm">
-                <a className="opacity-5 text-dark" href="/DashBoard">
+                <Link className="opacity-5 text-dark" to="/DashBoard">
                   Pages
-                </a>
+                </Link>
               </li>
               <li
                 className="breadcrumb-item text-sm text-dark active"
@@ -79,7 +79,7 @@ const Poliklinik = () => {
                         className="d-flex justify-content-center mb-lg-4"
                         style={{ borderBottom: "2px solid black" }}
                       >
-                        <Link id="poli" to="/KlinikPenyakitDalam">
+                        <Link id="poli" to="/PenyakitDalamUmum">
                           <h3 id="jenisPoliklinik">
                             Poliklinik <b>Penyakit Dalam</b>{" "}
                             <i id="panah" className="fas">

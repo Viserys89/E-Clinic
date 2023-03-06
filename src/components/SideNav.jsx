@@ -9,12 +9,12 @@ const SideNav = (props) => {
         <div className="p-4">
           <h1>
             <img src="../../public/img/nama&logo.png" id="logo1" />
-            <a href="/DashBoard" id="juduleclinic" className="logo">
-              E-Clinic{" "}
+            <Link to="/DashBoard" id="juduleclinic" className="logo">
+              E-Clinic
               <span id="bytikomdik" className="mt-3">
                 Klinik Digital by TIKomDik
               </span>
-            </a>
+            </Link>
           </h1>
           <Link to="/Poliklinik">
             <button className="btn btn-primary mb-3" id="btnpendaftaran">
