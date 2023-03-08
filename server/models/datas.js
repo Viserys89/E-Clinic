@@ -9,6 +9,10 @@ const data = sequelize.define(
       defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
+    noTelp: {
+      type: Sequelize.INTEGER,
+      allownull: true
+    },
     email: {
       type: Sequelize.STRING(30),
     },

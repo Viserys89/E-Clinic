@@ -19,6 +19,10 @@ module.exports = {
           primaryKey: true,
           allowNull:true
         },
+        noTelp: {
+          type: Sequelize.INTEGER,
+          allownull: true
+        },
         email: {
           type: Sequelize.STRING(30),
         },
