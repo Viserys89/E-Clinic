@@ -1,9 +1,205 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
-import Footer from "../components/footer";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import Footer from "../components/footer";
 
 const Obat = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [data, setData] = useState([
+    {
+      id: 1,
+      namaObat: "Mylanta",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 2,
+      namaObat: "Panadol",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 3,
+      namaObat: "Paramex",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 4,
+      namaObat: "Komik",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 5,
+      namaObat: "Mefamin",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 6,
+      namaObat: "Xitrol Eye Drop",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 7,
+      namaObat: "Amexyl",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 8,
+      namaObat: "Polysylane",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 9,
+      namaObat: "Migrani",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 10,
+      namaObat: "tramboline",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 11,
+      namaObat: "Codaxyne",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 12,
+      namaObat: "Kim Lee",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 13,
+      namaObat: "Kim Lee",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 14,
+      namaObat: "Kim Lee",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 15,
+      namaObat: "Faisal Muslim",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 16,
+      namaObat: "Kim Lee",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 17,
+      namaObat: "Kim Lee",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 18,
+      namaObat: "Kim Lee",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 19,
+      namaObat: "Kim Lee",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 20,
+      namaObat: "Kim Lee",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 21,
+      namaObat: "Kim Lee",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 22,
+      namaObat: "Kim Lee",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 23,
+      namaObat: "Kim Lee",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+    {
+      id: 24,
+      namaObat: "Kim Lee",
+      sediaanObat: "tablet",
+      stockObat: 30,
+      hargaObat: "Rp.30.000",
+    },
+  ]);
+  const itemsPerPage = 8;
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+
+  const handleClickPrev = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const handleClickNext = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData = data.slice(startIndex, endIndex);
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = () => {
+    const filteredData = data.filter((obat) =>
+      obat.namaObat.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setData(filteredData);
+  };
+
   return (
     <>
       <div id="obatPage">
@@ -16,9 +212,9 @@ const Obat = () => {
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                 <li className="breadcrumb-item text-sm">
-                  <a className="opacity-5 text-dark" href="/DashBoard">
+                  <Link className="opacity-5 text-dark" to="/DashBoard">
                     Pages
-                  </a>
+                  </Link>
                 </li>
                 <li
                   className="breadcrumb-item text-sm text-dark active"
@@ -64,10 +260,20 @@ const Obat = () => {
             <form>
               <div className="inner-form">
                 <div className="input-field first-wrap">
-                  <input id="search" type="text" placeholder="Nama Obat" />
+                  <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    id="search"
+                    placeholder="Nama Obat"
+                  />
                 </div>
                 <div className="input-field third-wrap">
-                  <button className="btn-search" type="button">
+                  <button
+                    className="btn-search"
+                    type="button"
+                    onClick={handleSearch}
+                  >
                     <img src="../../public/img/search.svg" />
                   </button>
                 </div>
@@ -77,80 +283,45 @@ const Obat = () => {
           <Table striped bordered hover>
             <thead style={{ backgroundColor: "black", color: "white" }}>
               <tr>
+                <th>ID</th>
                 <th>Nama Obat</th>
-                <th>Sediaan</th>
-                <th>Stock</th>
-                <th>Harga</th>
+                <th>Sediaan Obat</th>
+                <th>Stock Obat</th>
+                <th>Harga Obat</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Amoxicillin</td>
-                <td>Tablet</td>
-                <td>68</td>
-                <td>Rp. 10.000</td>
-              </tr>
-              <tr>
-                <td>Cefixime</td>
-                <td>Kapsul</td>
-                <td>77</td>
-                <td>Rp. 40.000</td>
-              </tr>
-              <tr>
-                <td>Metronidazole</td>
-                <td>Tablet</td>
-                <td>10</td>
-                <td>Rp. 10.000</td>
-              </tr>
-              <tr>
-                <td>Paracetamol</td>
-                <td>Tablet</td>
-                <td>45</td>
-                <td>Rp. 15.000</td>
-              </tr>
-              <tr>
-                <td>Polyscylane</td>
-                <td>Kapsul</td>
-                <td>53</td>
-                <td>Rp. 24.000</td>
-              </tr>
-              <tr>
-                <td>Komik</td>
-                <td>Botol</td>
-                <td>23</td>
-                <td>Rp. 16.000</td>
-              </tr>
-              <tr>
-                <td>Paramex</td>
-                <td>Tablet</td>
-                <td>87</td>
-                <td>Rp. 21.000</td>
-              </tr>
-              <tr>
-                <td>Mylanta</td>
-                <td>Tablet</td>
-                <td>68</td>
-                <td>Rp. 26.000</td>
-              </tr>
+              {currentData.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.id}</td>
+                  <td>{item.namaObat}</td>
+                  <td>{item.sediaanObat}</td>
+                  <td>{item.stockObat}</td>
+                  <td>{item.hargaObat}</td>
+                </tr>
+              ))}
             </tbody>
           </Table>
         </div>
-        <div id="tbldatanomor">
-          <a href="">
-            <button id="arrowleft">
-              <i class="fas fa-arrow-left"></i>
-            </button>
-          </a>
-          <a href="">
-            <button id="currentnumber">1</button>
-          </a>
-          <a href="">
-            <button id="arrowright">
-              <i class="fas fa-arrow-right"></i>
-            </button>
-          </a>
+        <div id="tbldatanomor" className="pagination">
+          <button
+            id="arrowleft"
+            onClick={handleClickPrev}
+            disabled={currentPage === 1}
+          >
+            <i class="fas fa-arrow-left"></i>
+          </button>
+          <span id="currentnumber">
+            {currentPage} / {totalPages}
+          </span>
+          <button
+            id="arrowright"
+            onClick={handleClickNext}
+            disabled={currentPage === totalPages}
+          >
+            <i class="fas fa-arrow-right"></i>
+          </button>
         </div>
-        <Footer />
       </div>
     </>
   );

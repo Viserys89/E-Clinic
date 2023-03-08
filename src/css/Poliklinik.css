@@ -131,6 +131,8 @@
 }
 
 #kotakhari {
+  height: 193px; /* Set the height of the container */
+  overflow: auto; /* Enable vertical scrolling */
   max-width: 715px;
 }
 
@@ -241,3 +243,15 @@
     font-size: 18px;
   }
 }
+
+/* bukti pembayaran page */
+#buktiPembayaranPage {
+  margin-left: 8.8%;
+}
+
+@media (max-width: 1000px) {
+  #buktiPembayaranPage {
+    margin-left: 0;
+  }
+}
+/* end */

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Forms from "./Form";
 import Tables from "./Table";
-import Footer from "../components/footer";
 
 export default class Crud extends Component {
   constructor(props) {
@@ -67,9 +66,9 @@ export default class Crud extends Component {
               <nav aria-label="breadcrumb">
                 <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                   <li className="breadcrumb-item text-sm">
-                    <a className="opacity-5 text-dark" href="/DashBoard">
+                    <Link className="opacity-5 text-dark" to="/DashBoard">
                       Pages
-                    </a>
+                    </Link>
                   </li>
                   <li
                     className="breadcrumb-item text-sm text-dark active"
@@ -123,6 +122,7 @@ export default class Crud extends Component {
           <div id="form" className="container-lg">
             <div className="d-flex justify-content-center">
               <button
+                style={{ display: "none" }}
                 type="button"
                 className="btn btn-dark"
                 data-bs-toggle="modal"
@@ -163,7 +163,6 @@ export default class Crud extends Component {
               </div>
             </div>
           </div>
-          <Footer />
         </div>
       </>
     );

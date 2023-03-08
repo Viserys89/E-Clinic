@@ -1,9 +1,72 @@
 import React from "react";
-import Footer from "../components/footer";
 import "../css/global.css";
 import { Link } from "react-router-dom";
 
 const Doctor = () => {
+  const doctors = [
+    {
+      id: 1,
+      name: "Dr. Jessica Pricilla",
+      specialization: "Spesialis Mata",
+      image: "../../public/img/dokterf.jpg",
+      description:
+        "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+    },
+    {
+      id: 2,
+      name: "Dr. Adipati Laksmana",
+      specialization: "Spesialis Umum",
+      image: "../../public/img/dokter.jpg",
+      description:
+        "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+    },
+    {
+      id: 3,
+      name: "Dr. Secillia Pradjiwaksono",
+      specialization: "Spesialis Kulit",
+      image: "../../public/img/dokterf.jpg",
+      description:
+        "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+    },
+    {
+      id: 4,
+      name: "Dr. Gilang Martin",
+      specialization: "Spesialis Kandungan",
+      image: "../../public/img/dokter.jpg",
+      description:
+        "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+    },
+    {
+      id: 5,
+      name: "Dr. Vania Ramdhani",
+      specialization: "Spesialis THT",
+      image: "../../public/img/dokterf.jpg",
+      description:
+        "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+    },
+    {
+      id: 6,
+      name: "Dr. Steven Vanatham",
+      specialization: "Spesialis Jantung",
+      image: "../../public/img/dokter.jpg",
+      description:
+        "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+    },
+  ];
+
+  const [searchInput, setSearchInput] = React.useState("");
+  const [selectedSpecialization, setSelectedSpecialization] =
+    React.useState("");
+  const [filteredDoctors, setFilteredDoctors] = React.useState(doctors);
+  const filterDoctors = (searchInput, specialization) => {
+    const filtered = doctors.filter(
+      (doctor) =>
+        doctor.name.toLowerCase().includes(searchInput.toLowerCase()) &&
+        (specialization === "" || doctor.specialization === specialization)
+    );
+    setFilteredDoctors(filtered);
+  };
+
   return (
     <div id="doctorPage">
       <nav
@@ -15,9 +78,9 @@ const Doctor = () => {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
               <li className="breadcrumb-item text-sm">
-                <a className="opacity-5 text-dark" href="/DashBoard">
+                <Link className="opacity-5 text-dark" to="/DashBoard">
                   Pages
-                </a>
+                </Link>
               </li>
               <li
                 className="breadcrumb-item text-sm text-dark active"
@@ -63,23 +126,45 @@ const Doctor = () => {
             <form>
               <div className="inner-form">
                 <div className="input-field first-wrap">
-                  <input id="search" type="text" placeholder="Nama dokter" />
+                  <input
+                    id="search"
+                    type="text"
+                    placeholder="Nama dokter"
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
+                  />
                 </div>
                 <div>
                   <div className="input-field second-wrap">
-                    <select id="dropdownn">
-                      <option placeholder>Keahlian</option>
-                      <option>Spesialis Umum</option>
-                      <option>Spesialis Mata</option>
-                      <option>Spesialis THT</option>
-                      <option>Spesialis Jantung</option>
-                      <option>Spesialis Kulit</option>
-                      <option>Spesialis Kandungan</option>
+                    <select
+                      id="dropdownn"
+                      value={selectedSpecialization}
+                      onChange={(e) =>
+                        setSelectedSpecialization(e.target.value)
+                      }
+                    >
+                      <option value="">Keahlian</option>
+                      <option value="Spesialis Umum">Spesialis Umum</option>
+                      <option value="Spesialis Mata">Spesialis Mata</option>
+                      <option value="Spesialis Kulit">Spesialis Kulit</option>
+                      <option value="Spesialis Kandungan">
+                        Spesialis Kandungan
+                      </option>
+                      <option value="Spesialis THT">Spesialis THT</option>
+                      <option value="Spesialis Jantung">
+                        Spesialis Jantung
+                      </option>
                     </select>
                   </div>
                 </div>
                 <div className="input-field third-wrap">
-                  <button className="btn-search" type="button">
+                  <button
+                    className="btn-search"
+                    type="button"
+                    onClick={() =>
+                      filterDoctors(searchInput, selectedSpecialization)
+                    }
+                  >
                     <img src="../../public/img/search.svg" />
                   </button>
                 </div>
@@ -89,133 +174,26 @@ const Doctor = () => {
         </div>
         {/* cards */}
         <div className="container-lg mt-4 mb-4">
-          <div className="card-group text-center gap-5">
-            <div className="card" style={{ border: "2px solid black" }}>
-              <img
-                src="../../public/img/doctor.jpg"
-                className="card-img-top"
-                alt="..."
-              />
-              <div className="card-body">
-                <h5 className="card-title">
-                  <b>Dr. Jessica Pricilla</b>
-                </h5>
-                <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <p className="card-text">
-                  <b>Spesialis Mata</b>
-                </p>
+          <div className="row row-cols-1 row-cols-md-3 g-4">
+            {filteredDoctors.map((doctor) => (
+              <div key={doctor.id} className="col">
+                <div className="card" style={{ border: "2px solid black" }}>
+                  <img src={doctor.image} className="card-img-top" alt="..." />
+                  <div className="card-body text-center">
+                    <h5 className="card-title">
+                      <b>{doctor.name}</b>
+                    </h5>
+                    <p className="card-text">{doctor.description}</p>
+                    <p className="card-text">
+                      <b>{doctor.specialization}</b>
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="card" style={{ border: "2px solid black" }}>
-              <img
-                src="../../public/img/doctor.jpg"
-                className="card-img-top"
-                alt="..."
-              />
-              <div className="card-body">
-                <h5 className="card-title">
-                  <b>Dr. Adipati Laksmana</b>
-                </h5>
-                <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <p className="card-text">
-                  <b>Spesialis Umum</b>
-                </p>
-              </div>
-            </div>
-            <div className="card" style={{ border: "2px solid black" }}>
-              <img
-                src="../../public/img/doctor.jpg"
-                className="card-img-top"
-                alt="..."
-              />
-              <div className="card-body">
-                <h5 className="card-title">
-                  <b>Dr. Secillia Pradjiwaksono</b>
-                </h5>
-                <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <p className="card-text">
-                  <b>Spesialis THT</b>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="card-group text-center gap-5 mt-4">
-            <div className="card" style={{ border: "2px solid black" }}>
-              <img
-                src="../../public/img/doctor.jpg"
-                className="card-img-top"
-                alt="..."
-              />
-              <div className="card-body">
-                <h5 className="card-title">
-                  <b>Dr. Erica Carlina</b>
-                </h5>
-                <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <p className="card-text">
-                  <b>Spesialis Jantung</b>
-                </p>
-              </div>
-            </div>
-            <div className="card" style={{ border: "2px solid black" }}>
-              <img
-                src="../../public/img/doctor.jpg"
-                className="card-img-top"
-                alt="..."
-              />
-              <div className="card-body">
-                <h5 className="card-title">
-                  <b>Dr. Hasan Iskandar</b>
-                </h5>
-                <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <p className="card-text">
-                  <b>Spesialis Kulit</b>
-                </p>
-              </div>
-            </div>
-            <div className="card" style={{ border: "2px solid black" }}>
-              <img
-                src="../../public/img/doctor.jpg"
-                className="card-img-top"
-                alt="..."
-              />
-              <div className="card-body">
-                <h5 className="card-title">
-                  <b>Pandji Akmaludin</b>
-                </h5>
-                <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <p className="card-text">
-                  <b>Spesialis Kandungan</b>
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

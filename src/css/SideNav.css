@@ -187,6 +187,7 @@ a[data-toggle="collapse"] {
   margin-right: 5px;
 }
 #sidebar {
+  z-index: 1;
   background-color: black;
   position: fixed;
   min-width: 13%;
@@ -202,10 +203,10 @@ a[data-toggle="collapse"] {
 }
 
 #content {
+  background-color: white;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
-  background-color: white;
   height: fit-content;
   margin-left: 8.8%;
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../components/footer";
 import { Link } from "react-router-dom";
 
 const Profile = () => {
@@ -79,13 +78,13 @@ const Profile = () => {
           <div className="col12">
             <div className="card" id="profilecard">
               <div className="card-content">
-                <a
+                <img
+                  id="profilepicture"
                   style={{ cursor: "pointer" }}
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
-                >
-                  <img id="profilepicture" src="../../public/img/profile.jpg" />
-                </a>
+                  src="../../public/img/profile.jpg"
+                />
                 <div>
                   <div
                     className="modal fade"
@@ -300,7 +299,6 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
