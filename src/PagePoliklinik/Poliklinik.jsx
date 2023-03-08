@@ -1,8 +1,54 @@
 import React from "react";
-import Footer from "../components/footer";
 import { Link } from "react-router-dom";
 
 const Poliklinik = () => {
+  const poliLinks = [
+    {
+      name: "Anak & Ibu Hamil",
+      link: "/AnakIbuHamil",
+    },
+    {
+      name: "Penyakit Dalam",
+      link: "/PenyakitDalamUmum",
+    },
+    {
+      name: "Bedah Umum",
+      link: "/BedahUmum",
+    },
+    {
+      name: "Bedah Saraf",
+      link: "/BedahSaraf",
+    },
+    {
+      name: "Kandungan",
+      link: "/Kandungan",
+    },
+    {
+      name: "Penyakit Luar",
+      link: "/Kandungan",
+    },
+    {
+      name: "Orthopaedi",
+      link: "/Kandungan",
+    },
+    {
+      name: "Mata",
+      link: "/Kandungan",
+    },
+    {
+      name: "Gigi",
+      link: "/Kandungan",
+    },
+    {
+      name: "THT",
+      link: "/Kandungan",
+    },
+  ];
+
+  // Divide poliLinks array into two smaller arrays
+  const poliLinks1 = poliLinks.slice(0, 5);
+  const poliLinks2 = poliLinks.slice(5, 10);
+
   return (
     <div id="poliklinikPage">
       <nav
@@ -62,112 +108,40 @@ const Poliklinik = () => {
                 <div className="col-12 p-4">
                   <div id="poliklinikRow" className="row d-flex">
                     <div id="poliklinikCollumn" className="col-6 mt-4">
-                      <div
-                        className="d-flex justify-content-center mb-lg-4"
-                        style={{ borderBottom: "2px solid black" }}
-                      >
-                        <a id="poli" href="" className="p-0">
-                          <h3 id="jenisPoliklinik" className="p-0">
-                            Poliklinik <b>Anak & Ibu Hamil</b>{" "}
-                            <i id="panah" className="fas p-0">
-                              
-                            </i>
-                          </h3>
-                        </a>
-                      </div>
-                      <div
-                        className="d-flex justify-content-center mb-lg-4"
-                        style={{ borderBottom: "2px solid black" }}
-                      >
-                        <Link id="poli" to="/PenyakitDalamUmum">
-                          <h3 id="jenisPoliklinik">
-                            Poliklinik <b>Penyakit Dalam</b>{" "}
-                            <i id="panah" className="fas">
-                              
-                            </i>
-                          </h3>
-                        </Link>
-                      </div>
-                      <div
-                        className="d-flex justify-content-center mb-lg-4"
-                        style={{ borderBottom: "2px solid black" }}
-                      >
-                        <a id="poli" href="">
-                          <h3 id="jenisPoliklinik">
-                            Poliklinik <b>Bedah Umum</b>{" "}
-                            <i id="panah" className="fas">
-                              
-                            </i>
-                          </h3>
-                        </a>
-                      </div>
-                      <div
-                        className="d-flex justify-content-center mb-lg-4"
-                        style={{ borderBottom: "2px solid black" }}
-                      >
-                        <a id="poli" href="">
-                          <h3 id="jenisPoliklinik">
-                            Poliklinik <b>Bedah Saraf</b>{" "}
-                            <i id="panah" className="fas">
-                              
-                            </i>
-                          </h3>
-                        </a>
-                      </div>
+                      {poliLinks1.map((poli) => (
+                        <div
+                          key={poli.name}
+                          className="d-flex justify-content-center mb-lg-4"
+                          style={{ borderBottom: "2px solid black" }}
+                        >
+                          <Link id="poli" to={poli.link} className="p-0">
+                            <h3 id="jenisPoliklinik" className="p-0">
+                              Poliklinik <b>{poli.name}</b>{" "}
+                              <i id="panah" className="fas p-0">
+                                
+                              </i>
+                            </h3>
+                          </Link>
+                        </div>
+                      ))}
                     </div>
-                    <div id="poliklinikCollumn" className="col-6 mb-5 mt-4">
-                      <div
-                        className="d-flex justify-content-center mb-lg-4"
-                        style={{ borderBottom: "2px solid black" }}
-                      >
-                        <a id="poli" href="">
-                          <h3 id="jenisPoliklinik">
-                            Poliklinik <b>Kandungan</b>{" "}
-                            <i id="panah" className="fas">
-                              
-                            </i>
-                          </h3>
-                        </a>
-                      </div>
-                      <div
-                        className="d-flex justify-content-center mb-lg-4"
-                        style={{ borderBottom: "2px solid black" }}
-                      >
-                        <a id="poli" href="">
-                          <h3 id="jenisPoliklinik">
-                            Poliklinik <b>Mata</b>{" "}
-                            <i id="panah" className="fas">
-                              
-                            </i>
-                          </h3>
-                        </a>
-                      </div>
-                      <div
-                        className="d-flex justify-content-center mb-lg-4"
-                        style={{ borderBottom: "2px solid black" }}
-                      >
-                        <a id="poli" href="">
-                          <h3 id="jenisPoliklinik">
-                            Poliklinik <b>Gigi</b>{" "}
-                            <i id="panah" className="fas">
-                              
-                            </i>
-                          </h3>
-                        </a>
-                      </div>
-                      <div
-                        className="d-flex justify-content-center mb-lg-4"
-                        style={{ borderBottom: "2px solid black" }}
-                      >
-                        <a id="poli" href="">
-                          <h3 id="jenisPoliklinik">
-                            Poliklinik <b>THT</b>{" "}
-                            <i id="panah" className="fas">
-                              
-                            </i>
-                          </h3>
-                        </a>
-                      </div>
+                    <div id="poliklinikCollumn" className="col-6 mt-4">
+                      {poliLinks2.map((poli) => (
+                        <div
+                          key={poli.name}
+                          className="d-flex justify-content-center mb-lg-4"
+                          style={{ borderBottom: "2px solid black" }}
+                        >
+                          <Link id="poli" to={poli.link} className="p-0">
+                            <h3 id="jenisPoliklinik" className="p-0">
+                              Poliklinik <b>{poli.name}</b>{" "}
+                              <i id="panah" className="fas p-0">
+                                
+                              </i>
+                            </h3>
+                          </Link>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -176,7 +150,6 @@ const Poliklinik = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

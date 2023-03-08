@@ -24,6 +24,7 @@ import PembayaranBerhasil from "./PagePoliklinik/PembayaranBerhasil";
 import "./css/Poliklinik.css";
 import "./css/global.css";
 import "./css/styleLogin.css";
+import Footer from "./components/footer";
 
 export const loginContext = createContext();
 
@@ -32,7 +33,7 @@ function App() {
   return (
     <loginContext.Provider value={[isLogin, setIsLogin]}>
       <BrowserRouter basename="/">
-        {isLogin % 2 == 1 ? (
+        {2 % 2 == 1 ? (
           <Routes>
             <Route exact path="/" element={<Logins />} />
             <Route path="/ForgotPassword" element={<ForgotPassword />} />
@@ -40,30 +41,33 @@ function App() {
             <Route path="/Register" element={<Register />} />
           </Routes>
         ) : (
-          <SideNav>
-            <Routes>
-              <Route exact path="/" element={<DashBoard />} />
-              <Route path="/DashBoard" element={<DashBoard />} />
-              <Route path="/Doctor" element={<Doctor />} />
-              <Route path="/Aplikasi" element={<Aplikasi />} />
-              <Route path="/Obat" element={<Obat />} />
-              <Route path="/MainPasien" element={<MainPasien />} />
-              <Route path="/Riwayat" element={<Riwayat />} />
-              <Route path="/Profile" element={<Profile />} />
-              <Route path="/Poliklinik" element={<Poliklinik />} />
-              <Route
-                path="/PenyakitDalamUmum"
-                element={<PenyakitDalamUmum />}
-              />
-              <Route path="/Antrian" element={<Antrian />} />
-              <Route path="/Hasil" element={<Hasil />} />
-              <Route path="/BuktiPembayaran" element={<BuktiPembayaran />} />
-              <Route
-                path="/PembayaranBerhasil"
-                element={<PembayaranBerhasil />}
-              />
-            </Routes>
-          </SideNav>
+          <div className="App">
+            <SideNav>
+              <Routes>
+                <Route exact path="/" element={<DashBoard />} />
+                <Route path="/DashBoard" element={<DashBoard />} />
+                <Route path="/Doctor" element={<Doctor />} />
+                <Route path="/Aplikasi" element={<Aplikasi />} />
+                <Route path="/Obat" element={<Obat />} />
+                <Route path="/MainPasien" element={<MainPasien />} />
+                <Route path="/Riwayat" element={<Riwayat />} />
+                <Route path="/Profile" element={<Profile />} />
+                <Route path="/Poliklinik" element={<Poliklinik />} />
+                <Route
+                  path="/PenyakitDalamUmum"
+                  element={<PenyakitDalamUmum />}
+                />
+                <Route path="/Antrian" element={<Antrian />} />
+                <Route path="/Hasil" element={<Hasil />} />
+                <Route path="/BuktiPembayaran" element={<BuktiPembayaran />} />
+                <Route
+                  path="/PembayaranBerhasil"
+                  element={<PembayaranBerhasil />}
+                />
+              </Routes>
+              <Footer />
+            </SideNav>
+          </div>
         )}
       </BrowserRouter>
     </loginContext.Provider>

@@ -1,9 +1,112 @@
 import React from "react";
+import { useState } from "react";
 import Table from "react-bootstrap/Table";
-import Footer from "../../components/footer";
 import { Link } from "react-router-dom";
 
 const PenyakitDalamUmum = () => {
+  const [currentDay, setCurrentDay] = useState("Hari ini");
+  const handleClick = (day) => {
+    setCurrentDay(day);
+  };
+  const options = [
+    { value: 1, label: "Dr. Jessica Pricilla" },
+    { value: 2, label: "Dr. Adipati Laksmana" },
+    { value: 3, label: "Dr. Secillia Pradjiwaksono" },
+    { value: 4, label: "Dr. Erica Carlina" },
+    { value: 5, label: "Dr. Hasan Iskandar" },
+    { value: 6, label: "Dr. Pandji Akmaludin" },
+  ];
+
+  const items = [
+    { day: "Senin", doctors: ["Dr. Jessica Pricilla", "Dr. Erica Carlina"] },
+    { day: "Selasa", doctors: ["Dr. Jessica Pricilla", "Dr. Erica Carlina"] },
+    { day: "Rabu", doctors: ["Dr. Jessica Pricilla", "Dr. Erica Carlina"] },
+    { day: "Kamis", doctors: ["Dr. Jessica Pricilla", "Dr. Erica Carlina"] },
+    { day: "Jum'at", doctors: ["Dr. Jessica Pricilla", "Dr. Erica Carlina"] },
+    { day: "Sabtu", doctors: ["Dr. Jessica Pricilla", "Dr. Erica Carlina"] },
+  ];
+  const renderedItems = items.map((item) => (
+    <div className="col-6 mt-2 text-center" key={item.day}>
+      <div>
+        <h4>
+          <b>{item.day}</b>
+        </h4>
+        {item.doctors.map((doctor) => (
+          <p key={doctor}>{doctor}</p>
+        ))}
+      </div>
+    </div>
+  ));
+  const [currentPage, setCurrentPage] = useState(1);
+  const [data, setData] = useState([
+    {
+      id: 1,
+      nama: "John Doe",
+      umur: 19,
+      jeniskelamin: " pria",
+    },
+    {
+      id: 2,
+      nama: "Jack Amstrong",
+      umur: 21,
+      jeniskelamin: " pria",
+    },
+    {
+      id: 3,
+      nama: "Gloria Smith",
+      umur: 23,
+      jeniskelamin: "wanita",
+    },
+    {
+      id: 4,
+      nama: "Sara Johnson",
+      umur: 31,
+      jeniskelamin: "wanita",
+    },
+    {
+      id: 5,
+      nama: "Tom Wilson",
+      umur: 17,
+      jeniskelamin: "pria",
+    },
+    {
+      id: 6,
+      nama: "Corry Simpsons",
+      umur: 19,
+      jeniskelamin: "wanita",
+    },
+    {
+      id: 7,
+      nama: "Bobby Anderson",
+      umur: 29,
+      jeniskelamin: " pria",
+    },
+    {
+      id: 8,
+      nama: "Chris Stewart",
+      umur: 26,
+      jeniskelamin: " pria",
+    },
+    {
+      id: 9,
+      nama: "Veronica Lodge",
+      umur: 32,
+      jeniskelamin: "wanita",
+    },
+  ]);
+  const itemsPerPage = 10;
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+
+  const handleClickPrev = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const handleClickNext = () => {
+    setCurrentPage(currentPage + 1);
+  };
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData = data.slice(startIndex, endIndex);
   return (
     <div id="penyakitDalamUmumPage">
       <nav
@@ -64,12 +167,12 @@ const PenyakitDalamUmum = () => {
         <h2 id="titledashboard">Klinik Penyakit Dalam</h2>
         <div className="container">
           <div id="tbl">
-            <a to="">
-              <button id="tblhariini">Hari ini</button>
-            </a>
-            <a to="">
-              <button id="tblbesok">Besok</button>
-            </a>
+            <button id="tblhariini" onClick={() => handleClick("Hari ini")}>
+              {currentDay === "Hari ini" ? <b>Hari ini</b> : "Hari ini"}
+            </button>
+            <button id="tblbesok" onClick={() => handleClick("Besok")}>
+              {currentDay === "Besok" ? <b>Besok</b> : "Besok"}
+            </button>
           </div>
           <div className="col-lg-12 mt-3">
             <div className="row">
@@ -78,7 +181,7 @@ const PenyakitDalamUmum = () => {
                   <div className="col-6">
                     <div style={{ marginTop: "15px" }}>
                       <h4>
-                        <b>Hari ini</b>
+                        <b>{currentDay}</b>
                       </h4>
                       <p>
                         Senin, 30 Januari 2023 <br />
@@ -106,116 +209,29 @@ const PenyakitDalamUmum = () => {
                       >
                         Pilih dokter
                       </option>
-                      <option
-                        style={{ borderBottom: "1px solid black" }}
-                        value={1}
-                      >
-                        Dr. Jessica Pricilla
-                      </option>
-                      <option
-                        style={{ borderBottom: "1px solid black" }}
-                        value={2}
-                      >
-                        Dr. Adipati Laksmana
-                      </option>
-                      <option
-                        style={{ borderBottom: "1px solid black" }}
-                        value={3}
-                      >
-                        Dr. Secillia Pradjiwaksono
-                      </option>
-                      <option
-                        style={{ borderBottom: "1px solid black" }}
-                        value={4}
-                      >
-                        Dr. Erica Carlina
-                      </option>
-                      <option
-                        style={{ borderBottom: "1px solid black" }}
-                        value={5}
-                      >
-                        Dr. Hasan Iskandar
-                      </option>
-                      <option
-                        style={{ borderBottom: "1px solid black" }}
-                        value={6}
-                      >
-                        Dr. Pandji Akmaludin
-                      </option>
-                      <option
-                        style={{ borderBottom: "1px solid black" }}
-                        value={7}
-                      >
-                        Dr. Aflah Rizkyadhafin
-                      </option>
-                      <option
-                        style={{ borderBottom: "1px solid black" }}
-                        value={8}
-                      >
-                        Dr. Faisal Islam
-                      </option>
-                      <option
-                        style={{ borderBottom: "1px solid black" }}
-                        value={9}
-                      >
-                        Dr. Rakhansyah Lubis
-                      </option>
-                      <option
-                        style={{ borderBottom: "1px solid black" }}
-                        value={10}
-                      >
-                        Dr. Harun Kusnaedi
-                      </option>
-                      <option
-                        style={{ borderBottom: "1px solid black" }}
-                        value={11}
-                      >
-                        Dr. Mukhammad Vicky
-                      </option>
-                      <option
-                        style={{ borderBottom: "1px solid black" }}
-                        value={12}
-                      >
-                        Dr. Niko Muslim
-                      </option>
+                      {options.map((option) => (
+                        <option
+                          style={{ borderBottom: "1px solid black" }}
+                          value={option.value}
+                          key={option.value}
+                        >
+                          {option.label}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>
               </div>
               <div
                 id="kotakhari"
-                className="col-md-6 overflow "
+                className="col-md-6 overflow"
                 style={{ border: "2px solid black" }}
               >
-                <div className="row">
-                  <div className="col-6">
-                    <div className="m-3">
-                      <h4>
-                        <b>Senin</b>
-                      </h4>
-                      <p>
-                        Dr. Jessica Pricilla <br />
-                        Dr. Erica Carlina
-                      </p>
-                    </div>
-                  </div>
-                  <div className="col-6 p-3">
-                    <div>
-                      <h4>
-                        <b>Senin</b>
-                      </h4>
-                      <p>
-                        Dr. Jessica Pricilla <br />
-                        Dr. Erica Carlina
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <div className="row">{renderedItems}</div>
               </div>
             </div>
           </div>
         </div>
-
         <div className="container">
           <div className="row">
             <div className="col-12 mt-3" style={{ border: "2px solid black" }}>
@@ -235,83 +251,21 @@ const PenyakitDalamUmum = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>001</td>
-                      <td>Intan Permata Sari</td>
-                      <td>16</td>
-                      <td>Perempuan</td>
-                    </tr>
-                    <tr>
-                      <td>002</td>
-                      <td>Suci Sahmi Asri</td>
-                      <td>16</td>
-                      <td>Perempuan</td>
-                    </tr>
-                    <tr>
-                      <td>003</td>
-                      <td>Astri Nuraini</td>
-                      <td>17</td>
-                      <td>Perempuan</td>
-                    </tr>
-                    <tr>
-                      <td>004</td>
-                      <td>Ilham Alamul Huda</td>
-                      <td>17</td>
-                      <td>Laki-laki</td>
-                    </tr>
-                    <tr>
-                      <td>005</td>
-                      <td>Rayyan Rafkhi Ardiha</td>
-                      <td>16</td>
-                      <td>Laki-laki</td>
-                    </tr>
-                    <tr>
-                      <td>006</td>
-                      <td>Aflah Rizky Adhafin</td>
-                      <td>17</td>
-                      <td>Laki-laki</td>
-                    </tr>
-                    <tr>
-                      <td>007</td>
-                      <td>Faisal Muslim</td>
-                      <td>17</td>
-                      <td>Laki-laki</td>
-                    </tr>
-                    <tr>
-                      <td>008</td>
-                      <td>Fina Nur Rahmat</td>
-                      <td>16</td>
-                      <td>Perempuan</td>
-                    </tr>
-                    <tr>
-                      <td>009</td>
-                      <td>Rakhansyah Lubis</td>
-                      <td>18</td>
-                      <td>Laki-laki</td>
-                    </tr>
+                    {currentData.map((item) => (
+                      <tr key={item.id}>
+                        <td>{item.id}</td>
+                        <td>{item.nama}</td>
+                        <td>{item.umur}</td>
+                        <td>{item.jeniskelamin}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </Table>
-                <div id="tbldatanomor">
-                  <a to="">
-                    <button id="arrowleft">
-                      <i class="fas fa-arrow-left"></i>
-                    </button>
-                  </a>
-                  <a to="">
-                    <button id="currentnumber">1</button>
-                  </a>
-                  <a to="">
-                    <button id="arrowright">
-                      <i class="fas fa-arrow-right"></i>
-                    </button>
-                  </a>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

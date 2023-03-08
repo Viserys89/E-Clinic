@@ -1,3 +1,22 @@
+/* pages */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#globalfooter {
+  bottom: 0;
+  margin-top: auto;
+  margin-left: 4.6%;
+}
+@media (max-width: 1000px) {
+  #globalfooter {
+    margin-left: 0%;
+  }
+}
+
+/* end */
 /* dashboard page */
 #titledashboard {
   line-height: 1.5;
@@ -388,15 +407,6 @@
   margin-left: 8.8%;
 }
 
-#playstore {
-  margin-top: 30px;
-  display: flex;
-}
-
-#playstore:hover {
-  transform: scale(1);
-}
-
 @media (max-width: 1000px) {
   #aplikasiPage {
     margin-left: 0;
@@ -426,7 +436,8 @@
   #aplikasiRow {
     flex-direction: column;
   }
-  #playstore {
+  #playstoreaplikasi {
+    display: flex;
     justify-content: center;
   }
 }

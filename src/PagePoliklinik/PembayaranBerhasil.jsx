@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Footer from "../components/footer";
 
 const PembayaranBerhasil = () => {
   return (
@@ -78,7 +77,6 @@ const PembayaranBerhasil = () => {
           <div className="card-body"></div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
