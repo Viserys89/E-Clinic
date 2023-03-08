@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import Footer from "../components/footer";
 
-const DashBoard = () => { 
+const DashBoard = () => {
   var jumlahPasien = 1039;
-  var covid = 700;
-  var demam = 750;
-  var batuk = 650;
-  var sakitgigi = 600;
-  var sakitmata = 550;
-  var sakittenggorokan = 450;
   const [jumlah, setJumlah] = useState();
   useEffect(() => {
     async function setUsers() {
@@ -35,6 +28,51 @@ const DashBoard = () => {
     }
     setUsers();
   }, []);
+  const [timeRange, setTimeRange] = useState("year");
+  const [progressData, setProgressData] = useState({
+    demam: { label: "Demam", value: 800 },
+    jantung: { label: "Jantung", value: 700 },
+    flu: { label: "Flu", value: 650 },
+    anemia: { label: "Anemia", value: 600 },
+    ginjal: { label: "Ginjal", value: 500 },
+    kangker: { label: "Kangker", value: 400 },
+  });
+
+  useEffect(() => {
+    // fetch progress data based on time range
+    let newData;
+    if (timeRange === "year") {
+      newData = {
+        demam: { label: "Demam", value: 800 },
+        jantung: { label: "Jantung", value: 700 },
+        flu: { label: "Flu", value: 650 },
+        anemia: { label: "Anemia", value: 600 },
+        ginjal: { label: "Ginjal", value: 500 },
+        kangker: { label: "Kangker", value: 400 },
+      };
+    } else if (timeRange === "month") {
+      // fetch data for month
+      newData = {
+        demam: { label: "Demam", value: 600 },
+        jantung: { label: "Jantung", value: 500 },
+        flu: { label: "Flu", value: 800 },
+        anemia: { label: "Anemia", value: 650 },
+        ginjal: { label: "Ginjal", value: 700 },
+        kangker: { label: "Kangker", value: 450 },
+      };
+    } else if (timeRange === "week") {
+      newData = {
+        demam: { label: "Demam", value: 500 },
+        jantung: { label: "Jantung", value: 400 },
+        flu: { label: "Flu", value: 600 },
+        anemia: { label: "Anemia", value: 650 },
+        ginjal: { label: "Ginjal", value: 350 },
+        kangker: { label: "Kangker", value: 200 },
+      };
+    }
+    setProgressData(newData);
+  });
+
   return (
     <>
       <div id="content">
@@ -145,111 +183,55 @@ const DashBoard = () => {
                     <div id="topbar">
                       <h2 id="titlestatistik">Statistik Penyakit Pasien</h2>
                       <div id="statbutton">
-                        <button id="yearbutton">Year</button>
-
-                        <button id="monthbutton">Month</button>
-
-                        <button id="weekbutton">Week</button>
+                        <button
+                          id="yearbutton"
+                          onClick={() => setTimeRange("year")}
+                        >
+                          Year
+                        </button>
+                        <button
+                          id="monthbutton"
+                          onClick={() => setTimeRange("month")}
+                        >
+                          Month
+                        </button>
+                        <button
+                          id="weekbutton"
+                          onClick={() => setTimeRange("week")}
+                        >
+                          Week
+                        </button>
                       </div>
-                      <div id="progressbar">
-                        <p>
-                          {demam} of {jumlahPasien} / <b>Demam</b>
-                        </p>
-                        <ProgressBar
-                          id="progress"
-                          variant="success"
-                          now={(demam / jumlahPasien) * 100}
-                        />
-                        <p>
-                          {covid} of {jumlahPasien} / <b>Covid</b>
-                        </p>
-                        <ProgressBar
-                          id="progress"
-                          variant="info"
-                          now={(covid / jumlahPasien) * 100}
-                        />
-                        <p>
-                          {batuk} of {jumlahPasien} / <b>Batuk</b>
-                        </p>
-                        <ProgressBar
-                          id="progress"
-                          variant="warning"
-                          now={(batuk / jumlahPasien) * 100}
-                        />
-                        <p>
-                          {sakitgigi} of {jumlahPasien} / <b>Sakit Gigi</b>
-                        </p>
-                        <ProgressBar
-                          id="progress"
-                          variant="danger"
-                          now={(sakitgigi / jumlahPasien) * 100}
-                        />
-                        <p>
-                          {sakitmata} of {jumlahPasien} / <b>Sakit Mata</b>
-                        </p>
-                        <ProgressBar
-                          id="progress"
-                          variant="danger"
-                          now={(sakitmata / jumlahPasien) * 100}
-                        />
-                        <p>
-                          {sakittenggorokan} of {jumlahPasien} /{" "}
-                          <b>Sakit Tenggorokan</b>
-                        </p>
-                        <ProgressBar
-                          id="progress"
-                          variant="success"
-                          now={(sakittenggorokan / jumlahPasien) * 100}
-                        />
-                        <p>
-                          {demam} of {jumlahPasien} / <b>Demam</b>
-                        </p>
-                        <ProgressBar
-                          id="progress"
-                          variant="success"
-                          now={(demam / jumlahPasien) * 100}
-                        />
-                        <p>
-                          {covid} of {jumlahPasien} / <b>Covid</b>
-                        </p>
-                        <ProgressBar
-                          id="progress"
-                          variant="info"
-                          now={(covid / jumlahPasien) * 100}
-                        />
-                        <p>
-                          {batuk} of {jumlahPasien} / <b>Batuk</b>
-                        </p>
-                        <ProgressBar
-                          id="progress"
-                          variant="warning"
-                          now={(batuk / jumlahPasien) * 100}
-                        />
-                        <p>
-                          {sakitgigi} of {jumlahPasien} / <b>Sakit Gigi</b>
-                        </p>
-                        <ProgressBar
-                          id="progress"
-                          variant="danger"
-                          now={(sakitgigi / jumlahPasien) * 100}
-                        />
-                        <p>
-                          {sakitmata} of {jumlahPasien} / <b>Sakit Mata</b>
-                        </p>
-                        <ProgressBar
-                          id="progress"
-                          variant="danger"
-                          now={(sakitmata / jumlahPasien) * 100}
-                        />
-                        <p>
-                          {sakittenggorokan} of {jumlahPasien} /{" "}
-                          <b>Sakit Tenggorokan</b>
-                        </p>
-                        <ProgressBar
-                          id="progress"
-                          variant="success"
-                          now={(sakittenggorokan / jumlahPasien) * 100}
-                        />
+                      <div id="progressbar3" className="px-4 mt-2">
+                        {Object.keys(progressData).map((key) => (
+                          <div key={key}>
+                            <p>
+                              {progressData[key].value} of {jumlahPasien} /{" "}
+                              <b>{progressData[key].label}</b>
+                            </p>
+                            <ProgressBar
+                              id="progress"
+                              variant={
+                                key === "demam"
+                                  ? "warning"
+                                  : key === "jantung"
+                                  ? "success"
+                                  : key === "flu"
+                                  ? "danger"
+                                  : key === "anemia"
+                                  ? "Primary"
+                                  : key === "ginjal"
+                                  ? "warning"
+                                  : key === "kangker"
+                                  ? "danger"
+                                  : "dark"
+                              }
+                              now={
+                                (progressData[key].value / jumlahPasien) * 100
+                              }
+                            />
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -266,86 +248,56 @@ const DashBoard = () => {
                             Statistik Perkerjaan Pasien
                           </h3>
                           <div id="statbutton">
-                            <button id="yearbutton">Year</button>
-                            <button id="monthbutton">Month</button>
-                            <button id="weekbutton">Week</button>
+                            <button
+                              id="yearbutton"
+                              onClick={() => setTimeRange("year")}
+                            >
+                              Year
+                            </button>
+                            <button
+                              id="monthbutton"
+                              onClick={() => setTimeRange("month")}
+                            >
+                              Month
+                            </button>
+                            <button
+                              id="weekbutton"
+                              onClick={() => setTimeRange("week")}
+                            >
+                              Week
+                            </button>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div id="progressbar2">
-                      <p>
-                        {demam} of {jumlahPasien} / <b>Pengusaha</b>
-                      </p>
-                      <ProgressBar
-                        id="progress"
-                        variant="success"
-                        now={(demam / jumlahPasien) * 100}
-                      />
-                      <p>
-                        {covid} of {jumlahPasien} / <b>Petani</b>
-                      </p>
-                      <ProgressBar
-                        id="progress"
-                        variant="info"
-                        now={(covid / jumlahPasien) * 100}
-                      />
-                      <p>
-                        {batuk} of {jumlahPasien} / <b>Tentara</b>
-                      </p>
-                      <ProgressBar
-                        id="progress"
-                        variant="warning"
-                        now={(batuk / jumlahPasien) * 100}
-                      />
-                      <p>
-                        {sakitgigi} of {jumlahPasien} / <b>Guru</b>
-                      </p>
-                      <ProgressBar
-                        id="progress"
-                        variant="danger"
-                        now={(sakitgigi / jumlahPasien) * 100}
-                      />
-                      <p>
-                        {sakitmata} of {jumlahPasien} / <b>Polisi</b>
-                      </p>
-                      <ProgressBar
-                        id="progress"
-                        variant="danger"
-                        now={(sakitmata / jumlahPasien) * 100}
-                      />
-                      <p>
-                        {sakittenggorokan} of {jumlahPasien} / <b>Wiraswasta</b>
-                      </p>
-                      <ProgressBar
-                        id="progress"
-                        variant="success"
-                        now={(sakittenggorokan / jumlahPasien) * 100}
-                      />
-                      <p>
-                        {demam} of {jumlahPasien} / <b>Pengusaha</b>
-                      </p>
-                      <ProgressBar
-                        id="progress"
-                        variant="success"
-                        now={(demam / jumlahPasien) * 100}
-                      />
-                      <p>
-                        {covid} of {jumlahPasien} / <b>Petani</b>
-                      </p>
-                      <ProgressBar
-                        id="progress"
-                        variant="info"
-                        now={(covid / jumlahPasien) * 100}
-                      />
-                      <p>
-                        {batuk} of {jumlahPasien} / <b>Tentara</b>
-                      </p>
-                      <ProgressBar
-                        id="progress"
-                        variant="warning"
-                        now={(batuk / jumlahPasien) * 100}
-                      />
+                    <div id="progressbar3" className="px-4 mt-2">
+                      {Object.keys(progressData).map((key) => (
+                        <div key={key}>
+                          <p>
+                            {progressData[key].value} of {jumlahPasien} /{" "}
+                            <b>{progressData[key].label}</b>
+                          </p>
+                          <ProgressBar
+                            id="progress"
+                            variant={
+                              key === "demam"
+                                ? "warning"
+                                : key === "jantung"
+                                ? "success"
+                                : key === "flu"
+                                ? "danger"
+                                : key === "anemia"
+                                ? "Primary"
+                                : key === "ginjal"
+                                ? "warning"
+                                : key === "kangker"
+                                ? "danger"
+                                : "dark"
+                            }
+                            now={(progressData[key].value / jumlahPasien) * 100}
+                          />
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -356,68 +308,56 @@ const DashBoard = () => {
                         <div id="statperkerjaanpasien">
                           <h3 id="titlestatistik">Statistik Golongan Darah</h3>
                           <div id="statbutton">
-                            <button id="yearbutton">Year</button>
-                            <button id="monthbutton">Month</button>
-                            <button id="weekbutton">Week</button>
+                            <button
+                              id="yearbutton"
+                              onClick={() => setTimeRange("year")}
+                            >
+                              Year
+                            </button>
+                            <button
+                              id="monthbutton"
+                              onClick={() => setTimeRange("month")}
+                            >
+                              Month
+                            </button>
+                            <button
+                              id="weekbutton"
+                              onClick={() => setTimeRange("week")}
+                            >
+                              Week
+                            </button>
                           </div>
                         </div>
-                        <div id="progressbar3">
-                          <p>
-                            {covid} of {jumlahPasien} / <b>AB+</b>
-                          </p>
-                          <ProgressBar
-                            id="progress"
-                            variant="info"
-                            now={(covid / jumlahPasien) * 100}
-                          />
-                          <p>
-                            {batuk} of {jumlahPasien} / <b>A+</b>
-                          </p>
-                          <ProgressBar
-                            id="progress"
-                            variant="warning"
-                            now={(batuk / jumlahPasien) * 100}
-                          />
-                          <p>
-                            {sakitgigi} of {jumlahPasien} / <b>O-</b>
-                          </p>
-                          <ProgressBar
-                            id="progress"
-                            variant="danger"
-                            now={(sakitgigi / jumlahPasien) * 100}
-                          />
-                          <p>
-                            {sakitmata} of {jumlahPasien} / <b>B-</b>
-                          </p>
-                          <ProgressBar
-                            id="progress"
-                            variant="warning"
-                            now={(sakitmata / jumlahPasien) * 100}
-                          />
-                          <p>
-                            {sakittenggorokan} of {jumlahPasien} / <b>0+</b>
-                          </p>
-                          <ProgressBar
-                            id="progress"
-                            variant="info"
-                            now={(sakittenggorokan / jumlahPasien) * 100}
-                          />
-                          <p>
-                            {350} of {jumlahPasien} / <b>A-</b>
-                          </p>
-                          <ProgressBar
-                            id="progress"
-                            variant="danger"
-                            now={(350 / jumlahPasien) * 100}
-                          />
-                          <p>
-                            {300} of {jumlahPasien} / <b>B+</b>
-                          </p>
-                          <ProgressBar
-                            id="progress"
-                            variant="success"
-                            now={(300 / jumlahPasien) * 100}
-                          />
+                        <div id="progressbar3" className="px-4 mt-2">
+                          {Object.keys(progressData).map((key) => (
+                            <div key={key}>
+                              <p>
+                                {progressData[key].value} of {jumlahPasien} /{" "}
+                                <b>{progressData[key].label}</b>
+                              </p>
+                              <ProgressBar
+                                id="progress"
+                                variant={
+                                  key === "demam"
+                                    ? "warning"
+                                    : key === "jantung"
+                                    ? "success"
+                                    : key === "flu"
+                                    ? "danger"
+                                    : key === "anemia"
+                                    ? "Primary"
+                                    : key === "ginjal"
+                                    ? "warning"
+                                    : key === "kangker"
+                                    ? "danger"
+                                    : "dark"
+                                }
+                                now={
+                                  (progressData[key].value / jumlahPasien) * 100
+                                }
+                              />
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -427,7 +367,6 @@ const DashBoard = () => {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     </>
   );

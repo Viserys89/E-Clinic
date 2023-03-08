@@ -31,7 +31,7 @@ const Logins = () => {
   }
 
   return (
-    <Container-fluid id="containersatu" className="vh-100">
+    <div id="containersatu">
       <div className="container-fluid h-custom">
         <img id="logo" src="../../public/img/nama&logo.png" />{" "}
         <h2 id="clinic" className="fw-bold">
@@ -135,7 +135,7 @@ const Logins = () => {
           </div>
         </div>
       </div>
-    </Container-fluid>
+    </div>
   );
 };
 

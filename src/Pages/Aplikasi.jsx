@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../components/footer";
 import { Link } from "react-router-dom";
 
 const Aplikasi = () => {
@@ -73,14 +72,13 @@ const Aplikasi = () => {
                   Sekarang kamu sudah bisa menggunakan E-CLinic <br /> di
                   smartphone kesayangan anda
                 </h5>
-                <Link to="/" id="playstore">
+                <Link to="/" id="playstoreaplikasi">
                   <img className="mt-5" src="../../public/img/play store.png" />
                 </Link>
               </div>
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     </>
   );

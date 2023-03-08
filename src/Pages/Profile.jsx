@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../components/footer";
 import { Link } from "react-router-dom";
 
 const Profile = () => {
@@ -300,7 +299,6 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

@@ -131,6 +131,8 @@
 }
 
 #kotakhari {
+  height: 193px; /* Set the height of the container */
+  overflow: auto; /* Enable vertical scrolling */
   max-width: 715px;
 }
 
