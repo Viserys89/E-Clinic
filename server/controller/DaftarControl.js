@@ -4,9 +4,15 @@ require('dotenv').config()
 const crypto = require('crypto')
 const secret_key = process.env.JWT_SECRET
 const { body, validationResult } = require('express-validator');
-const {data, user_controls} = require('../models/datas');
-const { pendaftaran } = require('../models/pendaftaranData');
-const WebSocket = require('ws')
+const { user_controls} = require('../models/datas');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+
+const WebSocket = require('ws');
+const main = require('../app');
+const { pendaftaran, antrian, klinik, data } = require('../models');
+const { dokter } = require('../models/dokterdata');
+
 
 exports.daftar = (req, res) => {
     const authHeader = req.get('Authorization')
@@ -24,13 +30,17 @@ exports.daftar = (req, res) => {
         } catch (err) {
           return res.status(500).json({alert: 'Daftar Error Coba Lagi Nanti'});
         }
-        pendaftaran.create({
-            pasien_id : req.body.pasien_id,
-            dokter_id : req.body.dokter_id,
-            nomor_pendaftaran : Math.floor(Math.random() * 10000)  //nomor pendaftaran merupakan angka acak maks 4 digit
+        klinik.findOne({where: {nama_klinik: req.body.klinik}}).then((klinik) => {
+          pendaftaran.create({
+              pasien_id : req.body.pasien_id,
+              dokter_id : req.body.dokter_id,
+              klinik_id : klinik.klinik_id,
+              tanggal_perjanjian : req.body.hari,
+              nomor_pendaftaran : Math.floor(Math.random() * 100000)  //nomor pendaftaran merupakan angka acak maks 5 digit
+        })
         }).then(data => {
             return res.status(200).json({alert: 'Daftar Berhasil'})
-        })
+        }).catch(err => console.log(err))
       })
 }
 
@@ -62,16 +72,46 @@ exports.nomorPendaftaran = (req, res) => {
 }
 
 exports.antrian = (req, res) => {
-  const wss = new WebSocket.Server({port : 5000})
-  const clients = new Set()
-
-  wss.on('connection', (ws) => {
-    clients.add(ws)
-    ws.on('message', (message => {
-      const data = JSON.parse(message)
-      if (data.type === 'subscribe' && data.channel === 'confirmation') {
-        
-      }
-    }))
-  })
-}
+  antrian
+    .findAll({
+      include: [
+        {
+          model: klinik,
+          attributes: ["nama_klinik"],
+          where: { nama_klinik: req.body.klinik },
+        },
+        {
+          model: data,
+          attributes: ["namalengkap"],
+        },
+        {
+          model: pendaftaran,
+          where: {confirmed: true, tanggal_perjanjian: req.body.hari},
+          include: {
+            model: dokter,
+            attributes: ["nama_dokter"],
+            where: { dokter_id: req.body.dokter},
+          },
+        },
+      ],
+    })
+    .then((data) => {
+      let filterData = data.map((item) => {
+        let dokter = null
+        if(item.pendaftaran !== null){
+          dokter = item.pendaftaran.dokter.nama_dokter
+        }
+        return {
+          Antrian_id: item.antrian_id,
+          Pendaftaran_id: item.pendaftaran_id,
+          namaKlinik: item.klinik.nama_klinik,
+          namaPasien: item.userdatum.namalengkap,
+          dokter: dokter
+        };
+      });
+      res.json(filterData);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

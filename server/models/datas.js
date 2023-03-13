@@ -1,20 +1,21 @@
 const Sequelize = require('sequelize');
 const sequelize = require('./connection.js');
+const { pendaftaran, antrian } = require('./pendaftaranData.js');
 
 const data = sequelize.define(
   'userdata',
   {
-    pasen_id: {
+    pasien_id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
-    noTelp: {
-      type: Sequelize.INTEGER,
-      allownull: true
-    },
     email: {
       type: Sequelize.STRING(30),
+    },
+    no_telp: {
+      type: Sequelize.INTEGER,
+      allowNull: true,
     },
     password: {
       type: Sequelize.STRING,
@@ -59,6 +60,7 @@ const data = sequelize.define(
   {
     timestamps: false,
   },
+  
 );
 
 const user_controls = sequelize.define('user_controls',{
@@ -71,7 +73,7 @@ const user_controls = sequelize.define('user_controls',{
             tableName: 'userdata',
             schema: 'public',
           },
-          key: 'pasen_id'
+          key: 'pasien_id'
         }
       },
       is_login: {

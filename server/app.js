@@ -8,12 +8,26 @@ const login = require('./controller/LoginControl');
 const klinik = require('./controller/KlinikControl');
 const profile = require('./controller/ProfileControl');
 const daftar = require('./controller/DaftarControl');
-const crypto = require('crypto')
-
+const WebSocket = require('ws')
 var useragent = require('express-useragent');
+const { pendaftaran, antrian } = require('./models/pendaftaranData');
+const { v4: uuidv4 } = require('uuid');
 
 app.use(express.urlencoded({extended: true}));
 app.use(useragent.express());
+
+const wss = new WebSocket.Server({port : 8080})
+const userConnections = {};
+
+wss.on('connection', (ws, req) => {
+
+  ws.on('message', (message => {
+    const data = JSON.parse(message)
+    console.log(data);
+    if(data.channel === 'confirmation')
+    return userConnections[data.data] = ws
+  }))
+})
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -52,7 +66,48 @@ app.get('/keahlian', klinik.getKeahlian)
 app.get('/darah', data.getGolonganDarah)
 app.post('/daftar', daftar.daftar)
 app.post('/nodaftar', daftar.nomorPendaftaran)
-app.post('/antri', daftar.antrian)
+app.post('/forgotPassword', data.forgotPassword)
+app.get('/passwordReset', data.passwordReset)
+app.post('/antrian', daftar.antrian)
+app.post('/setPassword', data.setPassword)
+app.post('/antri', (req, res) => {
+  pendaftaran
+    .findOne({
+      where: {
+        pendaftaran_id: req.body.pendaftaran_id,
+      },
+    })
+    .then((daftar) => {
+      if (!daftar) return;
+      const message = JSON.stringify({
+        type: "confirmation",
+        data: "confirmed",
+      });
+      const nopendaftaran = req.body.noPendaftaran;
+
+      const ws = userConnections[nopendaftaran];
+      if (ws) {
+        ws.send(message);    
+      }
+      pendaftaran.update({confirmed: true},
+        {
+          where: {pendaftaran_id: req.body.pendaftaran_id}
+        })
+      antrian.findOne({where: {pendaftaran_id: daftar.pendaftaran_id}}).then((antri) => {
+        if(antri){
+          return res.status(409).json({alert: 'Sudah Mengantri'})
+        }
+        antrian.create({
+          pendaftaran_id: daftar.pendaftaran_id,
+          pasien_id: daftar.pasien_id,
+          klinik_id: daftar.klinik_id || null
+        }).then(() => {
+          res.sendStatus(200)
+        })
+      })
+    });
+
+})
 
 
 const PORT = 5000;
