@@ -1,0 +1,272 @@
+/* Poliklinik */
+#poliklinikPage {
+  margin-left: 8.8%;
+}
+#poli {
+  color: black;
+  display: flex;
+  align-items: center;
+}
+#jenisPoliklinik {
+  margin-top: 30px;
+}
+#linePoliklinik {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#btnTambahPoliklinik {
+  display: flex;
+  justify-content: flex-end;
+}
+#titlePoliklinik {
+  margin-bottom: 0;
+  line-height: 1.5;
+  font-weight: 500;
+  font-family: "Poppins", arial, sans-serif;
+  color: black;
+  margin-left: 23px;
+}
+#panah {
+  margin-left: 15px;
+  color: #000;
+  font-size: 30px;
+}
+
+@media (max-width: 1000px) {
+  #poliklinikPage {
+    margin-left: 0;
+  }
+  #poliklinikCollumn {
+    width: 100%;
+  }
+  #poliklinikRow {
+    flex-direction: column;
+    align-items: center;
+  }
+  #jenisPoliklinik {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 540px) {
+  #jenisPoliklinik {
+    font-size: 20px;
+  }
+}
+@media (max-width: 420px) {
+  #jenisPoliklinik {
+    font-size: 15px;
+  }
+}
+
+/* klinik page */
+#klinikPage {
+  margin-left: 8%;
+}
+@media (max-width: 1000px) {
+  #klinikPage {
+    margin-left: 0;
+  }
+}
+/* penyakit dalam umum page */
+#penyakitDalamUmumPage {
+  margin-left: 8.8%;
+}
+
+@media (max-width: 1000px) {
+  #penyakitDalamUmumPage {
+    margin-left: 0;
+  }
+}
+
+#tbl {
+  display: flex;
+  justify-content: center;
+}
+
+#tblhariini {
+  font-family: "Poppins", Arial, sans-serif;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  font-size: 20px;
+  color: white;
+  background-color: black;
+  margin-right: 1px;
+  width: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#tblbesok {
+  font-family: "Poppins", Arial, sans-serif;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  font-size: 20px;
+  color: white;
+  background-color: black;
+  margin-left: 1px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#tblhariini:hover {
+  opacity: 70%;
+}
+#tblbesok:hover {
+  opacity: 70%;
+}
+
+.form-select {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 100%;
+  border: 0;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+.form-select::-webkit-scrollbar {
+  display: none;
+}
+
+#tblambilnomor {
+  color: white;
+  background-color: black;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+#tblambilnomor:hover {
+  background-color: #413f42;
+}
+
+#collistdokter1 {
+  overflow-y: hidden;
+}
+
+#kotakhari {
+  height: 193px; /* Set the height of the container */
+  overflow: auto; /* Enable vertical scrolling */
+  max-width: 715px;
+}
+
+#colambilnomor {
+  max-width: 715px;
+}
+
+#tbldatanomor {
+  display: flex;
+  justify-content: center;
+}
+
+#arrowleft {
+  background-color: #000;
+  color: white;
+  border: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin: 1px;
+}
+#currentnumber {
+  background-color: #000;
+  color: white;
+  border: 0;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+#arrowright {
+  background-color: #000;
+  color: white;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin: 1px;
+  border: 0;
+}
+
+#arrowleft:hover {
+  background-color: #413f42;
+}
+#currentnumber:hover {
+  background-color: #413f42;
+}
+#arrowright:hover {
+  background-color: #413f42;
+}
+
+/* antrian page */
+#cardantrian {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+#nomorantrian {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  background-color: black;
+}
+
+#haiuser {
+  font-weight: 500;
+  text-align: center;
+  font-family: "Poppins", Arial, sans-serif;
+  color: #000;
+}
+
+#mendaftarpada {
+  text-align: center;
+  font-family: "Poppins", Arial, sans-serif;
+  color: #000;
+  margin-bottom: 2%;
+}
+
+#antrianPage {
+  margin-left: 8.8%;
+}
+#cardantrian {
+  width: 40%;
+}
+@media (max-width: 1000px) {
+  #antrianPage {
+    margin-left: 0;
+  }
+  #cardantrian {
+    width: 100%;
+  }
+}
+
+/* hasil page */
+#hasilPage {
+  margin-left: 8.8%;
+}
+
+#theadObat {
+  color: white;
+  background-color: #000;
+}
+
+@media (max-width: 1000px) {
+  #hasilPage {
+    margin-left: 0;
+  }
+  #namaPasienDokter {
+    font-size: 18px;
+  }
+}
+
+/* bukti pembayaran page */
+#buktiPembayaranPage {
+  margin-left: 8.8%;
+}
+
+@media (max-width: 1000px) {
+  #buktiPembayaranPage {
+    margin-left: 0;
+  }
+}
+/* end */
