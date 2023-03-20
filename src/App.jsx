@@ -23,24 +23,32 @@ import BuktiPembayaran from "./PagePoliklinik/BuktiPembayaran";
 import PembayaranBerhasil from "./PagePoliklinik/PembayaranBerhasil";
 import "./css/Poliklinik.css";
 import "./css/global.css";
+import "./AdminVer/css/globalAdmin.css";
 import "./css/styleLogin.css";
 import Footer from "./components/footer";
+import SideNavAdmin from "./AdminVer/components/SideNavAdmin";
+import DashBoardAdmin from "./AdminVer/Pages/DashBoardAdmin";
+import DoctorAdmin from "./AdminVer/Pages/DoctorAdmin";
+import ProfileAdmin from "./AdminVer/Pages/ProfileAdmin";
+import ObatAdmin from "./AdminVer/Pages/ObatAdmin";
+import PoliklinikAdmin from "./AdminVer/PagePoliklinik/PoliklinikAdmin";
+import DaftarPasien from "./AdminVer/Pages/PasienAdmin";
 
 export const loginContext = createContext();
 
 function App() {
-  const [isLogin, setIsLogin] = useState(1);
+  const [isLogin, setIsLogin] = useState(3);
   return (
     <loginContext.Provider value={[isLogin, setIsLogin]}>
       <BrowserRouter basename="/">
-        {1 % 2 == 1 ? (
+        {2 % 2 == 1 ? (
           <Routes>
             <Route exact path="/" element={<Logins />} />
             <Route path="/ForgotPassword" element={<ForgotPassword />} />
             <Route path="/ResetPassword" element={<ResetPassword />} />
             <Route path="/Register" element={<Register />} />
           </Routes>
-        ) : (
+        ) : isLogin == 2 ? (
           <div className="App">
             <SideNav>
               <Routes>
@@ -68,6 +76,35 @@ function App() {
               <Footer />
             </SideNav>
           </div>
+        ) : isLogin == 3 ? (
+          <div className="App">
+            <SideNavAdmin>
+              <Routes>
+                <Route exact path="/" element={<DashBoardAdmin />} />
+                <Route path="/DashBoardAdmin" element={<DashBoardAdmin />} />
+                <Route path="/DoctorAdmin" element={<DoctorAdmin />} />
+                <Route path="/ObatAdmin" element={<ObatAdmin />} />
+                <Route path="/Pasienadmin" element={<DaftarPasien />} />
+                <Route path="/Riwayat" element={<Riwayat />} />
+                <Route path="/ProfileAdmin" element={<ProfileAdmin />} />
+                <Route path="/PoliklinikAdmin" element={<PoliklinikAdmin />} />
+                <Route
+                  path="/PenyakitDalamUmum"
+                  element={<PenyakitDalamUmum />}
+                />
+                <Route path="/Antrian" element={<Antrian />} />
+                <Route path="/Hasil" element={<Hasil />} />
+                <Route path="/BuktiPembayaran" element={<BuktiPembayaran />} />
+                <Route
+                  path="/PembayaranBerhasil"
+                  element={<PembayaranBerhasil />}
+                />
+              </Routes>
+              <Footer />
+            </SideNavAdmin>
+          </div>
+        ) : (
+          ""
         )}
       </BrowserRouter>
     </loginContext.Provider>
