@@ -7,7 +7,7 @@ const DashBoardAdmin = () => {
   const [jumlah, setJumlah] = useState();
   useEffect(() => {
     async function setUsers() {
-      const res = await fetch("http://10.10.10.91:5000/users", {
+      const res = await fetch("http://10.10.10.102:5000/data/users", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

@@ -1,54 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/PoliklinikAdmin.css";
 
 const PoliklinikAdmin = () => {
-  const poliLinks = [
+  const [poliLinks, setPolilinks] = useState([
     {
       name: "Anak & Ibu Hamil",
       link: "",
     },
-    {
-      name: "Penyakit Dalam",
-      link: "",
-    },
-    {
-      name: "Bedah Umum",
-      link: "",
-    },
-    {
-      name: "Bedah Saraf",
-      link: "",
-    },
-    {
-      name: "Kandungan",
-      link: "",
-    },
-    {
-      name: "Penyakit Luar",
-      link: "",
-    },
-    {
-      name: "Orthopaedi",
-      link: "",
-    },
-    {
-      name: "Mata",
-      link: "",
-    },
-    {
-      name: "Gigi",
-      link: "",
-    },
-    {
-      name: "THT",
-      link: "",
-    },
-  ];
+  ]);
+
+  const [poliklinik, setPoliklinik] = useState([]);
+  const handleChange = (event) => {
+    setPoliklinik([...poliklinik, event.target.value]);
+    console.log(poliklinik);
+  };
+  const handleSubmit = () => {
+    const tess = poliklinik.map((item, index) => {
+      const tes = {
+        name: item,
+        link: "",
+      };
+      return tes;
+    });
+    setPolilinks(tess);
+    console.log([...poliLinks, [tess[0]]]);
+  };
 
   // Divide poliLinks array into two smaller arrays
-  const poliLinks1 = poliLinks.slice(0, 5);
-  const poliLinks2 = poliLinks.slice(5, 10);
+  const poliLinks2 = poliLinks.slice(0, poliLinks.length / 2);
+  const poliLinks1 = poliLinks.slice(poliLinks.length / 2, poliLinks.length);
 
   return (
     <div id="poliklinikPage">
@@ -137,148 +118,80 @@ const PoliklinikAdmin = () => {
                   aria-label="Close"
                 />
               </div>
-              <div className="modal-body">
-                <div className="col-lg-12">
-                  <div className="row mt-3">
-                    <div className="col-sm-3">
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="inlineCheckbox1"
-                          defaultValue="option1"
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="inlineCheckbox1"
-                        >
-                          Poliklinik
-                        </label>
+              <form onSubmit={handleSubmit}>
+                <div className="modal-body">
+                  {/* form tambah poliklinik */}
+                  <div className="col-lg-12">
+                    <div className="row mt-3">
+                      <div className="col-sm-3">
+                        <div className="form-check form-check-inline">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            defaultValue="Orthopaedi"
+                            onChange={handleChange}
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="inlineCheckbox1"
+                          >
+                            Orthopaedi
+                          </label>
+                        </div>
                       </div>
-                    </div>
-                    <div className="col-sm-3">
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          defaultValue="option2"
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="inlineCheckbox2"
-                        >
-                          Poliklinik
-                        </label>
+                      <div className="col-sm-3">
+                        <div className="form-check form-check-inline">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            defaultValue="THT"
+                            onChange={handleChange}
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="inlineCheckbox2"
+                          >
+                            THT
+                          </label>
+                        </div>
                       </div>
-                    </div>
-                    <div className="col-sm-3">
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          defaultValue="option3"
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="inlineCheckbox2"
-                        >
-                          Poliklinik
-                        </label>
-                      </div>
-                    </div>
-                    <div className="col-sm-3">
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          defaultValue="option4"
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="inlineCheckbox2"
-                        >
-                          Poliklinik
-                        </label>
+                      <div className="col-sm-3">
+                        <div className="form-check form-check-inline">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            defaultValue="option4"
+                            onChange={handleChange}
+                          />
+                          <label
+                            className="form-check-label"
+                            htmlFor="inlineCheckbox2"
+                          >
+                            Gigi dan Mulut
+                          </label>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className="row mt-3">
-                    <div className="col-sm-3">
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="inlineCheckbox1"
-                          defaultValue="option1"
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="inlineCheckbox1"
-                        >
-                          Poliklinik
-                        </label>
-                      </div>
-                    </div>
-                    <div className="col-sm-3">
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          defaultValue="option2"
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="inlineCheckbox2"
-                        >
-                          Poliklinik
-                        </label>
-                      </div>
-                    </div>
-                    <div className="col-sm-3">
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          defaultValue="option3"
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="inlineCheckbox2"
-                        >
-                          Poliklinik
-                        </label>
-                      </div>
-                    </div>
-                    <div className="col-sm-3">
-                      <div className="form-check form-check-inline">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          defaultValue="option4"
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="inlineCheckbox2"
-                        >
-                          Poliklinik
-                        </label>
-                      </div>
-                    </div>
-                  </div>
+                  {/* end */}
                 </div>
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button type="button" className="btn btn-primary">
-                  Save
-                </button>
-              </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={handleSubmit}
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
