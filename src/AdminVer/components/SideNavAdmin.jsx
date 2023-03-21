@@ -23,9 +23,13 @@ const SideNavAdmin = (props) => {
       to: "/PasienAdmin",
       iconClass: "fa fa-stethoscope",
     },
-    { label: "Jadwal Dokter", to: "", iconClass: "fa fa-calendar" },
-    { label: "Announcement", to: "", iconClass: "fas fa-bell" },
-    { label: "Antrian", to: "", iconClass: "fas fa-tasks" },
+    {
+      label: "Jadwal Dokter",
+      to: "/PoliklinikDokter",
+      iconClass: "fa fa-calendar",
+    },
+    { label: "Announcement", to: "/Announcement", iconClass: "fas fa-bell" },
+    { label: "Antrian", to: "/PoliklinikAntrian", iconClass: "fas fa-tasks" },
   ];
 
   return (

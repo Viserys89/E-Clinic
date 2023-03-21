@@ -1,78 +1,53 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import "../css/PoliklinikAdmin.css";
 
-const PoliklinikAdmin = () => {
-  const [poliLinks, setPolilinks] = useState([]);
-
-  const option = [
+const PoliklinikDokter = () => {
+  const poliLinks = [
     {
       name: "Anak & Ibu Hamil",
-      value: "anakIbuHamil",
       link: "",
     },
     {
       name: "Penyakit Dalam",
-      value: "penyakitDalam",
-      link: "",
+      link: "/JadwalDokter",
     },
     {
       name: "Bedah Umum",
-      value: "bedahUmum",
       link: "",
     },
     {
       name: "Bedah Saraf",
-      value: "bedahSaraf",
       link: "",
     },
     {
       name: "Kandungan",
-      value: "kandungan",
       link: "",
     },
     {
       name: "Penyakit Luar",
-      value: "penyakitLuar",
       link: "",
     },
     {
       name: "Orthopaedi",
-      value: "orthopaedi",
       link: "",
     },
     {
       name: "Mata",
-      value: "mata",
       link: "",
     },
     {
       name: "Gigi",
-      value: "gigi",
       link: "",
     },
     {
       name: "THT",
-      value: "tht",
       link: "",
     },
   ];
 
-  const [pilihan, setPilihan] = useState([]);
-  const handleChangePilihan = (item) => {
-    const pilih = option.filter((data) => data.value === item.target.value);
-    pilihan.push(pilih[0]);
-    console.log(pilihan);
-  };
-  const handleSubmit = () => {
-    setPolilinks(pilihan);
-    setPilihan([]);
-    console.log(poliLinks);
-  };
-
   // Divide poliLinks array into two smaller arrays
-  const poliLinks2 = poliLinks.slice(0, poliLinks.length / 2);
-  const poliLinks1 = poliLinks.slice(poliLinks.length / 2, poliLinks.length);
+  const poliLinks1 = poliLinks.slice(0, poliLinks.length / 2);
+  const poliLinks2 = poliLinks.slice(poliLinks.length / 2, poliLinks.length);
 
   return (
     <div id="poliklinikPage">
@@ -106,7 +81,7 @@ const PoliklinikAdmin = () => {
               <li className="nav-item d-flex align-items-center">
                 <i className="fa fa-bell cursor-pointer mx-lg-2 " />
                 <Link
-                  to="/ProfileAdmin"
+                  to="/Profile"
                   className="nav-link text-body  font-weight-bold px-0"
                 >
                   <span className="d-sm-inline d-none m-lg-2">Admin</span>
@@ -123,91 +98,7 @@ const PoliklinikAdmin = () => {
         </div>
       </nav>
       <div className="container-fluid">
-        <div id="linePoliklinik">
-          <h2 id="titlePoliklinik">Poliklinik</h2>
-          <div id="btnTambahPoliklinik" className="container-lg">
-            <button
-              type="button"
-              className="btn btn-dark"
-              data-bs-toggle="modal"
-              data-bs-target="#tambahPoliklinik"
-            >
-              <i
-                className="fa-solid fa-plus"
-                style={{ marginRight: "8px" }}
-              ></i>
-              Poliklinik
-            </button>
-          </div>
-        </div>
-        <div
-          className="modal fade"
-          id="tambahPoliklinik"
-          tabIndex={-1}
-          role="dialog"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">
-                  <b>Tambah Poliklinik</b>
-                </h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                />
-              </div>
-              <div className="modal-body">
-                <div className="col-lg-12">
-                  <div className="row mt-3">
-                    {option.map((item, index) => {
-                      return (
-                        <div className="col-sm-3" key={index}>
-                          <div className="form-check form-check-inline">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              id={index}
-                              defaultValue={item.value}
-                              onChange={handleChangePilihan}
-                            />
-                            <label
-                              className="form-check-label"
-                              htmlFor="inlineCheckbox1"
-                            >
-                              {item.name}
-                            </label>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                  <div className="row mt-3"></div>
-                </div>
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={handleSubmit}
-                >
-                  Save
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <h2 id="titledashboard">Poliklinik</h2>
         <div className="container-lg mb-3 mt-3">
           <div className="card mb-3" style={{ border: "2px solid black" }}>
             <div className="row no-gutters">
@@ -255,20 +146,10 @@ const PoliklinikAdmin = () => {
               </div>
             </div>
           </div>
-          <div className="card" style={{ border: "2px solid black" }}>
-            <div className="card-body text-center">
-              <h4>
-                <b>
-                  Untuk menambahkan klinik kamu harus <br />
-                  menekan poliklinik yang ingin ditambahkan klinik
-                </b>
-              </h4>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default PoliklinikAdmin;
+export default PoliklinikDokter;

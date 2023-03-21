@@ -180,9 +180,7 @@ const ObatAdmin = () => {
                     to="/Profile"
                     className="nav-link text-body  font-weight-bold px-0"
                   >
-                    <span className="d-sm-inline d-none m-lg-2">
-                      Mukhammad Vicky
-                    </span>
+                    <span className="d-sm-inline d-none m-lg-2">Admin</span>
                     <i className="fa fa-user me-sm-1 ml-2" />
                   </Link>
                 </li>
