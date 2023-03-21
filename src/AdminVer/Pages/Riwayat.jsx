@@ -63,7 +63,7 @@ const Riwayat = () => {
             <h5 style={{ borderBottom: "1px solid black" }}>
               <b>Januari 2023</b>
             </h5>
-            <Link to="" style={{ color: "black" }}>
+            <Link to="/Hasil" style={{ color: "black" }}>
               <div
                 className="container-lg mb-3"
                 style={{ border: "2px solid black", borderRadius: "8px" }}
@@ -97,7 +97,7 @@ const Riwayat = () => {
             <h5 style={{ borderBottom: "1px solid black" }}>
               <b>Ferbuari 2023</b>
             </h5>
-            <Link to="" style={{ color: "black" }}>
+            <Link to="/Hasil" style={{ color: "black" }}>
               <div
                 className="container-lg mb-3"
                 style={{ border: "2px solid black", borderRadius: "8px" }}
@@ -116,7 +116,7 @@ const Riwayat = () => {
             <h5 style={{ borderBottom: "1px solid black" }}>
               <b>Maret 2023</b>
             </h5>
-            <Link to="" style={{ color: "black" }}>
+            <Link to="/Hasil" style={{ color: "black" }}>
               <div
                 className="container-fluid mb-3"
                 style={{ border: "2px solid black", borderRadius: "8px" }}
@@ -127,7 +127,7 @@ const Riwayat = () => {
                 </p>
               </div>
             </Link>
-            <Link to="" style={{ color: "black" }}>
+            <Link to="/Hasil" style={{ color: "black" }}>
               <div
                 className="container-lg mb-3"
                 style={{
