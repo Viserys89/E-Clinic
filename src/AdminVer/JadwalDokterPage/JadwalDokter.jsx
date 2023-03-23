@@ -26,7 +26,7 @@ const JadwalDokter = () => {
                 className="breadcrumb-item text-sm text-dark active"
                 aria-current="page"
               >
-                <b>Jadwal Dokter</b>
+                <b>Jadwal Dookter</b>
               </li>
             </ol>
           </nav>
