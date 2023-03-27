@@ -1,0 +1,123 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { createContext } from "react";
+import { useState } from "react";
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+// login pages
+import ForgotPassword from "./Login/ForgotPassword";
+import ResetPassword from "./Login/ResetPassword";
+import Register from "./Login/Register";
+import Logins from "./Login/Login";
+// patient ver pages
+import PenyakitDalamUmum from "./PagePoliklinik/Klinik/PenyakitDalamUmum";
+import PembayaranBerhasil from "./PagePoliklinik/PembayaranBerhasil";
+import BuktiPembayaran from "./PagePoliklinik/BuktiPembayaran";
+import MainPasien from "./PageDaftarPasien/MainPasien";
+import Antrian from "./PagePoliklinik/Klinik/Antrian";
+import Poliklinik from "./PagePoliklinik/Poliklinik";
+import SideNav from "./components/SideNav";
+import Hasil from "./PagePoliklinik/Hasil";
+import DashBoard from "./Pages/DashBoard";
+import Footer from "./components/footer";
+import Aplikasi from "./Pages/Aplikasi";
+import Riwayat from "./Pages/Riwayat";
+import Profile from "./Pages/Profile";
+import Doctor from "./Pages/Doctor";
+import Obat from "./Pages/Obat";
+// admin ver pages
+import PoliklinikDokter from "./AdminVer/JadwalDokterPage/PoliklinikDokter";
+import PoliklinikAntrian from "./AdminVer/AntrianPage/PoliklinikAntrian";
+import PoliklinikAdmin from "./AdminVer/PagePoliklinik/PoliklinikAdmin";
+import HapusAntrian from "./AdminVer/AntrianPage/HapusAntrian";
+import SideNavAdmin from "./AdminVer/components/SideNavAdmin";
+import DashBoardAdmin from "./AdminVer/Pages/DashBoardAdmin";
+import Announcement from "./AdminVer/Pages/Announcement";
+import ProfileAdmin from "./AdminVer/Pages/ProfileAdmin";
+import DaftarPasien from "./AdminVer/Pages/PasienAdmin";
+import DoctorAdmin from "./AdminVer/Pages/DoctorAdmin";
+import ObatAdmin from "./AdminVer/Pages/ObatAdmin";
+// css
+import "./AdminVer/css/globalAdmin.css";
+import "./css/Poliklinik.css";
+import "./css/styleLogin.css";
+import "./css/global.css";
+import JadwalDokter from "./AdminVer/JadwalDokterPage/JadwalDokter";
+
+export const loginContext = createContext();
+
+function App() {
+  const [isLogin, setIsLogin] = useState(3);
+  return (
+    <loginContext.Provider value={[isLogin, setIsLogin]}>
+      <BrowserRouter basename="/">
+        {isLogin == 1 ? (
+          <Routes>
+            <Route exact path="/" element={<Logins />} />
+            <Route path="/ForgotPassword" element={<ForgotPassword />} />
+            <Route path="/ResetPassword" element={<ResetPassword />} />
+            <Route path="/Register" element={<Register />} />
+          </Routes>
+        ) : isLogin == 2 ? (
+          <div className="App">
+            <SideNav>
+              <Routes>
+                <Route exact path="/" element={<DashBoard />} />
+                <Route path="/DashBoard" element={<DashBoard />} />
+                <Route path="/Doctor" element={<Doctor />} />
+                <Route path="/Aplikasi" element={<Aplikasi />} />
+                <Route path="/Obat" element={<Obat />} />
+                <Route path="/MainPasien" element={<MainPasien />} />
+                <Route path="/Riwayat" element={<Riwayat />} />
+                <Route path="/Profile" element={<Profile />} />
+                <Route path="/Poliklinik" element={<Poliklinik />} />
+                <Route
+                  path="/PenyakitDalamUmum"
+                  element={<PenyakitDalamUmum />}
+                />
+                <Route path="/Antrian" element={<Antrian />} />
+                <Route path="/Hasil" element={<Hasil />} />
+                <Route path="/BuktiPembayaran" element={<BuktiPembayaran />} />
+                <Route
+                  path="/PembayaranBerhasil"
+                  element={<PembayaranBerhasil />}
+                />
+              </Routes>
+              <Footer />
+            </SideNav>
+          </div>
+        ) : isLogin == 3 ? (
+          <div className="App">
+            <SideNavAdmin>
+              <Routes>
+                <Route exact path="/" element={<DashBoardAdmin />} />
+                <Route path="/DashBoardAdmin" element={<DashBoardAdmin />} />
+                <Route path="/DoctorAdmin" element={<DoctorAdmin />} />
+                <Route path="/ObatAdmin" element={<ObatAdmin />} />
+                <Route path="/Pasienadmin" element={<DaftarPasien />} />
+                <Route path="/Riwayat" element={<Riwayat />} />
+                <Route path="/ProfileAdmin" element={<ProfileAdmin />} />
+                <Route path="/PoliklinikAdmin" element={<PoliklinikAdmin />} />
+                <Route path="/Announcement" element={<Announcement />} />
+                <Route
+                  path="/PoliklinikDokter"
+                  element={<PoliklinikDokter />}
+                />
+                <Route path="/JadwalDokter" element={<JadwalDokter />} />
+                <Route
+                  path="/PoliklinikAntrian"
+                  element={<PoliklinikAntrian />}
+                />
+                <Route path="/HapusAntrian" element={<HapusAntrian />} />
+              </Routes>
+              <Footer />
+            </SideNavAdmin>
+          </div>
+        ) : (
+          ""
+        )}
+      </BrowserRouter>
+    </loginContext.Provider>
+  );
+}
+
+export default App;
