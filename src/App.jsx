@@ -41,7 +41,7 @@ function App() {
   return (
     <loginContext.Provider value={[isLogin, setIsLogin]}>
       <BrowserRouter basename="/">
-        {2 % 2 == 1 ? (
+        {1 % 2 == 1 ? (
           <Routes>
             <Route exact path="/" element={<Logins />} />
             <Route path="/ForgotPassword" element={<ForgotPassword />} />

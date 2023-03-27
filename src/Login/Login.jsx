@@ -6,25 +6,28 @@ const Logins = () => {
   const [nik, setNIK] = useState("");
   const [pass, setPassword] = useState("");
   const [isLogin, setIsLogin] = useContext(loginContext);
+
+
   async function setLogin(nik, pass) {
     const payload = { nik, pass };
-    const res = await fetch("http://10.10.10.91:5000/login", {
+    const res = fetch("http://localhost:5000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Accept: "applicaton/json"
       },
       body: JSON.stringify(payload),
-    }).then(async (res) => {
+    }).then(async function (res) {
       try {
-        const jsonRest = await res.json();
-        console.log(jsonRest);
+        const jsonRes = await res.json();
+        console.log(jsonRes);
         if (res.status == 200) {
-          setIsLogin(2);
+          setIsLogin(jsonRes);
         } else {
-          alert(jsonRest.alert);
+          Alert.alert(jsonRes.alert);
         }
-      } catch (error) {
-        console.error(error);
+      } catch (err) {
+        console.log(err);
       }
     });
     return res;

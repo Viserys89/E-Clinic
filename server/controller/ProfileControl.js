@@ -8,7 +8,7 @@ const {wilayah} = require('../models/dokterdata');
 const { body, validationResult } = require('express-validator');
 
 exports.updatetoken = (req, res, next) => {
-    const authHeader = req.get('Authorization');
+const authHeader = req.get('Authorization');
     if (!authHeader) {
       return res.status(401).json({alert: 'Authentication Gagal'});
     }

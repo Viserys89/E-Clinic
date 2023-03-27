@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
 const crypto = require('crypto')
-const secret_key = process.env.JWT_SECRET
+const secret_key = process.env.JWT_SECRET || 'mysecretkey'
 const {wilayah, golongan_darah} = require('../models/dokterdata');
 const { body, validationResult } = require('express-validator');
 const sendEmail = require('../utils/sendEmail');
@@ -166,8 +166,9 @@ exports.forgotPassword = [
 ];
 
 exports.passwordReset = (req, res) => {
-  const token = req.query.token
-  const agent = req.useragent
+  const newLocal = req.query.token;
+  const token = newLocal;
+  const agent = req.useragent;
   let decodedToken;
   try {
     decodedToken = jwt.verify(token, secret_key);

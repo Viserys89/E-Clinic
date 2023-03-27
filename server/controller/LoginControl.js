@@ -53,7 +53,7 @@ exports.login = [
   },
 ];
 
-exports.auth = (token, deviceName, nik, req, res) => {
+exports.auth = (token, nik, req, res) => {
   //dapatkan model device dengan mengambil userAgent
   // const agent = req.useragent
   // const source = agent.source
@@ -92,7 +92,8 @@ exports.auth = (token, deviceName, nik, req, res) => {
     )
     .then(() => {
       user_controls.findOne({where : {id_user: decodedToken.id}}).then((data) => {
-        return res?.status(200).json({
+        return res?.status(200)
+          .json({
           alert: "Login Berhasil",
           id: nik.pasien_id,
           namalengkap: nik.namalengkap,
@@ -110,19 +111,20 @@ exports.auth = (token, deviceName, nik, req, res) => {
           jeniskelamin: nik.jeniskelamin,
           token: token,
           level: data.level,
-        });
+        })
       })
       
     });
 };
 
 exports.rememberauth = (req, res, next) => {
-  //login otomatis jika remember me aktif dengan mengambil id yang disimpan dalam jwt
-  const authHeader = req.get('Authorization');
-  if (!authHeader) {
-    return res.status(401).json({alert: 'Authentication Gagal'});
-  }
-  const token = authHeader.split(' ')[1];
+  // const newLocal = req.get('Authorization');
+  // //login otomatis jika remember me aktif dengan mengambil id yang disimpan dalam jwt
+  // const authHeader = newLocal;
+  // if (!authHeader) {
+  //   return res.status(401).json({alert: 'Authentication Gagal'});
+  // }
+  // const token = authHeader.split(' ')[1];
   let decodedToken;
   try {
     decodedToken = jwt.verify(token, secret_key);
@@ -176,8 +178,7 @@ exports.rememberauth = (req, res, next) => {
   });
 };
 exports.logout = (req, res, next) => {
-  user_controls
-    .update(
+  user_controls?.update(
       {
         is_login: false,
         jwt_token: null,
