@@ -12,6 +12,7 @@ const WebSocket = require('ws');
 const main = require('../app');
 const { pendaftaran, antrian, klinik, data } = require('../models');
 const { dokter } = require('../models/dokterdata');
+const { userConnections } = require('../userConnection');
 
 
 exports.daftar = (req, res) => {
@@ -74,6 +75,7 @@ exports.nomorPendaftaran = (req, res) => {
 exports.antrian = (req, res) => {
   antrian
     .findAll({
+      order: [['waktu_antrian', 'ASC']],
       include: [
         {
           model: klinik,
@@ -109,9 +111,48 @@ exports.antrian = (req, res) => {
           dokter: dokter
         };
       });
-      res.json(filterData);
+      res.status(200).json(filterData);
     })
     .catch((err) => {
       console.log(err);
     });
 };
+
+exports.antri = (req, res) => {
+  pendaftaran
+    .findOne({
+      where: {
+        pendaftaran_id: req.body.pendaftaran_id,
+      },
+    })
+    .then((daftar) => {
+      if (!daftar) return;
+      const message = JSON.stringify({
+        type: "confirmation",
+        data: "confirmed",
+      });
+      const nopendaftaran = req.body.noPendaftaran;
+
+      const ws = userConnections[nopendaftaran];
+      if (ws) {
+        ws.send(message);    
+      }
+      pendaftaran.update({confirmed: true},
+        {
+          where: {pendaftaran_id: req.body.pendaftaran_id}
+        })
+      antrian.findOne({where: {pendaftaran_id: daftar.pendaftaran_id}}).then((antri) => {
+        if(antri){
+          return res.status(409).json({alert: 'Sudah Mengantri'})
+        }
+        antrian.create({
+          pendaftaran_id: daftar.pendaftaran_id,
+          pasien_id: daftar.pasien_id,
+          klinik_id: daftar.klinik_id || null
+        }).then(() => {
+          res.status(200).json({alert: 'Konfirmasi berhasil'})
+        })
+      })
+    });
+
+}

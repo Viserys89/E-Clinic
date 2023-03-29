@@ -9,21 +9,36 @@ const { body, validationResult } = require('express-validator');
 const sendEmail = require('../utils/sendEmail');
 const Sequelize = require('sequelize');
 const useragent = require('express-useragent');
+const NodeCache = require('node-cache')
+const cache = new NodeCache()
 
 exports.findAll = (req, res) => {
   data
-    .count('pasien_id')
-    .then(id => { 
-      res.json({id: id});
+    .count("pasien_id")
+    .then(async (id) => {
+      const datas = await data.findAll({
+        attributes: ['pekerjaan', [Sequelize.fn('count', Sequelize.col('pekerjaan')), 'count']],
+        group: ['pekerjaan'],
+        raw: true,
+        order: [[Sequelize.literal('count DESC')]]
+      });
+      res.json({ id: id, data: datas });
     })
-    .catch(err => {
-      console.log('error', err);
+    .catch((err) => {
+      console.log("error", err);
     });
 };
 exports.wilayah = (req, res) => {
   // search dari data yang ditampilkan menggunakan parameter query pada url
   // localhost/wilayah?query=bandung
   const query = req.query.query;
+
+  const cachedData = cache.get("query");
+  if (cachedData) {
+    return res.json(cachedData);
+  }
+
+
   wilayah.findAll({order: [['wilayah_id', 'ASC']]}).then(data => {
     let currentKota = null;
     let currentKec = null;
@@ -51,8 +66,13 @@ exports.wilayah = (req, res) => {
       let filterData = result.filter(item =>
         item.Kelurahan.toLowerCase().includes(query.toLowerCase()),
       );
+      cache.set(query, filterData);
+
       return res.json(filterData);
     }
+
+    // Cache the response for future requests
+    cache.set("query", result);
 
     return res.json(result);
   });
@@ -109,15 +129,11 @@ exports.signup = [
                   namalengkap: req.body.sNamaLengkap,
                   no_telp: req.body.noTelp || null
                 })
-                .then(() => {
-                  data
-                    .findOne({ where: { email: req.body.email } })
-                    .then((user) => {
+                .then((user) => {
                       user_controls.create({
                         id_user: user.pasien_id,
                         level: 1,
                       });
-                    });
                   res.status(200).json({ alert: "Berhasil membuat akun" });
                 })
                 .catch((err) => {
@@ -154,7 +170,7 @@ exports.forgotPassword = [
     }
     data.findOne({where : Sequelize.where(Sequelize.Sequelize.fn('lower', Sequelize.col('email')), Sequelize.Sequelize.fn('lower', req.body.email))}).then(async (data) => {
       if (!data) {return res.status(404).json({ alert: 'Akun tidak ditemukan'})}
-      const token = await jwt.sign({id: data.pasien_id}, secret_key, {
+      const token = jwt.sign({id: data.pasien_id}, secret_key, {
         expiresIn: '30m',
       })
       const link = `10.10.10.91:5000/passwordReset?token=${token}`
@@ -166,9 +182,8 @@ exports.forgotPassword = [
 ];
 
 exports.passwordReset = (req, res) => {
-  const newLocal = req.query.token;
-  const token = newLocal;
-  const agent = req.useragent;
+  const token = req.query.token
+  const agent = req.useragent
   let decodedToken;
   try {
     decodedToken = jwt.verify(token, secret_key);
