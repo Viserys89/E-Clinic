@@ -639,6 +639,7 @@
 }
 #btnTambah {
   background-color: #00096e;
+  font-family: "Poppins", arial, sans-serif;
   border: 0;
   margin-top: 20px;
   width: 30%;
@@ -670,6 +671,9 @@
 /* jadwal dokter page */
 #jadwalDokterPage {
   margin-left: 8.8%;
+}
+.modal-backdrop.in {
+  opacity: 0.9;
 }
 @media screen and (max-width: 1000px) {
   #jadwalDokterPage {

@@ -1,7 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import Card from "react-bootstrap/Card";
+import { Button } from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 
 const JadwalDokter = () => {
+  const [show, setShow] = useState(false);
+  const [doctorList, setDoctorList] = useState([
+    { day: "Senin", doctors: ["Adipati Laksmana", "Jessica Pricilla"] },
+    { day: "Selasa", doctors: ["Adipati Laksmana", "Jessica Pricilla"] },
+    { day: "Rabu", doctors: ["Jessica Pricilla"] },
+    { day: "Kamis", doctors: ["Adipati Laksmana"] },
+    { day: "Jum'at", doctors: ["Adipati Laksmana", "Jessica Pricilla"] },
+    { day: "Sabtu", doctors: ["Adipati Laksmana", "Jessica Pricilla"] },
+  ]);
+  const [newDoctor, setNewDoctor] = useState("");
+  const [selectedDayIndex, setSelectedDayIndex] = useState(0);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleAddDoctor = () => {
+    const updatedDoctorList = [...doctorList];
+    updatedDoctorList[selectedDayIndex].doctors.push(newDoctor);
+    setDoctorList(updatedDoctorList);
+    setNewDoctor("");
+    handleClose();
+  };
+
   return (
     <div id="jadwalDokterPage">
       <nav
@@ -57,10 +82,66 @@ const JadwalDokter = () => {
       </nav>
       <div className="container-fluid">
         <h2 id="titledashboard">Jadwal Dokter</h2>
-        <div className="container-lg">
+        <div
+          className="container-lg"
+          style={{ border: "2px solid black", borderRadius: "7px" }}
+        >
           <div className="row">
-            <div className="col-md-6 text-center">Hello</div>
-            <div className="col-md-6 text-center">Hello</div>
+            {doctorList.map((day, index) => (
+              <div key={index} className="col-md-6 p-3">
+                <Card>
+                  <Card.Body>
+                    <Card.Title className="text-center">
+                      <h3>{day.day}</h3>
+                    </Card.Title>
+                    <Card.Text>
+                      <ul>
+                        {day.doctors.map((doctor, index) => (
+                          <li id="doctorName" key={index}>
+                            <h5>Dr. {doctor}</h5>
+                          </li>
+                        ))}
+                      </ul>
+                    </Card.Text>
+                    <div className="d-flex justify-content-center">
+                      <Button
+                        id="btnTambah"
+                        onClick={() => {
+                          setSelectedDayIndex(index);
+                          handleShow();
+                        }}
+                      >
+                        Tambah Dokter
+                      </Button>
+                      <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                          <Modal.Title>Tambah Dokter</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                          <h4>Nama Dokter</h4>
+                          <input
+                            type="text"
+                            id="kotakinput"
+                            style={{ width: "100%" }}
+                            placeholder="Masukan Nama Dokter"
+                            value={newDoctor}
+                            onChange={(e) => setNewDoctor(e.target.value)}
+                          />
+                        </Modal.Body>
+                        <Modal.Footer>
+                          <Button variant="secondary" onClick={handleClose}>
+                            Close
+                          </Button>
+                          <Button variant="primary" onClick={handleAddDoctor}>
+                            Add
+                          </Button>
+                        </Modal.Footer>
+                      </Modal>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </div>
+            ))}
           </div>
         </div>
       </div>

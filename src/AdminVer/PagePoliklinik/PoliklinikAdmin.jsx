@@ -7,16 +7,6 @@ const PoliklinikAdmin = () => {
 
   const option = [
     {
-      name: "Anak & Ibu Hamil",
-      value: "anakIbuHamil",
-      link: "",
-    },
-    {
-      name: "Penyakit Dalam",
-      value: "penyakitDalam",
-      link: "",
-    },
-    {
       name: "Bedah Umum",
       value: "bedahUmum",
       link: "",
@@ -27,18 +17,8 @@ const PoliklinikAdmin = () => {
       link: "",
     },
     {
-      name: "Kandungan",
-      value: "kandungan",
-      link: "",
-    },
-    {
       name: "Penyakit Luar",
       value: "penyakitLuar",
-      link: "",
-    },
-    {
-      name: "Orthopaedi",
-      value: "orthopaedi",
       link: "",
     },
     {
@@ -208,13 +188,39 @@ const PoliklinikAdmin = () => {
             </div>
           </div>
         </div>
-        <div className="container-lg mb-3 mt-3">
+        <div className="container-lg mb-3 mt-5">
           <div className="card mb-3" style={{ border: "2px solid black" }}>
             <div className="row no-gutters">
               <div className="card-body">
                 <div className="col-12 p-4">
                   <div id="poliklinikRow" className="row d-flex">
                     <div id="poliklinikCollumn" className="col-6 mt-4">
+                      <div
+                        className="d-flex justify-content-center mb-lg-4"
+                        style={{ borderBottom: "2px solid black" }}
+                      >
+                        <Link id="poli" to="/" className="p-0">
+                          <h3 id="jenisPoliklinik" className="p-0">
+                            Poliklinik <b>Penyakit Dalam</b>{" "}
+                            <i id="panah" className="fas p-0">
+                              
+                            </i>
+                          </h3>
+                        </Link>
+                      </div>
+                      <div
+                        className="d-flex justify-content-center mb-lg-4"
+                        style={{ borderBottom: "2px solid black" }}
+                      >
+                        <Link id="poli" to="/" className="p-0">
+                          <h3 id="jenisPoliklinik" className="p-0">
+                            Poliklinik <b>Kandungan</b>{" "}
+                            <i id="panah" className="fas p-0">
+                              
+                            </i>
+                          </h3>
+                        </Link>
+                      </div>
                       {poliLinks1.map((poli) => (
                         <div
                           key={poli.name}
@@ -233,6 +239,32 @@ const PoliklinikAdmin = () => {
                       ))}
                     </div>
                     <div id="poliklinikCollumn" className="col-6 mt-4">
+                      <div
+                        className="d-flex justify-content-center mb-lg-4"
+                        style={{ borderBottom: "2px solid black" }}
+                      >
+                        <Link id="poli" to="/" className="p-0">
+                          <h3 id="jenisPoliklinik" className="p-0">
+                            Poliklinik <b>Ibu dan Anak</b>{" "}
+                            <i id="panah" className="fas p-0">
+                              
+                            </i>
+                          </h3>
+                        </Link>
+                      </div>
+                      <div
+                        className="d-flex justify-content-center mb-lg-4"
+                        style={{ borderBottom: "2px solid black" }}
+                      >
+                        <Link id="poli" to="/" className="p-0">
+                          <h3 id="jenisPoliklinik" className="p-0">
+                            Poliklinik <b>Orthopaedi</b>{" "}
+                            <i id="panah" className="fas p-0">
+                              
+                            </i>
+                          </h3>
+                        </Link>
+                      </div>
                       {poliLinks2.map((poli) => (
                         <div
                           key={poli.name}
@@ -255,7 +287,7 @@ const PoliklinikAdmin = () => {
               </div>
             </div>
           </div>
-          <div className="card" style={{ border: "2px solid black" }}>
+          <div className="card mt-5 mb-5" style={{ border: "2px solid black" }}>
             <div className="card-body text-center">
               <h4>
                 <b>

@@ -1,7 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
+import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const ProfileAdmin = () => {
+  // const [clinicData, setClinicData] = useState({
+  //   name: "",
+  // });
+
+  const inputFields = [
+    { name: "Nama", placeholder: "Masukan Nama", type: "text" },
+    { name: "Alamat", placeholder: "Masukan Alamat", type: "text" },
+    { name: "RW/RT", placeholder: "Masukan RW/RT", type: "text" },
+    {
+      name: "Kode Wilayah",
+      placeholder: "Masukan Kode Wilayah",
+      type: "number",
+    },
+  ];
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setClinicData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(clinicData);
+  //   // Add logic to save clinic data
+  // };
+
   return (
     <div id="profilePage">
       <nav
@@ -141,94 +171,33 @@ const ProfileAdmin = () => {
                     </div>
                   </div>
                 </div>
-
                 <div className="container-lg">
                   <div className="row">
                     <div className="col12">
-                      <div className="row">
-                        <div className="col-lg-6 pl-3 m-0 pb-3">
-                          <h4>Nama Klinik</h4>
-                          <input
-                            id="kotakinput"
-                            type="text"
-                            style={{ width: "100%" }}
-                            placeholder="Masukan Nama"
-                          />
-                          <h4> RW RT</h4>
-                          <input
-                            id="kotakinput"
-                            type="text"
-                            style={{ width: "100%" }}
-                            placeholder="Masukan RT dan RW"
-                          />
-                          <h4>Nomor Kontak</h4>
-                          <input
-                            id="kotakinput"
-                            type="number"
-                            style={{ width: "100%" }}
-                            placeholder="Masukan Nomor Kontak"
-                          />
-                          <h4>Whatsapp</h4>
-                          <input
-                            id="kotakinput"
-                            type="number"
-                            style={{ width: "100%" }}
-                            placeholder="Masukan Nomor Whatsapp"
-                          />
-                          <h4>Twitter</h4>
-                          <input
-                            id="kotakinput"
-                            type="text"
-                            style={{ width: "100%" }}
-                            placeholder="Masukan Twitter"
-                          />
+                      <Form>
+                        <div className="row">
+                          {inputFields.map((input) => (
+                            <div className="col-lg-6 pl-3 m-0 pb-3">
+                              <h4>{input.name}</h4>
+                              <input
+                                id="kotakinput"
+                                type={input.type}
+                                style={{ width: "100%" }}
+                                placeholder={input.placeholder}
+                                // value={clinicData[input.name]}
+                                onChange={handleInputChange}
+                              />
+                            </div>
+                          ))}
                         </div>
-                        <div className="col-lg-6 m-0 pb-3">
-                          <h4>Alamat</h4>
-                          <input
-                            id="kotakinput"
-                            type="text"
-                            style={{ width: "100%" }}
-                            placeholder="Masukan Alamat"
-                          />
-                          <h4> Kode Wilayah</h4>
-                          <input
-                            id="kotakinput"
-                            type="number"
-                            style={{ width: "100%" }}
-                            placeholder="Masukan Kode Wilayah"
-                          />
-                          <h4> Email</h4>
-                          <input
-                            id="kotakinput"
-                            type="text"
-                            style={{ width: "100%" }}
-                            placeholder="Masukan Email"
-                          />
-                          <h4>Instagram</h4>
-                          <input
-                            id="kotakinput"
-                            type="text"
-                            style={{ width: "100%" }}
-                            placeholder="Masukan Instagram"
-                          />
-                          <h4>Facebook</h4>
-                          <input
-                            id="kotakinput"
-                            type="text"
-                            style={{ width: "100%" }}
-                            placeholder="Masukan Facebook"
-                          />
-                        </div>
-                        <a href="">
-                          <button
-                            id="tombolsimpan"
-                            className="btn btn-dark mb-3"
-                          >
-                            Simpan
-                          </button>
-                        </a>
-                      </div>
+                      </Form>
+                      <button
+                        id="tombolsimpan"
+                        className="btn btn-dark mb-3"
+                        // onClick={handleSubmit}
+                      >
+                        Simpan
+                      </button>
                     </div>
                   </div>
                 </div>
