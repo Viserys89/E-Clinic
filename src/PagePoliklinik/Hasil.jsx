@@ -102,6 +102,9 @@ const Hasil = () => {
                 style={{ border: "1px solid black" }}
               >
                 <thead id="theadObat">
+                  <tr className="bg-white text-black">
+                    <th>30 / Januari / 2023</th>
+                  </tr>
                   <tr>
                     <th>Nama Obat</th>
                     <th>Jumlah</th>

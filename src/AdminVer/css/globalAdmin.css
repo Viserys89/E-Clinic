@@ -1,0 +1,683 @@
+/* pages */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#globalfooter {
+  bottom: 0;
+  margin-top: auto;
+  margin-left: 4.6%;
+}
+@media (max-width: 1000px) {
+  #globalfooter {
+    margin-left: 0%;
+  }
+}
+
+/* end */
+/* dashboard page */
+#titledashboard {
+  line-height: 1.5;
+  font-weight: 500;
+  font-family: "Poppins", arial, sans-serif;
+  color: #000;
+  margin-left: 23px;
+}
+
+#grid1 {
+  border: 1px solid black;
+}
+
+#borderimage {
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  padding-right: 100px;
+  padding-left: 100px;
+  border: 1px solid black;
+  background-color: black;
+}
+#borderimagesuhu {
+  border-radius: 10px;
+  margin-top: 13px;
+  margin-bottom: 15px;
+  padding-top: 100px;
+  padding-bottom: 97px;
+  padding-right: 100px;
+  padding-left: 100px;
+  border: 1px solid black;
+  background-color: black;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-column: 1;
+  grid-row: span 2;
+}
+
+#number {
+  font-size: 50px;
+  text-align: center;
+  line-height: 1.5;
+  font-weight: 500;
+  font-family: "Poppins", Arial, sans-serif;
+  color: #000;
+}
+
+#descnumber {
+  font-size: 15px;
+  text-align: center;
+  line-height: 1.5;
+  font-weight: 500;
+  font-family: "Poppins", Arial, sans-serif;
+  color: #000;
+}
+
+#titleregistrasi {
+  line-height: 1.5;
+  font-weight: 500;
+  font-family: "Poppins", Arial, sans-serif;
+  color: #000;
+}
+
+#coltable {
+  margin-top: 13px;
+}
+/* this is second row */
+#row2 {
+  margin-top: 20px;
+}
+
+#titlestatistik {
+  padding: 3px;
+  font-size: 30px;
+  line-height: 1.5;
+  font-weight: 500;
+  font-family: "Poppins", Arial, sans-serif;
+  color: #000;
+  text-align: center;
+}
+
+#statbutton {
+  display: flex;
+  justify-content: center;
+}
+
+#yearbutton {
+  background-color: #000;
+  color: white;
+  border: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 100px;
+  margin: 1px;
+}
+#monthbutton {
+  background-color: #000;
+  color: white;
+  width: 100px;
+  margin: 1px;
+  border: 0;
+}
+#weekbutton {
+  background-color: #000;
+  color: white;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin: 1px;
+  width: 100px;
+  border: 0;
+}
+
+#yearbutton:hover {
+  background-color: #413f42;
+}
+#monthbutton:hover {
+  background-color: #413f42;
+}
+#weekbutton:hover {
+  background-color: #413f42;
+}
+
+#topbar {
+  width: 100%;
+}
+
+#progress {
+  margin-bottom: 10px;
+  background-color: #000;
+}
+
+#progressbar {
+  overflow-y: scroll;
+  height: 310px;
+}
+#progressbar::-webkit-scrollbar {
+  display: none;
+}
+
+#progressbar p {
+  font-weight: 500;
+  font-family: "Poppins", Arial, sans-serif;
+  color: #000;
+  margin-bottom: 0;
+}
+
+/* thirdrow */
+#progressbar2 {
+  width: 100%;
+  overflow-y: scroll;
+  height: 310px;
+}
+
+#progressbar2::-webkit-scrollbar {
+  display: none;
+}
+
+#progressbar2 p {
+  font-weight: 500;
+  font-family: "Poppins", Arial, sans-serif;
+  color: #000;
+  margin-bottom: 0;
+}
+#progressbar3 {
+  width: 100%;
+  overflow-y: scroll;
+  height: 310px;
+}
+
+#progressbar3::-webkit-scrollbar {
+  display: none;
+}
+
+#progressbar3 p {
+  font-weight: 500;
+  font-family: "Poppins", Arial, sans-serif;
+  color: #000;
+  margin-bottom: 0;
+}
+
+/* end */
+
+/* doctor page */
+#doctorPage {
+  margin-left: 8.8%;
+}
+#tombolTambah {
+  height: 60px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+@media (max-width: 1000px) {
+  #doctorPage {
+    margin-left: 0;
+  }
+}
+
+/* Search */
+.s131 {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.s131 form {
+  width: 100%;
+  max-width: 100%;
+}
+
+.s131 form .inner-form {
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.s131 form .inner-form .input-field {
+  height: 60px;
+}
+
+.s131 form .inner-form .input-field input {
+  height: 100%;
+  background: #fff;
+  border: 0;
+  display: block;
+  width: 100%;
+  padding: 25px;
+  font-size: 20px;
+  color: #333;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 2px solid #000;
+  border-right: 0;
+}
+
+.s131 form .inner-form .input-field input.placeholder {
+  color: #9a9a9a;
+  font-size: 20px;
+}
+
+.s131 form .inner-form .input-field input:-moz-placeholder {
+  color: #9a9a9a;
+  font-size: 20px;
+}
+
+.s131 form .inner-form .input-field input::-webkit-input-placeholder {
+  color: #9a9a9a;
+  font-size: 20px;
+}
+
+.s131 form .inner-form .input-field input:hover,
+.s131 form .inner-form .input-field input:focus {
+  box-shadow: none;
+  outline: 0;
+}
+
+.s131 form .inner-form .input-field.first-wrap {
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+#dropdownn {
+  font-size: 20px;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border: 2px solid black;
+  outline: 0;
+  font-weight: 500;
+  text-align: center;
+  border-right: 0;
+}
+
+.s131 form {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.s131 form {
+  border: 0;
+  background: #fff;
+}
+
+.s131
+  form
+  .inner-form
+  .input-field.second-wrap
+  .choices__list--dropdown
+  .choices__item--selectable.is-highlighted {
+  color: #000;
+}
+
+.s131
+  form
+  .inner-form
+  .input-field.second-wrap
+  .choices__list--dropdown
+  .choices__item {
+  color: #000;
+}
+
+.s131 form .inner-form .input-field.second-wrap .choices__list--dropdown {
+  margin-top: 0;
+}
+
+.s131 form .inner-form .input-field.third-wrap {
+  width: 100px;
+}
+
+.s131 form .inner-form .input-field.third-wrap #btnSearch {
+  height: 100%;
+  width: 100%;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease-out, color 0.2s ease-out;
+  border: 2px solid #000;
+}
+
+.s131 form .inner-form .input-field.third-wrap #btnSearch:hover {
+  background: grey;
+}
+
+.s131 form .inner-form .input-field.third-wrap #btnSearch:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .s131 form .inner-form .input-field {
+    height: 60px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #dropdownn {
+    border-right: 2px solid black;
+  }
+  .s131 form .inner-form {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  .s131 form .inner-form .input-field {
+    margin-bottom: 20px;
+  }
+  .s131 form .inner-form .input-field input {
+    padding: 10px 15px;
+    border-radius: 0;
+    border-right: 2px solid black;
+  }
+  .s131 form .inner-form .input-field.first-wrap {
+    width: 100%;
+  }
+  .s131 form .inner-form .input-field.first-wrap .choices__inner {
+    padding: 10px 15px;
+  }
+  .s131 form .inner-form .input-field.second-wrap {
+    width: 100%;
+  }
+  .s131 form .inner-form .input-field.second-wrap input {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .s131 form .inner-form .input-field.third-wrap {
+    margin-bottom: 0;
+    width: 100%;
+  }
+  .s131 form .inner-form .input-field.third-wrap #btnSearch {
+    border-radius: 0;
+    border-left: 2px solid black;
+  }
+  #tombolTambah {
+    border-radius: 0;
+  }
+}
+/* end */
+
+/* aplikasi page */
+#aplikasiPage {
+  margin-left: 8.8%;
+}
+
+@media (max-width: 1000px) {
+  #aplikasiPage {
+    margin-left: 0;
+  }
+  #aplikasiContainer {
+    margin-bottom: 60px;
+  }
+  #aplikasiCollumn {
+    margin-top: 60px;
+  }
+  #aplikasiEclinic {
+    margin-bottom: 30px;
+    font-weight: 600;
+    margin-top: 30px;
+    font-size: 25px;
+    text-align: center;
+  }
+  #aplikasiEclinic2 {
+    font-size: 18px;
+    text-align: center;
+  }
+  #smartPhone {
+    max-width: none;
+    width: 200px;
+    position: relative;
+  }
+  #aplikasiRow {
+    flex-direction: column;
+  }
+  #playstoreaplikasi {
+    display: flex;
+    justify-content: center;
+  }
+}
+/* end */
+
+/* obat page */
+#obatPage {
+  margin-left: 8.8%;
+}
+#tbldatanomor {
+  display: flex;
+  justify-content: center;
+}
+#btnTambahObat {
+  height: 60px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+#arrowleft #arrowleft {
+  background-color: #000;
+  color: white;
+  border: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin: 1px;
+}
+#currentnumber {
+  background-color: #000;
+  color: white;
+  margin: 1px;
+  padding-left: 10 px;
+  padding-right: 10px;
+  border: 0;
+}
+#arrowright {
+  background-color: #000;
+  color: white;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin: 1px;
+  border: 0;
+}
+
+#arrowleft:hover {
+  background-color: #413f42;
+}
+#currentnumber:hover {
+  background-color: #413f42;
+}
+#arrowright:hover {
+  background-color: #413f42;
+}
+
+@media (max-width: 1000px) {
+  #obatPage {
+    margin-left: 0;
+  }
+}
+/* end */
+
+/* pasien page */
+#pasienPage {
+  margin-left: 8.8%;
+}
+#btnSubmit {
+  color: white;
+  background-color: #00096e;
+  border: 0;
+}
+#btnSubmit:hover {
+  opacity: 80%;
+  animation: opacity 500ms;
+}
+@media (max-width: 1000px) {
+  #pasienPage {
+    margin-left: 0;
+  }
+}
+/* end */
+
+/* riwayat page */
+#riwayatPage {
+  margin-left: 8.8%;
+}
+
+@media (max-width: 1000px) {
+  #riwayatPage {
+    margin-left: 0;
+  }
+}
+
+/* profile page */
+#profilePage {
+  margin-left: 8.8%;
+}
+
+#profilepicture {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 21%;
+  height: 250px;
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 0px 2px 2px black;
+}
+
+#kotakinput {
+  margin-bottom: 30px;
+  border-radius: 5px;
+  border: 1px solid black;
+  height: 60px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+#tombolsimpan {
+  width: 30%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+::placeholder {
+  color: black;
+  font-weight: 400;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+#profilecard {
+  border: 2px solid black;
+}
+
+#dropdowninput {
+  margin-bottom: 30px;
+  border-radius: 5px;
+  border: 1px solid black;
+  height: 60px;
+  font-size: 18px;
+  width: 100%;
+}
+
+@media (max-width: 1000px) {
+  #profilePage {
+    margin-left: 0;
+  }
+  #profilepicture {
+    width: 50%;
+  }
+}
+/* end */
+
+/* footer */
+#globalfooter {
+  margin-top: 2%;
+  background-color: #00096e;
+}
+
+#ini {
+  display: flex;
+}
+
+#logo2 {
+  height: 40px;
+  width: 40px;
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 991px) {
+  #globalfooter {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  #ini {
+    justify-content: center;
+  }
+}
+
+/* end */
+
+/* announcement page */
+#announcementPage {
+  margin-left: 8.8%;
+}
+#btnTambah {
+  background-color: #00096e;
+  font-family: "Poppins", arial, sans-serif;
+  border: 0;
+  margin-top: 20px;
+  width: 30%;
+}
+#btnTambah:hover {
+  font-family: "Poppins", arial, sans-serif;
+  background-color: #0056b3;
+  transition: 0, 8s;
+}
+
+@media screen and (max-width: 1000px) {
+  #announcementPage {
+    margin-left: 0;
+  }
+}
+/* end */
+
+/* antrian page */
+#hapusAntrianPage {
+  margin-left: 8.8%;
+}
+@media screen and (max-width: 1000px) {
+  #hapusAntrianPage {
+    margin-left: 0;
+  }
+}
+/* end */
+
+/* jadwal dokter page */
+#jadwalDokterPage {
+  margin-left: 8.8%;
+}
+.modal-backdrop.in {
+  opacity: 0.9;
+}
+@media screen and (max-width: 1000px) {
+  #jadwalDokterPage {
+    margin-left: 0;
+  }
+}
+/* end */

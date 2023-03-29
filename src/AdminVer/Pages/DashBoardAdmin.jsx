@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
-const DashBoard = () => {
+const DashBoardAdmin = () => {
   var jumlahPasien = 1039;
   const [jumlah, setJumlah] = useState();
   useEffect(() => {
@@ -85,7 +85,7 @@ const DashBoard = () => {
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                 <li className="breadcrumb-item text-sm">
-                  <Link className="opacity-5 text-dark" to="/DashBoard">
+                  <Link className="opacity-5 text-dark" to="/DashBoardAdmin">
                     Pages
                   </Link>
                 </li>
@@ -106,12 +106,10 @@ const DashBoard = () => {
                 <li className="nav-item d-flex align-items-center">
                   <i className="fa fa-bell cursor-pointer mx-lg-2 " />
                   <Link
-                    to="/Profile"
+                    to="/ProfileAdmin"
                     className="nav-link text-body  font-weight-bold px-0"
                   >
-                    <span className="d-sm-inline d-none m-lg-2">
-                      Mukhammad Vicky
-                    </span>
+                    <span className="d-sm-inline d-none m-lg-2">Admin</span>
                     <i className="fa fa-user me-sm-1 ml-2" />
                   </Link>
                 </li>
@@ -372,4 +370,4 @@ const DashBoard = () => {
   );
 };
 
-export default DashBoard;
+export default DashBoardAdmin;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/SideNav.css";
 
-const SideNav = (props) => {
+const SideNavAdmin = (props) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleItemClick = (index) => {
@@ -10,11 +10,26 @@ const SideNav = (props) => {
   };
 
   const menuItems = [
-    { label: "Dashboard", to: "/DashBoard", iconClass: "fa fa-home" },
-    { label: "Doctor", to: "/Doctor", iconClass: "fa fa-user-md" },
-    { label: "Aplikasi", to: "/Aplikasi", iconClass: "fa fa-briefcase" },
-    { label: "Obat", to: "/Obat", iconClass: "fa fa-plus-square" },
-    { label: "Riwayat", to: "/Riwayat", iconClass: "far fa-clock" },
+    { label: "Dashboard", to: "/DashBoardAdmin", iconClass: "fa fa-home" },
+    { label: "Doctor", to: "/DoctorAdmin", iconClass: "fa fa-user-md" },
+    { label: "Obat", to: "/ObatAdmin", iconClass: "fa fa-plus-square" },
+    {
+      label: "Poliklinik",
+      to: "/PoliklinikAdmin",
+      iconClass: "fas fa-hospital",
+    },
+    {
+      label: "Pasien",
+      to: "/PasienAdmin",
+      iconClass: "fa fa-stethoscope",
+    },
+    {
+      label: "Jadwal Dokter",
+      to: "/PoliklinikDokter",
+      iconClass: "fa fa-calendar",
+    },
+    { label: "Announcement", to: "/Announcement", iconClass: "fas fa-bell" },
+    { label: "Antrian", to: "/PoliklinikAntrian", iconClass: "fas fa-tasks" },
   ];
 
   return (
@@ -23,18 +38,13 @@ const SideNav = (props) => {
         <div className="p-4">
           <h1>
             <img src="../../public/img/nama&logo.png" id="logo1" />
-            <Link to="/DashBoard" id="juduleclinic" className="logo">
+            <Link to="/DashBoardAdmin" id="juduleclinic" className="logo">
               E-Clinic
               <span id="bytikomdik" className="mt-3">
                 Klinik Digital by TIKomDik
               </span>
             </Link>
           </h1>
-          <Link to="/Poliklinik">
-            <button className="btn btn-primary mb-3" id="btnpendaftaran">
-              Pendaftaran
-            </button>
-          </Link>
           <ul className="list-unstyled components mb-5">
             {menuItems.map((menuItem, index) => (
               <li
@@ -64,4 +74,4 @@ const SideNav = (props) => {
   );
 };
 
-export default SideNav;
+export default SideNavAdmin;
