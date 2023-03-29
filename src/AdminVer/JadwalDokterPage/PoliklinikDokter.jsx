@@ -132,7 +132,7 @@ const PoliklinikDokter = () => {
                         >
                           <Link id="poli" to={poli.link} className="p-0">
                             <h3 id="jenisPoliklinik" className="p-0">
-                              Poliklinik <b>{poli.name}</b>{" "}
+                              Poliklinik <b>{poli.name}</b>
                               <i id="panah" className="fas p-0">
                                 
                               </i>
