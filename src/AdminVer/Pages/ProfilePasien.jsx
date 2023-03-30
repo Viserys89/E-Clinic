@@ -1,94 +1,61 @@
 import React, { useState } from "react";
+import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const Profile = () => {
-  const fields = [
-    { label: "Nama", type: "text", placeholder: "Masukan nama" },
+const ProfilePasien = () => {
+  // const [clinicData, setClinicData] = useState({
+  //   name: "",
+  // });
+  const contohNama = "Mukhammad Vicky";
+  const inputFields = [
+    { name: "Nama", placeholder: "Masukan Nama", type: "text" },
+    { name: "NIK", placeholder: "Masukan Nik", type: "text" },
+    { name: "Nomor Telfon", placeholder: "Masukan Nomor Telfon", type: "text" },
     {
-      label: "Nomor Telfon",
-      type: "number",
-      placeholder: "Masukan nomor telfon",
-    },
-    {
-      label: "NIK",
-      type: "number",
-      placeholder: "Masukan NIK",
-    },
-    {
-      label: "Perkerjaan",
-      type: "text",
-      placeholder: "Masukan Perkerjaan",
-    },
-    {
-      label: "Email",
-      type: "email",
+      name: "Email",
       placeholder: "Masukan Email",
+      type: "number",
     },
+    { name: "Perkerjaan ", placeholder: "Masukan Perkerjaan", type: "text" },
     {
-      label: "Tempat Lahir",
+      name: "Tempat Lahir ",
+      placeholder: "Masukan Tempat Lahir",
       type: "text",
-      placeholder: "Masukan tempat lahir",
     },
     {
-      label: "Tanggal Lahir",
-      type: "date",
-      placeholder: "Masukan tanggal lahir",
+      name: "Tanggal Lahir ",
+      placeholder: "Masukan Tanggal Lahir",
+      type: "text",
     },
     {
-      label: "Golongan Darah",
-      placeholder: "Masukan golongan darah",
+      name: "Golongan Darah",
+      placeholder: "Masukan Golongan Darah",
+      type: "text",
     },
+    { name: "Alamat", placeholder: "Masukan Alamat", type: "text" },
+    { name: "RT/RW", placeholder: "Masukan RW/RT", type: "text" },
+    {
+      name: "Jenis Kelamin",
+      placeholder: "Masukan Jenis Kelamin",
+      type: "text",
+    },
+    { name: "Kode Wilayah", placeholder: "Masukan Kode Wilayah", type: "text" },
   ];
 
-  const [golongan, setGolongan] = useState(["A", "B", "AB", "O"]);
-  // function to render input fields
-  const renderFields = () => {
-    const rows = [];
-    for (let i = 0; i < fields.length; i += 6) {
-      const rowFields = fields.slice(i, i + 6);
-      const row = (
-        <div className="row" key={i}>
-          {rowFields.map((field, index) => (
-            <div className="col-6" key={index}>
-              <div className="form-group">
-                <h4>{field.label}</h4>
-                {field.label === "Golongan Darah" ? undefined : (
-                  <div>
-                    <input
-                      id="kotakinput"
-                      type={field.type}
-                      className="form-control"
-                      placeholder={field.placeholder}
-                    />
-                  </div>
-                )}
-
-                {field.label === "Golongan Darah" ? (
-                  <select
-                    id="dropdowninput"
-                    defaultValue={"Golongan"}
-                    style={{ paddingLeft: "10px" }}
-                  >
-                    <option value={"Golongan"}>Golongan Darah</option>
-                    {golongan.map((item, index) => {
-                      return (
-                        <option value={item} key={index}>
-                          {item}
-                        </option>
-                      );
-                    })}
-                  </select>
-                ) : undefined}
-              </div>
-            </div>
-          ))}
-        </div>
-      );
-      rows.push(row);
-    }
-
-    return rows;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setClinicData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(clinicData);
+  //   // Add logic to save clinic data
+  // };
+
   return (
     <div id="profilePage">
       <nav
@@ -100,7 +67,7 @@ const Profile = () => {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
               <li className="breadcrumb-item text-sm">
-                <Link className="opacity-5 text-dark" to="/DashBoard">
+                <Link className="opacity-5 text-dark" to="/Dashboardadmin">
                   Pages
                 </Link>
               </li>
@@ -128,6 +95,19 @@ const Profile = () => {
                   <i className="fa fa-user me-sm-1 ml-2" />
                 </Link>
               </li>
+              <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
+                <a
+                  href="./Profile"
+                  className="nav-link text-body p-3"
+                  id="iconNavbarSidenav"
+                >
+                  <div className="sidenav-toggler-inner">
+                    <i className="sidenav-toggler-line" />
+                    <i className="sidenav-toggler-line" />
+                    <i className="sidenav-toggler-line" />
+                  </div>
+                </a>
+              </li>
               <li className="nav-item px-3 d-flex align-items-center">
                 <a href="javascript:;" className="nav-link text-body p-0">
                   <i className="fa fa-cog fixed-plugin-button-nav cursor-pointer" />
@@ -139,11 +119,13 @@ const Profile = () => {
       </nav>
       {/* body */}
       <div className="container-fluid">
-        <h2 id="titledashboard">Profile</h2>
+        <h2 id="titledashboard">
+          Profile <i>{contohNama}</i>
+        </h2>
       </div>
       <div
         id="profilecontainer"
-        className="container-lg"
+        className="container-lg mt-3"
         style={{ width: "100%" }}
       >
         <div className="row">
@@ -151,11 +133,11 @@ const Profile = () => {
             <div className="card" id="profilecard">
               <div className="card-content">
                 <img
-                  id="profilepicture"
-                  style={{ cursor: "pointer" }}
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
-                  src=" "
+                  id="profilepicture"
+                  src="../../public/img/profile.jpg"
+                  style={{ cursor: "pointer" }}
                 />
                 <div>
                   <div
@@ -218,12 +200,32 @@ const Profile = () => {
                 <div className="container-lg">
                   <div className="row">
                     <div className="col12">
-                      <div className="row">
-                        {renderFields()}
-                        <button id="tombolsimpan" className="btn btn-dark mb-3">
-                          Simpan
+                      <Form>
+                        <div className="row">
+                          {inputFields.map((input) => (
+                            <div className="col-lg-6 pl-3 m-0 pb-3">
+                              <h4>{input.name}</h4>
+                              <input
+                                id="kotakinput"
+                                type={input.type}
+                                style={{ width: "100%" }}
+                                placeholder={input.placeholder}
+                                // value={clinicData[input.name]}
+                                onChange={handleInputChange}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </Form>
+                      <Link to="/RiwayatPasien">
+                        <button
+                          id="tombolsimpan"
+                          className="btn btn-dark mb-3"
+                          // onClick={handleSubmit}
+                        >
+                          Riwayat
                         </button>
-                      </div>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -236,4 +238,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfilePasien;

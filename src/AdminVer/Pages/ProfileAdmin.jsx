@@ -16,6 +16,16 @@ const ProfileAdmin = () => {
       placeholder: "Masukan Kode Wilayah",
       type: "number",
     },
+    {
+      name: "Nomor Kontak",
+      placeholder: "Masukan Nomor Kontak",
+      type: "number",
+    },
+    { name: "Email", placeholder: "Masukan Email", type: "email" },
+    { name: "Whatsapp", placeholder: "Masukan Whatsapp", type: "number" },
+    { name: "Instagram", placeholder: "Masukan Instagram", type: "text" },
+    { name: "Twitter", placeholder: "Masukan Twitter", type: "text" },
+    { name: "Facebook", placeholder: "Masukan Facebook", type: "text" },
   ];
 
   const handleInputChange = (e) => {

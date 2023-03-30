@@ -13,6 +13,7 @@ const DaftarPasien = () => {
       gender: "Laki-laki",
       notelp: "087821010989",
       email: "fistvicky@gmail.com",
+      link: "/ProfilePasien",
     },
     {
       no: 2,
@@ -21,6 +22,7 @@ const DaftarPasien = () => {
       gender: "Laki-laki",
       notelp: "087821010989",
       email: "fistvicky@gmail.com",
+      link: "/ProfilePasien",
     },
     {
       no: 3,
@@ -29,6 +31,7 @@ const DaftarPasien = () => {
       gender: "Laki-laki",
       notelp: "087821010989",
       email: "fistvicky@gmail.com",
+      link: "/ProfilePasien",
     },
     {
       no: 4,
@@ -37,6 +40,7 @@ const DaftarPasien = () => {
       gender: "Laki-laki",
       notelp: "087821010989",
       email: "fistvicky@gmail.com",
+      link: "/ProfilePasien",
     },
     {
       no: 5,
@@ -45,6 +49,7 @@ const DaftarPasien = () => {
       gender: "Laki-laki",
       notelp: "087821010989",
       email: "fistvicky@gmail.com",
+      link: "/ProfilePasien",
     },
     {
       no: 6,
@@ -53,6 +58,7 @@ const DaftarPasien = () => {
       gender: "Laki-laki",
       notelp: "087821010989",
       email: "fistvicky@gmail.com",
+      link: "/ProfilePasien",
     },
     {
       no: 7,
@@ -61,6 +67,7 @@ const DaftarPasien = () => {
       gender: "Laki-laki",
       notelp: "087821010989",
       email: "fistvicky@gmail.com",
+      link: "/ProfilePasien",
     },
   ]);
   const itemsPerPage = 8;
@@ -187,12 +194,14 @@ const DaftarPasien = () => {
                   <td>{item.notelp}</td>
                   <td>{item.email}</td>
                   <td>
-                    <button
-                      className="btn btn-primary"
-                      style={{ marginRight: "10px" }}
-                    >
-                      View
-                    </button>
+                    <Link to={item.link}>
+                      <button
+                        className="btn btn-primary"
+                        style={{ marginRight: "10px" }}
+                      >
+                        View
+                      </button>
+                    </Link>
                   </td>
                 </tr>
               ))}
