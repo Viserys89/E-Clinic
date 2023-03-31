@@ -1,6 +1,14 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
-const Register = () => {
+export const Register = () => {
+  const [email, setEmail] = useState("")
+  const [sNik, setNik] = useState("")
+  const [sNamaLengkap, setNamaLengkap] = useState("")
+  // email,
+  // sNik,
+  // sPassword,
+  // sNoTelp,
+  // sNamaLengkap
   return (
     <Container-fluid id="containerdua" className="vh-100">
       <div id="containerRegister" className="container-fluid h-custom">
@@ -27,6 +35,8 @@ const Register = () => {
                     type="text"
                     className="inputText"
                     required
+                    value={sNamaLengkap}
+                    onChangeText={(text) => setNamaLengkap(text)}
                   />
                   <span className="floating-label">Nama Lengkap</span>
                 </div>
@@ -36,6 +46,8 @@ const Register = () => {
                     type="number"
                     className="inputText2"
                     required
+                    value={sNik}
+                    onChangeText={(text) => setNik(text)}
                   />
                   <span className="floating-label2">NIK</span>
                 </div>
@@ -54,6 +66,8 @@ const Register = () => {
                     type="text"
                     className="inputText2"
                     required
+                    value={email}
+                    onChangeText={(text) => setEmail(text)}
                   />
                   <span className="floating-label2">Email</span>
                 </div>
@@ -91,4 +105,3 @@ const Register = () => {
   );
 };
 
-export default Register;
