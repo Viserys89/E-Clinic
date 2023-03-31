@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Riwayat = () => {
+const RiwayatPasien = () => {
+  const contohNama = "Mukhammad Vicky";
   return (
     <>
       <div id="riwayatPage">
@@ -55,7 +56,9 @@ const Riwayat = () => {
         </nav>
         {/* body */}
         <div className="container-fluid">
-          <h2 id="titledashboard">Riwayat</h2>
+          <h2 id="titledashboard">
+            Riwayat <i>{contohNama}</i>{" "}
+          </h2>
           <div
             className="container-lg mt-4"
             style={{ border: "2px solid black", borderRadius: "8px" }}
@@ -149,4 +152,4 @@ const Riwayat = () => {
   );
 };
 
-export default Riwayat;
+export default RiwayatPasien;

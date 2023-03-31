@@ -28,6 +28,7 @@ import Obat from "./Pages/Obat";
 import PoliklinikDokter from "./AdminVer/JadwalDokterPage/PoliklinikDokter";
 import PoliklinikAntrian from "./AdminVer/AntrianPage/PoliklinikAntrian";
 import PoliklinikAdmin from "./AdminVer/PagePoliklinik/PoliklinikAdmin";
+import JadwalDokter from "./AdminVer/JadwalDokterPage/JadwalDokter";
 import HapusAntrian from "./AdminVer/AntrianPage/HapusAntrian";
 import SideNavAdmin from "./AdminVer/components/SideNavAdmin";
 import DashBoardAdmin from "./AdminVer/Pages/DashBoardAdmin";
@@ -41,12 +42,16 @@ import "./AdminVer/css/globalAdmin.css";
 import "./css/Poliklinik.css";
 import "./css/styleLogin.css";
 import "./css/global.css";
-import JadwalDokter from "./AdminVer/JadwalDokterPage/JadwalDokter";
+import ProfilePasien from "./AdminVer/Pages/ProfilePasien";
+import RiwayatPasien from "./AdminVer/Pages/RiwayatPasien";
+import SideNavDoctor from "./DoctorVer/components/SideNavDoctor";
+import Diagnosa from "./DoctorVer/PageDiagnosis/Diagnosa";
+import SesiDiagnosa from "./DoctorVer/PageDiagnosis/SesiDiagnosa";
 
 export const loginContext = createContext();
 
 function App() {
-  const [isLogin, setIsLogin] = useState(1);
+  const [isLogin, setIsLogin] = useState(3);
   return (
     <loginContext.Provider value={[isLogin, setIsLogin]}>
       <BrowserRouter basename="/">
@@ -108,9 +113,22 @@ function App() {
                   element={<PoliklinikAntrian />}
                 />
                 <Route path="/HapusAntrian" element={<HapusAntrian />} />
+                <Route path="/ProfilePasien" element={<ProfilePasien />} />
+                <Route path="/RiwayatPasien" element={<RiwayatPasien />} />
               </Routes>
               <Footer />
             </SideNavAdmin>
+          </div>
+        ) : isLogin == 4 ? (
+          <div className="App">
+            <SideNavDoctor>
+              <Routes>
+                <Route exact path="/" element={<Diagnosa />} />
+                <Route path="/Diagnosa" element={<Diagnosa />} />
+                <Route path="/SesiDiagnosa" element={<SesiDiagnosa />} />
+              </Routes>
+              <Footer />
+            </SideNavDoctor>
           </div>
         ) : (
           ""
