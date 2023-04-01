@@ -8,7 +8,7 @@ const Logins = () => {
   const [isLogin, setIsLogin] = useContext(loginContext);
   async function setLogin(nik, pass) {
     const payload = { nik, pass };
-    const res = await fetch("http://10.10.10.91:5000/login", {
+    const res = await fetch("http://localhost:5000/login/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -51,7 +51,7 @@ import SesiDiagnosa from "./DoctorVer/PageDiagnosis/SesiDiagnosa";
 export const loginContext = createContext();
 
 function App() {
-  const [isLogin, setIsLogin] = useState(3);
+  const [isLogin, setIsLogin] = useState(1);
   return (
     <loginContext.Provider value={[isLogin, setIsLogin]}>
       <BrowserRouter basename="/">
