@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const HasilDiagnosa = () => {
+  const contohNama = "Rakansyah Lubis";
   return (
-    <div id="hasilDiagnosaPage">
+    <div id="hasilDiagnosa">
       <nav
         className="navbar navbar-main navbar-expand-lg px-4 shadow-none border-radius-xl"
         id="navbarBlur"
@@ -73,20 +75,20 @@ const HasilDiagnosa = () => {
           >
             <div className="card-body text-center">
               <h4>
-                Anda telah mendiagnosa <b>Rakansyah Lubis</b>
+                Anda telah mendiagnosa <b>{contohNama}</b>
                 <br />
                 tekan tombol dibawah untuk mendiagnosis <br />
                 pasien selanjutnya
               </h4>
               <Link to="/SesiDiagnosa">
-                <button
+                <Button
                   type="button"
                   className="btn text-white my-3"
                   id="btnBerikanHasilDiagnosis"
                   style={{ width: "300px" }}
                 >
                   Kembali
-                </button>
+                </Button>
               </Link>
             </div>
           </div>
