@@ -568,10 +568,12 @@
 }
 
 #tombolsimpan {
+  padding: 10px;
   width: 30%;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  font-family: "Poppins", arial, sans-serif;
 }
 
 ::placeholder {
@@ -677,6 +679,22 @@
 }
 @media screen and (max-width: 1000px) {
   #jadwalDokterPage {
+    margin-left: 0;
+  }
+}
+/* end */
+
+/* Doctor ver page */
+#diagnosaPage {
+  margin-left: 8.8%;
+}
+
+#sesiDiagnosaPage {
+  margin-left: 8.8%;
+}
+
+@media screen and (max-width: 1000px) {
+  #sesiDiagnosaPage {
     margin-left: 0;
   }
 }

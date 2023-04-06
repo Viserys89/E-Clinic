@@ -1,58 +1,54 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../css/PoliklinikAdmin.css";
 
 const PoliklinikAdmin = () => {
-  const [poliLinks, setPolilinks] = useState([]);
-
-  const option = [
+  const poliLinks = [
+    {
+      name: "Anak & Ibu Hamil",
+      link: "",
+    },
+    {
+      name: "Penyakit Dalam",
+      link: "",
+    },
     {
       name: "Bedah Umum",
-      value: "bedahUmum",
       link: "",
     },
     {
       name: "Bedah Saraf",
-      value: "bedahSaraf",
+      link: "",
+    },
+    {
+      name: "Kandungan",
       link: "",
     },
     {
       name: "Penyakit Luar",
-      value: "penyakitLuar",
+      link: "",
+    },
+    {
+      name: "Orthopaedi",
       link: "",
     },
     {
       name: "Mata",
-      value: "mata",
       link: "",
     },
     {
       name: "Gigi",
-      value: "gigi",
       link: "",
     },
     {
       name: "THT",
-      value: "tht",
       link: "",
     },
   ];
 
-  const [pilihan, setPilihan] = useState([]);
-  const handleChangePilihan = (item) => {
-    const pilih = option.filter((data) => data.value === item.target.value);
-    pilihan.push(pilih[0]);
-    console.log(pilihan);
-  };
-  const handleSubmit = () => {
-    setPolilinks(pilihan);
-    setPilihan([]);
-    console.log(poliLinks);
-  };
-
   // Divide poliLinks array into two smaller arrays
-  const poliLinks2 = poliLinks.slice(0, poliLinks.length / 2);
-  const poliLinks1 = poliLinks.slice(poliLinks.length / 2, poliLinks.length);
+  const poliLinks1 = poliLinks.slice(0, 5);
+  const poliLinks2 = poliLinks.slice(5, 10);
 
   return (
     <div id="poliklinikPage">
@@ -65,7 +61,7 @@ const PoliklinikAdmin = () => {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
               <li className="breadcrumb-item text-sm">
-                <Link className="opacity-5 text-dark" to="/DashBoardAdmin">
+                <Link className="opacity-5 text-dark" to="/DashBoard">
                   Pages
                 </Link>
               </li>
@@ -144,29 +140,131 @@ const PoliklinikAdmin = () => {
               <div className="modal-body">
                 <div className="col-lg-12">
                   <div className="row mt-3">
-                    {option.map((item, index) => {
-                      return (
-                        <div className="col-sm-3" key={index}>
-                          <div className="form-check form-check-inline">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              id={index}
-                              defaultValue={item.value}
-                              onChange={handleChangePilihan}
-                            />
-                            <label
-                              className="form-check-label"
-                              htmlFor="inlineCheckbox1"
-                            >
-                              {item.name}
-                            </label>
-                          </div>
-                        </div>
-                      );
-                    })}
+                    <div className="col-sm-3">
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          id="inlineCheckbox1"
+                          defaultValue="option1"
+                        />
+                        <label
+                          className="form-check-label"
+                          htmlFor="inlineCheckbox1"
+                        >
+                          Poliklinik
+                        </label>
+                      </div>
+                    </div>
+                    <div className="col-sm-3">
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          defaultValue="option2"
+                        />
+                        <label
+                          className="form-check-label"
+                          htmlFor="inlineCheckbox2"
+                        >
+                          Poliklinik
+                        </label>
+                      </div>
+                    </div>
+                    <div className="col-sm-3">
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          defaultValue="option3"
+                        />
+                        <label
+                          className="form-check-label"
+                          htmlFor="inlineCheckbox2"
+                        >
+                          Poliklinik
+                        </label>
+                      </div>
+                    </div>
+                    <div className="col-sm-3">
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          defaultValue="option4"
+                        />
+                        <label
+                          className="form-check-label"
+                          htmlFor="inlineCheckbox2"
+                        >
+                          Poliklinik
+                        </label>
+                      </div>
+                    </div>
                   </div>
-                  <div className="row mt-3"></div>
+                  <div className="row mt-3">
+                    <div className="col-sm-3">
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          id="inlineCheckbox1"
+                          defaultValue="option1"
+                        />
+                        <label
+                          className="form-check-label"
+                          htmlFor="inlineCheckbox1"
+                        >
+                          Poliklinik
+                        </label>
+                      </div>
+                    </div>
+                    <div className="col-sm-3">
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          defaultValue="option2"
+                        />
+                        <label
+                          className="form-check-label"
+                          htmlFor="inlineCheckbox2"
+                        >
+                          Poliklinik
+                        </label>
+                      </div>
+                    </div>
+                    <div className="col-sm-3">
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          defaultValue="option3"
+                        />
+                        <label
+                          className="form-check-label"
+                          htmlFor="inlineCheckbox2"
+                        >
+                          Poliklinik
+                        </label>
+                      </div>
+                    </div>
+                    <div className="col-sm-3">
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          defaultValue="option4"
+                        />
+                        <label
+                          className="form-check-label"
+                          htmlFor="inlineCheckbox2"
+                        >
+                          Poliklinik
+                        </label>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="modal-footer">
@@ -177,50 +275,20 @@ const PoliklinikAdmin = () => {
                 >
                   Close
                 </button>
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={handleSubmit}
-                >
+                <button type="button" className="btn btn-primary">
                   Save
                 </button>
               </div>
             </div>
           </div>
         </div>
-        <div className="container-lg mb-3 mt-5">
+        <div className="container-lg mb-3 mt-3">
           <div className="card mb-3" style={{ border: "2px solid black" }}>
             <div className="row no-gutters">
               <div className="card-body">
                 <div className="col-12 p-4">
                   <div id="poliklinikRow" className="row d-flex">
                     <div id="poliklinikCollumn" className="col-6 mt-4">
-                      <div
-                        className="d-flex justify-content-center mb-lg-4"
-                        style={{ borderBottom: "2px solid black" }}
-                      >
-                        <Link id="poli" to="/" className="p-0">
-                          <h3 id="jenisPoliklinik" className="p-0">
-                            Poliklinik <b>Penyakit Dalam</b>{" "}
-                            <i id="panah" className="fas p-0">
-                              
-                            </i>
-                          </h3>
-                        </Link>
-                      </div>
-                      <div
-                        className="d-flex justify-content-center mb-lg-4"
-                        style={{ borderBottom: "2px solid black" }}
-                      >
-                        <Link id="poli" to="/" className="p-0">
-                          <h3 id="jenisPoliklinik" className="p-0">
-                            Poliklinik <b>Kandungan</b>{" "}
-                            <i id="panah" className="fas p-0">
-                              
-                            </i>
-                          </h3>
-                        </Link>
-                      </div>
                       {poliLinks1.map((poli) => (
                         <div
                           key={poli.name}
@@ -239,32 +307,6 @@ const PoliklinikAdmin = () => {
                       ))}
                     </div>
                     <div id="poliklinikCollumn" className="col-6 mt-4">
-                      <div
-                        className="d-flex justify-content-center mb-lg-4"
-                        style={{ borderBottom: "2px solid black" }}
-                      >
-                        <Link id="poli" to="/" className="p-0">
-                          <h3 id="jenisPoliklinik" className="p-0">
-                            Poliklinik <b>Ibu dan Anak</b>{" "}
-                            <i id="panah" className="fas p-0">
-                              
-                            </i>
-                          </h3>
-                        </Link>
-                      </div>
-                      <div
-                        className="d-flex justify-content-center mb-lg-4"
-                        style={{ borderBottom: "2px solid black" }}
-                      >
-                        <Link id="poli" to="/" className="p-0">
-                          <h3 id="jenisPoliklinik" className="p-0">
-                            Poliklinik <b>Orthopaedi</b>{" "}
-                            <i id="panah" className="fas p-0">
-                              
-                            </i>
-                          </h3>
-                        </Link>
-                      </div>
                       {poliLinks2.map((poli) => (
                         <div
                           key={poli.name}
@@ -287,7 +329,7 @@ const PoliklinikAdmin = () => {
               </div>
             </div>
           </div>
-          <div className="card mt-5 mb-5" style={{ border: "2px solid black" }}>
+          <div className="card" style={{ border: "2px solid black" }}>
             <div className="card-body text-center">
               <h4>
                 <b>

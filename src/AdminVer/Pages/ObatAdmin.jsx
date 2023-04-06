@@ -1,10 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import Table from "react-bootstrap/Table";
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import tambahObatForm from "../components/tambahObatForm";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const ObatAdmin = () => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [data, setData] = useState([
     {
@@ -177,10 +181,12 @@ const ObatAdmin = () => {
                 <li className="nav-item d-flex align-items-center">
                   <i className="fa fa-bell cursor-pointer mx-lg-2 " />
                   <Link
-                    to="/Profile"
+                    to="/ProfileAdmin"
                     className="nav-link text-body  font-weight-bold px-0"
                   >
-                    <span className="d-sm-inline d-none m-lg-2">Admin</span>
+                    <span className="d-sm-inline d-none m-lg-2">
+                      Mukhammad Vicky
+                    </span>
                     <i className="fa fa-user me-sm-1 ml-2" />
                   </Link>
                 </li>
@@ -217,13 +223,24 @@ const ObatAdmin = () => {
                 </div>
                 <button
                   id="btnTambahObat"
-                  data-bs-toggle="modal"
-                  data-bs-target="#tambahObat"
+                  onClick={handleShow}
                   type="button"
                   className="btn btn-dark"
                 >
                   Tambah Obat
                 </button>
+                <Modal show={show} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Tambah Obat</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body></Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                      Close
+                    </Button>
+                    <Button variant="primary">Submit</Button>
+                  </Modal.Footer>
+                </Modal>
               </div>
             </form>
           </div>
@@ -281,9 +298,7 @@ const ObatAdmin = () => {
                   />
                 </div>
                 <div className="modal-body">
-                  <div id="form" className="container-fluid">
-                    <tambahObatForm />
-                  </div>
+                  <div id="form" className="container-fluid"></div>
                 </div>
               </div>
             </div>

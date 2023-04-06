@@ -28,30 +28,30 @@ const DoctorAdmin = () => {
       description:
         "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
     },
-    // {
-    //   id: 4,
-    //   name: "Dr. Gilang Martin",
-    //   specialization: "Spesialis Kandungan",
-    //   image: "../../public/img/dokter.jpg",
-    //   description:
-    //     "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-    // },
-    // {
-    //   id: 5,
-    //   name: "Dr. Vania Ramdhani",
-    //   specialization: "Spesialis THT",
-    //   image: "../../public/img/dokterf.jpg",
-    //   description:
-    //     "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-    // },
-    // {
-    //   id: 6,
-    //   name: "Dr. Steven Vanatham",
-    //   specialization: "Spesialis Jantung",
-    //   image: "../../public/img/dokter.jpg",
-    //   description:
-    //     "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-    // },
+    {
+      id: 4,
+      name: "Dr. Gilang Martin",
+      specialization: "Spesialis Kandungan",
+      image: "../../public/img/dokter.jpg",
+      description:
+        "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+    },
+    {
+      id: 5,
+      name: "Dr. Vania Ramdhani",
+      specialization: "Spesialis THT",
+      image: "../../public/img/dokterf.jpg",
+      description:
+        "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+    },
+    {
+      id: 6,
+      name: "Dr. Steven Vanatham",
+      specialization: "Spesialis Jantung",
+      image: "../../public/img/dokter.jpg",
+      description:
+        "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+    },
   ];
 
   const [searchInput, setSearchInput] = React.useState("");

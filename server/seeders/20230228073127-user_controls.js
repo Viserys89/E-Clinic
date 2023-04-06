@@ -20,6 +20,10 @@ module.exports = {
     },
     {
       id_user: '79585d0e-226f-42eb-afaf-9e520cd7c516',
+    },
+    {
+      id_user: 'b57ca085-5e35-4628-b04c-28da82c4f96a',
+      level: 2
     }
   ], {
   });

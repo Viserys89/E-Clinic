@@ -31,12 +31,9 @@ module.exports = {
           allowNull: false,
           references: {
             model: { tableName: 'userdata', schema: 'public' },
-            key: 'pasen_id'
+            key: 'pasien_id'
           }
         },    
-        nama: {
-          type: Sequelize.STRING(60),
-        }
       },
       {
         timestamps: false,

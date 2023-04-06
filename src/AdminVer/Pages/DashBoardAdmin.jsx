@@ -245,26 +245,6 @@ const DashBoardAdmin = () => {
                           <h3 id="titlestatistik">
                             Statistik Perkerjaan Pasien
                           </h3>
-                          <div id="statbutton">
-                            <button
-                              id="yearbutton"
-                              onClick={() => setTimeRange("year")}
-                            >
-                              Year
-                            </button>
-                            <button
-                              id="monthbutton"
-                              onClick={() => setTimeRange("month")}
-                            >
-                              Month
-                            </button>
-                            <button
-                              id="weekbutton"
-                              onClick={() => setTimeRange("week")}
-                            >
-                              Week
-                            </button>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -305,26 +285,6 @@ const DashBoardAdmin = () => {
                       <div className="row">
                         <div id="statperkerjaanpasien">
                           <h3 id="titlestatistik">Statistik Golongan Darah</h3>
-                          <div id="statbutton">
-                            <button
-                              id="yearbutton"
-                              onClick={() => setTimeRange("year")}
-                            >
-                              Year
-                            </button>
-                            <button
-                              id="monthbutton"
-                              onClick={() => setTimeRange("month")}
-                            >
-                              Month
-                            </button>
-                            <button
-                              id="weekbutton"
-                              onClick={() => setTimeRange("week")}
-                            >
-                              Week
-                            </button>
-                          </div>
                         </div>
                         <div id="progressbar3" className="px-4 mt-2">
                           {Object.keys(progressData).map((key) => (

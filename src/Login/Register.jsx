@@ -1,6 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useState } from "react";
 
 const Register = () => {
+  const [email, setEmail] = useState("");
+  const [sPassword, setPassword] = useState("");
+  const [sNamaLengkap, setNamaLengkap] = useState("");
+  const [sNik, setNik] = useState("");
+  async function setRegister(email, sPassword, sNamaLengkap, sNik) {
+    const payload = {email, sPassword, sNamaLengkap, sNik};
+    const res = await fetch("http://localhost:5000/data/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json", 
+      },
+      body: JSON.stringify(payload),
+    }).then(async (res) => {
+      try {
+        const jsonRest = await res.json();
+        console.log(jsonRest);
+        if (res.status == 200) {
+          console.log("Register Successfully!!!")
+        } else {
+          alert(jsonRest.alert);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    });
+    return res;
+  }
   return (
     <Container-fluid id="containerdua" className="vh-100">
       <div id="containerRegister" className="container-fluid h-custom">
@@ -23,6 +52,8 @@ const Register = () => {
                 <div className="user">
                   <br />
                   <input
+                    onChange={(e) => setNamaLengkap(e.target.value)}
+                    value={sNamaLengkap}
                     id="input1"
                     type="text"
                     className="inputText"
@@ -32,6 +63,8 @@ const Register = () => {
                 </div>
                 <div className="user2">
                   <input
+                  onChange={(e) => setNik(e.target.value)}
+                  value={sNik}
                     id="input2"
                     type="number"
                     className="inputText2"
@@ -50,6 +83,8 @@ const Register = () => {
                 </div>
                 <div className="user2">
                   <input
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
                     id="input2"
                     type="text"
                     className="inputText2"
@@ -59,6 +94,8 @@ const Register = () => {
                 </div>
                 <div className="user2">
                   <input
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={sPassword}
                     id="input2"
                     type="text"
                     className="inputText2"
@@ -75,13 +112,16 @@ const Register = () => {
                   />
                   <span className="floating-label2">Confirm Password</span>
                 </div>
+                <a href="/">
                 <button
                   id="resetButtonRegister"
+                  onClick={() => setRegister(email, sPassword, sNamaLengkap, sNik)}
                   type="button"
                   className="btn btn-dark "
                 >
                   Register
                 </button>
+                </a>
               </div>
             </div>
           </div>
