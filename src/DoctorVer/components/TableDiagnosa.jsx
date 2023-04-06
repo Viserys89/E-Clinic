@@ -18,6 +18,16 @@ const TableDiagnosa = () => {
       jumlahObat: "15",
       hargaObat: "14000",
     },
+    {
+      namaObat: "Polysilane",
+      jumlahObat: "2",
+      hargaObat: "21000",
+    },
+    {
+      namaObat: "Antidot",
+      jumlahObat: "5",
+      hargaObat: "11000",
+    },
   ];
   return (
     <div className="table-responsive-lg">

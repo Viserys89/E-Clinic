@@ -47,6 +47,7 @@ import RiwayatPasien from "./AdminVer/Pages/RiwayatPasien";
 import SideNavDoctor from "./DoctorVer/components/SideNavDoctor";
 import Diagnosa from "./DoctorVer/PageDiagnosis/Diagnosa";
 import SesiDiagnosa from "./DoctorVer/PageDiagnosis/SesiDiagnosa";
+import HasilDiagnosa from "./DoctorVer/PageDiagnosis/HasilDiagnosa";
 
 export const loginContext = createContext();
 
@@ -126,6 +127,7 @@ function App() {
                 <Route exact path="/" element={<Diagnosa />} />
                 <Route path="/Diagnosa" element={<Diagnosa />} />
                 <Route path="/SesiDiagnosa" element={<SesiDiagnosa />} />
+                <Route path="/HasilDiagnosa" element={<HasilDiagnosa />} />
               </Routes>
               <Footer />
             </SideNavDoctor>

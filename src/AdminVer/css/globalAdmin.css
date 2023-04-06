@@ -683,3 +683,19 @@
   }
 }
 /* end */
+
+/* Doctor ver page */
+#diagnosaPage {
+  margin-left: 8.8%;
+}
+
+#sesiDiagnosaPage {
+  margin-left: 8.8%;
+}
+
+@media screen and (max-width: 1000px) {
+  #sesiDiagnosaPage {
+    margin-left: 0;
+  }
+}
+/* end */

@@ -5,12 +5,12 @@ import TableDiagnosa from "../components/TableDiagnosa";
 
 function SesiDiagnosa() {
   const { pilih } = useParams();
-
+  const contohNamaPasien = "Rakansyah Lubis";
   return (
     <div id="sesiDiagnosaPage" className="mt-5">
       <div className="container-fluid">
         <h2 id="titledashboard">Sesi Diagnosa</h2>
-        <div className="text-center mb-3">
+        <div className="text-center mb-5 mt-5">
           <h2 id="titledashboard" style={{ marginLeft: "0" }}>
             {pilih}
           </h2>
@@ -19,7 +19,7 @@ function SesiDiagnosa() {
               <div className="card" style={{ border: "2px solid black" }}>
                 <div className="card-body">
                   <h3>
-                    Pasien yang di diagnosa : <b>Rakhansyah Lubis</b>{" "}
+                    Pasien yang di diagnosa : <b>{contohNamaPasien}</b>{" "}
                   </h3>
                 </div>
               </div>
@@ -72,12 +72,23 @@ function SesiDiagnosa() {
             </div>
           </div>
         </div>
+        <label className="mt-2">
+          <h5>
+            <b>Catatan Dokter</b>
+          </h5>
+        </label>
+        <textarea
+          className="form-control mb-3"
+          rows="3"
+          placeholder="Masukan Catatan untuk pasien"
+        ></textarea>
         <div className="text-center">
           <button
             type="button"
             data-bs-toggle="modal"
             data-bs-target="#tambahObatPasien"
             className="btn btn-dark mx-1"
+            id="btnTbh"
           >
             Tambah Obat
           </button>
@@ -90,37 +101,6 @@ function SesiDiagnosa() {
               Berikan Hasil Diagnosis
             </button>
           </Link>
-        </div>
-        <div className="mt-3 " style={{ border: "2px solid black" }}>
-          <div
-            className="text-center"
-            style={{ borderBottom: "2px solid black" }}
-          >
-            <h5 className="my-3">
-              Table dibawah ini berfungsi untuk menghapus seseorang dari
-              antrian, jika orang tersebut tidak datang pada batas waktu yang
-              telah ditentukan
-            </h5>
-          </div>
-          <div style={{ borderBottom: "2px solid black" }}>
-            <h5 className="p-1">5/10</h5>
-          </div>
-          <TableAntrianDiagnosa />
-          <div id="tbldatanomor" className="mb-3">
-            <Link>
-              <button id="arrowleft">
-                <i className="fas fa-arrow-left" />
-              </button>
-            </Link>
-            <Link>
-              <button id="currentnumber">1</button>
-            </Link>
-            <Link>
-              <button id="arrowright">
-                <i className="fas fa-arrow-right" />
-              </button>
-            </Link>
-          </div>
         </div>
       </div>
     </div>
