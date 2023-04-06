@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
 const crypto = require('crypto')
-const secret_key = process.env.JWT_SECRET
+const secret_key = process.env.JWT_SECRET ||  'mysecretkey'
 const { body, validationResult } = require('express-validator');
 const { user_controls} = require('../models/datas');
 const Sequelize = require('sequelize');

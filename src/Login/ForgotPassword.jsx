@@ -1,6 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useState } from "react";
+import { loginContext } from "../App";
 
 const ForgotPassword = () => {
+  const [email, setEmail] = useState("");
+  async function setForgotPassword(email) {
+    const payload = { email };
+    const res = await fetch("http://localhost:5000/data/forgotPassword", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    }).then(async (res) => {
+      try {
+        const jsonRest = await res.json();
+        console.log(jsonRest);
+        if (res.status == 200) {
+          console.log("Link Sudah dikirim Ke Email Anda")
+        } else {
+          alert(jsonRest.alert);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    });
+    return res;
+  }
+
   return (
     <section className="vh-100">
       <div className="container py-5 h-100">
@@ -25,13 +52,14 @@ const ForgotPassword = () => {
                 <p id="p1">Send a link to your email to reset your password</p>
                 <div class="user">
                   <br />
-                  <input id="input1" type="text" class="inputText" required />
+                  <input id="input1" type="text" class="inputText" required value={email} onChange={(e) => setEmail(e.target.value)}/>
                   <span class="floating-label">Your email address</span>
                   <a href="/ResetPassword">
                     <button
                       id="resetbutton"
                       type="button"
-                      class="btn btn-dark "
+                      class="btn btn-dark"
+                      onClick={() => setForgotPassword(email)}
                     >
                       Send Reset Link
                     </button>

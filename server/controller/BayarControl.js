@@ -1,7 +1,7 @@
 const {user_controls} = require('../models/datas');
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
-const secret_key = process.env.JWT_SECRET
+const secret_key = process.env.JWT_SECRET || 'mysecretkey'
 const {wilayah, golongan_darah, dokter} = require('../models/dokterdata');
 const { pendaftaran, antrian, klinik, data } = require('../models');
 const {diagnosa, obat_pasien, pembayaran} = require('../models/diagnosaData')

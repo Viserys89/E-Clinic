@@ -173,10 +173,10 @@ exports.forgotPassword = [
       const token = jwt.sign({id: data.pasien_id}, secret_key, {
         expiresIn: '30m',
       })
-      const link = `10.10.10.91:5000/passwordReset?token=${token}`
+      const link = `localhost:5000/passwordReset?token=${token}`
       sendEmail(data.email,"Password Reset Request",{name: data.namalengkap,link: link,},"../utils/template/forgotPassword.handlebars");
       res.status(200).json({ alert: 'Email terkirim'});
-      return link
+      return link;
     })
   },
 ];
@@ -214,11 +214,11 @@ exports.setPassword = [
     if(passwordHash){
       return data.update(
         {
-          password: passwordHash
+          password: passwordHash,
         },
         {
-          where: {pasien_id : req.body.id}
-        }
+          where: {pasien_id : req.body.id},
+        },
       ).then((data) => {
         if (data){
           res.status(200).json({alert: 'Berhasil update pasword'})

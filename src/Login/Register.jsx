@@ -1,19 +1,18 @@
-import React, { useState, useContext } from "react";
-import { loginContext } from "../App";
+import React, { useContext } from "react";
+import { useState } from "react";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [sPassword, setPassword] = useState("");
   const [sNamaLengkap, setNamaLengkap] = useState("");
   const [sNik, setNik] = useState("");
-  const [isLogin, setIsLogin] = useContext(loginContext);
-
   async function setRegister(email, sPassword, sNamaLengkap, sNik) {
     const payload = {email, sPassword, sNamaLengkap, sNik};
     const res = await fetch("http://localhost:5000/data/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json", 
       },
       body: JSON.stringify(payload),
     }).then(async (res) => {
@@ -21,7 +20,7 @@ const Register = () => {
         const jsonRest = await res.json();
         console.log(jsonRest);
         if (res.status == 200) {
-          setIsLogin(1)
+          console.log("Register Successfully!!!")
         } else {
           alert(jsonRest.alert);
         }
@@ -113,6 +112,7 @@ const Register = () => {
                   />
                   <span className="floating-label2">Confirm Password</span>
                 </div>
+                <a href="/">
                 <button
                   id="resetButtonRegister"
                   onClick={() => setRegister(email, sPassword, sNamaLengkap, sNik)}
@@ -121,6 +121,7 @@ const Register = () => {
                 >
                   Register
                 </button>
+                </a>
               </div>
             </div>
           </div>

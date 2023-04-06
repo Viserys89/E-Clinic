@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const crypto = require("crypto");
-const secret_key = process.env.JWT_SECRET;
+const secret_key = process.env.JWT_SECRET || 'mysecretkey'
 const { wilayah } = require("../models/dokterdata");
 const { body, validationResult } = require("express-validator");
 const datauri = require('datauri');

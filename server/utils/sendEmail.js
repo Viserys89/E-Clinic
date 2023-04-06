@@ -14,9 +14,9 @@ const sendEmail = async (email, subject, payload, template) => {
       host: 'smtp.ethereal.email',
       port: 587,
       auth: {
-        user: process.env.EMAIL_USERNAME,
-        pass: process.env.EMAIL_PASSWORD, // naturally, replace both with your real credentials or an application-specific password
-      },
+        user: 'winona8@ethereal.email',
+        pass: 'MXNaJeAa8w7RbTdzgb'
+    }
     });
 
     const source = fs.readFileSync(path.join(__dirname, template), "utf8");

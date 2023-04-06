@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
 const crypto = require('crypto')
-const secret_key = process.env.JWT_SECRET
+const secret_key = process.env.JWT_SECRET ||  'mysecretkey'
 const {wilayah, golongan_darah} = require('../models/dokterdata');
 const { body, validationResult } = require('express-validator');
 const sendEmail = require('../utils/sendEmail');

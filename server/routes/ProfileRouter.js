@@ -10,8 +10,8 @@ const storage = multer.diskStorage({
     filename: function(req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now())
     }
-  });
-  const upload = multer({storage});
+    });
+        const upload = multer({storage});
 
 router.patch('/update',upload.single('image'), profile.updateData);
 router.get('/updatetoken', profile.updatetoken);
