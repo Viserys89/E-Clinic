@@ -568,10 +568,12 @@
 }
 
 #tombolsimpan {
+  padding: 10px;
   width: 30%;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  font-family: "Poppins", arial, sans-serif;
 }
 
 ::placeholder {
@@ -678,6 +680,49 @@
 @media screen and (max-width: 1000px) {
   #jadwalDokterPage {
     margin-left: 0;
+  }
+}
+/* end */
+
+/* Doctor ver page */
+#diagnosaPage {
+  margin-left: 8.8%;
+}
+
+#sesiDiagnosaPage {
+  margin-left: 8.8%;
+}
+
+#hasilDiagnosa {
+  margin-left: 8.8%;
+}
+
+#btnBerikanHasilDiagnosis {
+  background-color: #00096e;
+  font-family: "Poppins", arial, sans-serif;
+  border: 0;
+}
+
+#btnBerikanHasilDiagnosis:hover {
+  font-family: "Poppins", arial, sans-serif;
+  background-color: #0056b3;
+  transition: 0, 8s;
+}
+
+#btnT
+.0.bh {
+  font-family: "Poppins", arial, sans-serif;
+}
+
+@media screen and (max-width: 1000px) {
+  #sesiDiagnosaPage {
+    margin-left: 0;
+  }
+  #diagnosaPage {
+    margin-left: 0;
+  }
+  #hasilDiagnosa {
+    margin-left: 0%;
   }
 }
 /* end */
