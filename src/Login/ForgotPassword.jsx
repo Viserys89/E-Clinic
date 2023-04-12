@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { useState } from "react";
-import { loginContext } from "../App";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -10,6 +9,7 @@ const ForgotPassword = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Accept: 'application/json'
       },
       body: JSON.stringify(payload),
     }).then(async (res) => {

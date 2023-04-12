@@ -1,6 +1,30 @@
-import React from "react";
-
+import React, { useState } from "react";
 const ResetPassword = () => {
+  const [password, setPassword] = useState("");
+  async function ResetPassword(password) {
+    const payload = {password};
+    const res = await fetch("http://localhost:5000/data/setPassword", {
+      method: "POST",
+      headers: {
+        "Content-Type": "applicatio/json",
+      },
+      body: JSON.stringify(payload),
+    }).then(async (res) => {
+      try {
+        const jsonRest = await res.json();
+        console.log(jsonRest);
+        if (res.status == 200) {
+          console.log("Password sudah diperbarui")
+        } else {
+          alert(jsonRest.alert);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    });
+    return res;
+  } 
+  
   return (
     <section className="vh-100">
       <div className="container py-5 h-100">
@@ -29,7 +53,9 @@ const ResetPassword = () => {
                     id="input1"
                     type="password"
                     class="inputText"
-                    required
+                    required 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <span class="floating-label">New Password</span>
                 </div>
@@ -42,7 +68,7 @@ const ResetPassword = () => {
                   />
                   <span class="floating-label2">Confirm Password</span>
                 </div>
-                <button id="resetbutton" type="button" class="btn btn-dark ">
+                <button id="resetbutton" type="button" class="btn btn-dark" onClick={() => ResetPassword(password)}>
                   Save New Password
                 </button>
               </div>
