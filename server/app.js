@@ -9,6 +9,7 @@ const klinikRouter = require('./routes/KlinikRouter');
 const daftarRouter = require('./routes/DaftarRouter');
 const dokterRouter = require('./routes/DokterRouter');
 const pasienRouter = require('./routes/PasienRouter');
+const bayarRouter = require('./routes/BayarRouter');
 
 var useragent = require('express-useragent');
 
@@ -18,7 +19,6 @@ app.use(express.json())
 app.use(useragent.express());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 app.use((_, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -36,11 +36,10 @@ app.use('/pasien',pasienRouter)
 app.use('/profile',profileRouter)
 app.use('/daftar',daftarRouter)
 app.use('/dokter',dokterRouter)
+app.use('/pembayaran',bayarRouter)
 
 const PORT = 5000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
-
-

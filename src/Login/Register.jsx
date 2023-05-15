@@ -1,13 +1,15 @@
-import React, { useContext } from "react";
-import { useState } from "react";
+import React, {useState,} from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const [email, setEmail] = useState("");
-  const [sPassword, setPassword] = useState("");
+  const navigate = useNavigate();
   const [sNamaLengkap, setNamaLengkap] = useState("");
   const [sNik, setNik] = useState("");
-  async function setRegister(email, sPassword, sNamaLengkap, sNik) {
-    const payload = {email, sPassword, sNamaLengkap, sNik};
+  const [email, setEmail] = useState("");
+  const [sPassword, setPassword] = useState("");
+  const [sConfirm, setConfirm] = useState("");
+  async function setRegister(sNamaLengkap, sNik, email, sPassword, sConfirm) {
+    const payload = {sNamaLengkap, sNik, email, sPassword, sConfirm};
     const res = await fetch("http://localhost:5000/data/signup", {
       method: "POST",
       headers: {
@@ -19,9 +21,19 @@ const Register = () => {
       try {
         const jsonRest = await res.json();
         console.log(jsonRest);
-        if (res.status == 200) {
-          console.log("Register Successfully!!!")
-        } else {
+        if (email && sNik && sNamaLengkap == null) {
+          alert('Lengkapi data anda');
+        } else if (sNamaLengkap === undefined || null) {
+          alert("Mohon Isi Nama Lengkap Anda");
+        } else if (sNik === undefined || null) {
+          alert("NIK Tidak Valid");
+        } else if (sPassword !== sConfirm) {
+          alert("Password Dan Confirm Password Tidak Sesuai");
+        } else if (res.status == 200) {
+          alert("Register Successfully!");
+          navigate('/');
+        }
+        else {
           alert(jsonRest.alert);
         }
       } catch (error) {
@@ -63,8 +75,8 @@ const Register = () => {
                 </div>
                 <div className="user2">
                   <input
-                  onChange={(e) => setNik(e.target.value)}
-                  value={sNik}
+                    onChange={(e) => setNik(e.target.value)}
+                    value={sNik}
                     id="input2"
                     type="number"
                     className="inputText2"
@@ -105,6 +117,8 @@ const Register = () => {
                 </div>
                 <div className="user2">
                   <input
+                    onChange={(e) => setConfirm(e.target.value)}
+                    value={sConfirm}
                     id="input2"
                     type="text"
                     className="inputText2"
@@ -112,16 +126,14 @@ const Register = () => {
                   />
                   <span className="floating-label2">Confirm Password</span>
                 </div>
-                <a href="/">
                 <button
                   id="resetButtonRegister"
-                  onClick={() => setRegister(email, sPassword, sNamaLengkap, sNik)}
+                  onClick={() => setRegister(sNamaLengkap, sNik, email, sPassword, sConfirm)} 
                   type="button"
                   className="btn btn-dark "
                 >
                   Register
                 </button>
-                </a>
               </div>
             </div>
           </div>

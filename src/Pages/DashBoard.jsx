@@ -1,8 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import { makeContext } from "../UseContext";
+import moment from 'moment';
 
 const DashBoard = () => {
+  const [refreshing, setRefreshing] = React.useState(false);
+  const [member, setMember] = useState(0);
+  const [hasilActive, setHasilActive] = useState(false)
+  const {userdata} = useContext(makeContext)
+  const [hasilDokter, setHasilDokter] = useState('')
+  const [diagnosId, setDiagnosId] = useState('')
   var jumlahPasien = 1039;
   const [jumlah, setJumlah] = useState();
   useEffect(() => {

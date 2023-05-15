@@ -48,13 +48,16 @@ import SideNavDoctor from "./DoctorVer/components/SideNavDoctor";
 import Diagnosa from "./DoctorVer/PageDiagnosis/Diagnosa";
 import SesiDiagnosa from "./DoctorVer/PageDiagnosis/SesiDiagnosa";
 import HasilDiagnosa from "./DoctorVer/PageDiagnosis/HasilDiagnosa";
+import { UserData } from "./UseContext";
 
 export const loginContext = createContext();
+export const API_URL = ("http://localhost:5000");
 
 function App() {
   const [isLogin, setIsLogin] = useState(1);
   return (
     <loginContext.Provider value={[isLogin, setIsLogin]}>
+      <UserData>
       <BrowserRouter basename="/">
         {isLogin == 1 ? (
           <Routes>
@@ -136,8 +139,51 @@ function App() {
           ""
         )}
       </BrowserRouter>
+      </UserData>
     </loginContext.Provider>
   );
+}
+
+export async function remembermelogin(token, navigation) {
+  const res = await fetch(`http://localhost:5000/login/rememberauth`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return res;
+}
+
+export function logout(id) {
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    const payload = { id };
+    try {
+      const res = await fetch(`http://localhost:5000/login/logout`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const jsonRes = await res.json();
+      if (res.status === 200) {
+        window.alert(jsonRes.alert);
+        localStorage.removeItem('jwt_token');
+        navigate('/');
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  if (window.confirm('Anda yakin ingin logout?')) {
+    handleLogout();
+  }
 }
 
 export default App;

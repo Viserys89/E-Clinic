@@ -15,7 +15,7 @@ const Profile = () => {
       placeholder: "Masukan NIK",
     },
     {
-      label: "Perkerjaan",
+      label: "Pekerjaan",
       type: "text",
       placeholder: "Masukan Perkerjaan",
     },

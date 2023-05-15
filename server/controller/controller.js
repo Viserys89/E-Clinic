@@ -86,31 +86,35 @@ exports.getGolonganDarah = (req, res) => {
 
 exports.signup = [
   // Validasi data pendaftaran menggunakan express-validator untuk menghindari sql injection
+  body("sNamaLengkap")
+  .isAlpha()
+  .trim()
+  .escape(true)
+  .withMessage("Mohon Isi Nama Lengkap Anda"),
+  body("sNik")
+  .isLength({min:16 , max:16})
+  .withMessage("NIK Tidak Valid")
+  .isNumeric(),
   body("email").isEmail().withMessage("Email Tidak Valid"),
   body("sPassword")
     .isLength({ min: 8})
-    .withMessage("Password Minimal 7 Karakter"),
-  body("sNamaLengkap").trim().escape(true),
-  body("sNik")
-    .isLength({min:16, max: 16 })
-    .isNumeric()
-    .escape(true)
-    .withMessage("NIK Tidak Valid"),
+    .withMessage("Password Minimal 8 Karakter"),
+  body("sConfirm")
+    .isLength({ min: 8})
+    .withMessage("Confirm Password Minimal 8 Karakter"),
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res
         .status(400)
         .json({ alert: errors.array().map((items) => items.msg)[0] });
-    }
-
-    data
-      .findOne({ where: { email: req.body.email } })
+    } data.findOne({ where: { email: req.body.email } })
       .then(async (user) => {
         if (user) {
           return await res.status(409).json({ alert: "Email sudah dipakai" });
         } else if (
           req.body.sPassword &&
+          req.body.sConfirm &&
           req.body.email &&
           req.body.sNik &&
           req.body.sNamaLengkap
@@ -147,6 +151,7 @@ exports.signup = [
         } else if (
           !req.body.email ||
           !req.body.sPassword ||
+          !req.body.sConfirm ||
           !req.body.sNik ||
           !req.body.sNamaLengkap
         ) {

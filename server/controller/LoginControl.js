@@ -2,23 +2,20 @@ const {data, user_controls} = require('../models/datas');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const secret_key = process.env.JWT_SECRET || 'mysecretkey' 
+const crypto = require('crypto');
+const secret_key= process.env.JWT_SECRET  || crypto.randomBytes(32).toString('hex');
 const {body, validationResult} = require('express-validator');
 const Sequelize = require('sequelize');
-const DeviceDetector = require("device-detector-js");
-const useragent = require('express-useragent');
-
 
 exports.login = [
   //validasi express-validator
-  body("pass").isLength({ min: 0 }).withMessage("Password Minimal 7 Karakter"),
   body("nik")
-    .isLength({ max: 16 })
-    .isNumeric()
-    .withMessage("NIK Tidak Valid")
-    .escape(true),
+  .isLength({ max: 16 })
+  .isNumeric()
+  .withMessage("NIK Tidak Valid")
+  .escape(true),
+  body("pass").isLength({ min: 8 }).withMessage("Password Minimal 8 Karakter"),
   (req, res, next) => {
-    const deviceName = req.body.deviceName;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res
@@ -44,7 +41,7 @@ exports.login = [
 
       return bcrypt.compare(req.body.pass,nik.password,(err, passwordHash) => {
           if (passwordHash) {
-            this.auth(token, deviceName, nik, req, res);
+            this.auth(token, nik, req, res);
           } else {
             return res.status(404).json({ alert: "Password Salah" });
           }
@@ -54,7 +51,7 @@ exports.login = [
   },
 ];
 
-exports.auth = (token, deviceName, nik, req, res) => {
+exports.auth = (token, nik, req, res) => {
   //dapatkan model device dengan mengambil userAgent
   // const agent = req.useragent
   // const source = agent.source
@@ -73,6 +70,7 @@ exports.auth = (token, deviceName, nik, req, res) => {
   let decodedToken;
   try {
     decodedToken = jwt.verify(token, secret_key);
+    console.log(decodedToken);
   } catch (err) {
     return res.status(500).json({ alert: "Error token expired" });
   }
@@ -86,7 +84,6 @@ exports.auth = (token, deviceName, nik, req, res) => {
         is_login: true,
         last_login: Sequelize.Sequelize.fn("now"),
         jwt_token: token,
-        // device: deviceData
       },
       {
         where: { id_user: decodedToken.id },
@@ -122,11 +119,12 @@ exports.auth = (token, deviceName, nik, req, res) => {
 
 exports.rememberauth = (req, res, next) => {
   //login otomatis jika remember me aktif dengan mengambil id yang disimpan dalam jwt
-  const authHeader = req.get('Authorization');
+  const authHeader = req.get('Authorization');  
   if (!authHeader) {
     return res.status(401).json({alert: 'Authentication Gagal'});
   }
   const token = authHeader.split(' ')[1];
+  res.send('Authorization header value: ' + authHeader);
   let decodedToken;
   try {
     decodedToken = jwt.verify(token, secret_key);
@@ -154,7 +152,7 @@ exports.rememberauth = (req, res, next) => {
           return res
           .status(200)
           .json({
-            alert: "Login Berhasil",
+            alert: "anda berhasil login",
             id: nik.pasien_id,
             namalengkap: nik.namalengkap,
             nik: nik.nik,
@@ -195,7 +193,7 @@ exports.logout = (req, res, next) => {
     .then(id => {
       if (id) {
         return res.status(200).json({alert: 'Logout Berhasil'});
-      }
+      } 
     })
     .catch(err => {
       console.log(err);
