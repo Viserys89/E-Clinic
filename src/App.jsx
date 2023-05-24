@@ -1,5 +1,5 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { createContext } from "react";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { createContext, useContext } from "react";
 import { useState } from "react";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -144,20 +144,7 @@ function App() {
   );
 }
 
-export async function remembermelogin(token, navigation) {
-  const res = await fetch(`http://localhost:5000/login/rememberauth`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  return res;
-}
-
 export function logout(id) {
-  const navigate = useNavigate();
   const handleLogout = async () => {
     const payload = { id };
     try {
@@ -173,8 +160,8 @@ export function logout(id) {
       const jsonRes = await res.json();
       if (res.status === 200) {
         window.alert(jsonRes.alert);
-        localStorage.removeItem('jwt_token');
-        navigate('/');
+        localStorage.removeItem('remember');
+        window.location.href = '/';
       }
     } catch (err) {
       console.log(err);

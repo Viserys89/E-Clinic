@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/SideNav.css";
+import { logout } from "../App";
+import { makeContext } from "../UseContext";
 
 const SideNav = (props) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const {userdata} = useContext(makeContext);
+  const id = userdata.id;
 
   const handleItemClick = (index) => {
     setActiveIndex(index);
@@ -52,7 +56,7 @@ const SideNav = (props) => {
               </li>
             ))}
             <li id="logout">
-              <a href="/">
+              <a onClick={() => logout(id)}>
                 <span id="sideBarIcon" className="fa fa-sign-out mr-3" /> Logout
               </a>
             </li>

@@ -121,22 +121,22 @@ exports.rememberauth = (req, res, next) => {
   //login otomatis jika remember me aktif dengan mengambil id yang disimpan dalam jwt
   const authHeader = req.get('Authorization');  
   if (!authHeader) {
-    return res.status(401).json({alert: 'Authentication Gagal'});
+    return res.status(401).json({ alert: 'Authentication Gagal' });
   }
   const token = authHeader.split(' ')[1];
-  res.send('Authorization header value: ' + authHeader);
+  console.log('Authorization header value:', authHeader); // Menampilkan pesan di konsol, bukan mengirimkan respons ke klien
   let decodedToken;
   try {
     decodedToken = jwt.verify(token, secret_key);
   } catch (err) {
     return res
       .status(500)
-      .json({alert: 'Error token expired. Silahkan login kembali'});
+      .json({ Alert: 'Error token expired. Silahkan login kembali' });
   }
   if (!decodedToken) {
-    return res.status(401).json({alert: 'Unauthorized'});
+    return res.status(401).json({ alert: 'Unauthorized' });
   }
-  data.findOne({where: {pasien_id: decodedToken.id}}).then(nik => {
+  data.findOne({ where: { pasien_id: decodedToken.id } }).then(nik => {
     if (nik) {
       user_controls.update(
         {
@@ -145,13 +145,11 @@ exports.rememberauth = (req, res, next) => {
           jwt_token: token,
         },
         {
-          where: {id_user: decodedToken.id},
+          where: { id_user: decodedToken.id },
         },
       ).then(() => {
-        user_controls.findOne({where : {id_user: decodedToken.id}}).then((data) => {
-          return res
-          .status(200)
-          .json({
+        user_controls.findOne({ where: { id_user: decodedToken.id } }).then((data) => {
+          res.status(200).json({
             alert: "anda berhasil login",
             id: nik.pasien_id,
             namalengkap: nik.namalengkap,
@@ -171,13 +169,14 @@ exports.rememberauth = (req, res, next) => {
             token: token,
             level: data.level,
           });
-        })
+        });
       });
     } else {
-      res.status(404).json({alert: 'Error tolong login kembali'});
+      res.status(404).json({ alert: 'Error tolong login kembali' });
     }
   });
 };
+
 exports.logout = (req, res, next) => {
   user_controls
     .update(

@@ -1,42 +1,55 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { API_URL } from "../App";
+import { makeContext } from "../UseContext";
+
 const ResetPassword = () => {
-  const [password, setPassword] = useState("");
-  async function ResetPassword(password) {
-    const payload = {password};
-    const res = await fetch("http://localhost:5000/data/setPassword", {
-      method: "POST",
-      headers: {
-        "Content-Type": "applicatio/json",
-      },
-      body: JSON.stringify(payload),
-    }).then(async (res) => {
-      try {
-        const jsonRest = await res.json();
-        console.log(jsonRest);
-        if (res.status == 200) {
-          console.log("Password sudah diperbarui")
-        } else {
-          alert(jsonRest.alert);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    });
-    return res;
-  } 
-  
+  const [password, setPassword] = useState('');
+  const [confirm, setConfirm] = useState('');
+  const {userdata} = useContext(makeContext)
+  const {id} = userdata.id;
+
+  function CheckPass() {
+    const payload = {
+      id: id,
+      password, 
+    };
+    if (password === confirm) {
+      fetch(`${API_URL}/data/setPassword`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })
+        .then(async (res) => {
+          const dataRes = await res.json();
+          if (res.status === 200) {
+            alert(dataRes.alert);
+            window.location.href = '/';
+          } else {
+            alert(dataRes.alert);
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    } else {
+      alert('Cek password anda');
+    }
+  }
   return (
     <section className="vh-100">
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-12 col-md-8 col-lg-6 col-xl-5">
             <div
-              id="kartuforgot"
+              id="kartureset"
               className="card shadow-2-strong"
               style={{ borderRadius: "1rem" }}
             >
               <div className="card-body p-5">
-                <img id="logo" src="../../public/img/nama&logo.png" />{" "}
+                <img id="logo" src="../../public/img/nama&logo.png" alt="Logo" />
                 <h2 id="clinic" className="fw-bold">
                   E-Clinic
                 </h2>
@@ -45,32 +58,36 @@ const ResetPassword = () => {
                     Back to Login
                   </a>
                 </p>
-                <h1 id="titleforgot">Reset Password</h1>
-                <p id="p1">Please choose your new password</p>
-                <div class="user">
+                <h1 id="titlereset">Reset Password</h1>
+                <div className="user">
                   <br />
                   <input
                     id="input1"
                     type="password"
-                    class="inputText"
-                    required 
+                    className="inputText"
+                    required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <span class="floating-label">New Password</span>
-                </div>
-                <div class="user2">
+                  <span className="floating-label">New Password</span>
                   <input
                     id="input2"
                     type="password"
-                    class="inputText2"
+                    className="inputText"
                     required
+                    value={confirm}
+                    onChange={(e) => setConfirm(e.target.value)}
                   />
-                  <span class="floating-label2">Confirm Password</span>
+                  <span className="floating-label">Confirm Password</span>
+                  <button
+                    id="resetbutton"
+                    type="button"
+                    className="btn btn-dark"
+                    onClick={() => CheckPass()}
+                  >
+                    Reset Password
+                  </button>
                 </div>
-                <button id="resetbutton" type="button" class="btn btn-dark" onClick={() => ResetPassword(password)}>
-                  Save New Password
-                </button>
               </div>
             </div>
           </div>

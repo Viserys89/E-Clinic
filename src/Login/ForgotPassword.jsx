@@ -1,31 +1,22 @@
-import React, { useContext } from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { API_URL } from "../App";
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState("");
-  async function setForgotPassword(email) {
-    const payload = { email };
-    const res = await fetch("http://localhost:5000/data/forgotPassword", {
-      method: "POST",
+  const [email, setEmail] = useState('');
+
+  function forgotPassword () {
+    const payload = {email}
+    fetch(`${API_URL}/data/forgotPassword`, {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        Accept: 'application/json'
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(payload)
     }).then(async (res) => {
-      try {
-        const jsonRest = await res.json();
-        console.log(jsonRest);
-        if (res.status == 200) {
-          console.log("Link Sudah dikirim Ke Email Anda")
-        } else {
-          alert(jsonRest.alert);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    });
-    return res;
+      const dataRes = await res.json();
+      alert(dataRes.alert);
+    })
   }
 
   return (
@@ -39,7 +30,7 @@ const ForgotPassword = () => {
               style={{ borderRadius: "1rem" }}
             >
               <div className="card-body p-5">
-                <img id="logo" src="../../public/img/nama&logo.png" />{" "}
+                <img id="logo" src="../../public/img/nama&logo.png" alt="Logo" />{" "}
                 <h2 id="clinic" className="fw-bold">
                   E-Clinic
                 </h2>
@@ -50,17 +41,22 @@ const ForgotPassword = () => {
                 </p>
                 <h1 id="titleforgot">Forgot Password</h1>
                 <p id="p1">Send a link to your email to reset your password</p>
-                <div class="user">
+                <div className="user">
                   <br />
-                  <input id="input1" type="text" class="inputText" required value={email} onChange={(e) => setEmail(e.target.value)}/>
-                  <span class="floating-label">Your email address</span>
-                  <a href="/ResetPassword">
+                  <input 
+                  id="input1" 
+                  type="text" 
+                  className="inputText" 
+                  required 
+                  onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <span className="floating-label">Your email address</span>
+                  <a>
                     <button
                       id="resetbutton"
                       type="button"
-                      class="btn btn-dark"
-                      onClick={() => setForgotPassword(email)}
-                    >
+                      className="btn btn-dark"
+                      onClick={() => forgotPassword()}>
                       Send Reset Link
                     </button>
                   </a>

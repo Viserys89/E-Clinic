@@ -2,16 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import { makeContext } from "../UseContext";
-import moment from 'moment';
+import moment from "moment";
+import { API_URL } from "../App";
 
 const DashBoard = () => {
-  const [refreshing, setRefreshing] = React.useState(false);
   const [member, setMember] = useState(0);
   const [hasilActive, setHasilActive] = useState(false)
   const {userdata} = useContext(makeContext)
   const [hasilDokter, setHasilDokter] = useState('')
   const [diagnosId, setDiagnosId] = useState('')
-  var jumlahPasien = 1039;
+  var jumlahPasien = 1000;
   const [jumlah, setJumlah] = useState();
   useEffect(() => {
     async function setUsers() {
@@ -29,13 +29,71 @@ const DashBoard = () => {
           } else {
             alert(jsonRest.alert);
           }
-        } catch (error) {
-          console.error(error);
+        } catch (err) {
+          console.error(err);
         }
       });
     }
     setUsers();
-  }, []);
+  }, [setJumlah]);
+
+  useEffect(() => {
+
+    let subscribe = false
+    if (subscribe) return
+    fetch(`${API_URL}/data/users`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    }).then(async res => {
+
+        const jsonRes = await res.json();
+        if (res.status === 200) {
+          setMember(jsonRes.id);
+          const mergedData = jsonRes.data.map(({ pekerjaan: nama, count: jumlah }) => {
+            return { nama, jumlah};
+          });
+          setPekerjaan(mergedData);
+
+        } else {
+          alert(jsonRes.alert);
+        }
+    });
+
+    // fetch(`${API_URL}/data/count/gDarah`)
+    // .then(res => res.json())
+    // .then(data => {  
+    //   setGdarah(data);
+    // })
+
+    // function getHasilDiagnosa(){
+    //   fetch(`${API_URL}/pasien/hasil/${userdata.id}/${moment().locale('id').format('YYYY-MM-DD')}/false`, {
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       Authorization: `Bearer ${userdata.token}`,
+    //   }
+    //   }).then(res => res.json())
+    //   .then(list => {
+    //     if(list.found === true){
+    //       setHasilActive(true)
+    //       setHasilDokter(list.namaDok)
+    //       setDiagnosId(list.id)
+    //     }
+    //     else{
+    //       setHasilActive(false)
+    //     }
+    //   })
+    // }
+    // getHasilDiagnosa()
+
+    return () => {
+      subscribe = true
+    }
+
+  }, [userdata]);
+
   const [timeRange, setTimeRange] = useState("year");
   const [progressData, setProgressData] = useState({
     demam: { label: "Demam", value: 800 },
@@ -51,18 +109,18 @@ const DashBoard = () => {
     let newData;
     if (timeRange === "year") {
       newData = {
-        demam: { label: "Demam", value: 800 },
+        demam: { label: "Demam", value: 400 },
         jantung: { label: "Jantung", value: 700 },
         flu: { label: "Flu", value: 650 },
         anemia: { label: "Anemia", value: 600 },
-        ginjal: { label: "Ginjal", value: 500 },
+        ginjal: { label: "Ginjal", value: 550 },
         kangker: { label: "Kangker", value: 400 },
       };
     } else if (timeRange === "month") {
       // fetch data for month
       newData = {
-        demam: { label: "Demam", value: 600 },
-        jantung: { label: "Jantung", value: 500 },
+        demam: { label: "Demam", value: 500 },
+        jantung: { label: "Jantung", value: 450 },
         flu: { label: "Flu", value: 800 },
         anemia: { label: "Anemia", value: 650 },
         ginjal: { label: "Ginjal", value: 700 },
@@ -70,15 +128,96 @@ const DashBoard = () => {
       };
     } else if (timeRange === "week") {
       newData = {
-        demam: { label: "Demam", value: 500 },
+        demam: { label: "Demam", value: 300 },
         jantung: { label: "Jantung", value: 400 },
         flu: { label: "Flu", value: 600 },
-        anemia: { label: "Anemia", value: 650 },
+        anemia: { label: "Anemia", value: 250 },
         ginjal: { label: "Ginjal", value: 350 },
         kangker: { label: "Kangker", value: 200 },
       };
     }
     setProgressData(newData);
+  });
+  const [time, setTime] = useState("year");
+  const [Pekerjaan, setPekerjaan] = useState({
+    Wiraswasta: { label: "Wiraswasta", value: 800},
+    Penyanyi: { label: "Penyanyi", value: 700},
+    Guru: { label: "Guru", value: 650},
+    Polisi: { label: "Polisi", value: 600},
+    Tentara: { label: "Tentara", value: 400},
+    Pelajar: { label: "Pelajar", value: 250},
+  });
+
+  useEffect(() => {
+    // fetch progress data based on time range
+    let newData;
+    if (time === "year") {
+      newData = {
+        Wiraswasta: { label: "Wiraswasta", value: 800},
+        Penyanyi: { label: "Penyanyi", value: 700},
+        Guru: { label: "Guru", value: 650},
+        Polisi: { label: "Polisi", value: 600},
+        Tentara: { label: "Tentara", value: 400},
+        Pelajar: { label: "Pelajar", value: 250},
+      };
+    } else if (time === "month") {
+      // fetch data for month
+      newData = {
+        Wiraswasta: { label: "Wiraswasta", value: 700},
+        Penyanyi: { label: "Penyanyi", value: 600},
+        Guru: { label: "Guru", value: 550},
+        Polisi: { label: "Polisi", value: 400},
+        Tentara: { label: "Tentara", value: 350},
+        Pelajar: { label: "Pelajar", value: 100},
+      };
+    } else if (time === "week") {
+      newData = {
+        Wiraswasta: { label: "Wiraswasta", value: 600},
+        Penyanyi: { label: "Penyanyi", value: 500},
+        Guru: { label: "Guru", value: 450},
+        Polisi: { label: "Polisi", value: 300},
+        Tentara: { label: "Tentara", value: 200},
+        Pelajar: { label: "Pelajar", value: 50},
+      };
+    }
+    setPekerjaan(newData);
+  });
+
+  const [date, setDate] = useState("year");
+  const [Gdarah, setGdarah] = useState({
+    A: { label: "A", value: 800},
+    B: { label: "B", value: 700},
+    AB: { label: "AB", value: 650},
+    O: { label: "O", value: 600},
+  });
+
+  useEffect(() => {
+    // fetch progress data based on time range
+    let newData;
+    if (date === "year") {
+      newData = {
+        A: { label: "A", value: 800},
+        B: { label: "B", value: 700},
+        AB: { label: "AB", value: 650},
+        O: { label: "O", value: 600},
+      };
+    } else if (date === "month") {
+      // fetch data for month
+      newData = {
+        A: { label: "A", value: 700},
+        B: { label: "B", value: 600},
+        AB: { label: "AB", value: 550},
+        O: { label: "O", value: 400},
+      };
+    } else if (date === "week") {
+      newData = {
+        A: { label: "A", value: 600},
+        B: { label: "B", value: 450},
+        AB: { label: "AB", value: 300},
+        O: { label: "O", value: 200},
+      };
+    }
+    setGdarah(newData);
   });
 
   return (
@@ -253,24 +392,24 @@ const DashBoard = () => {
                       <div className="row">
                         <div id="statperkerjaanpasien">
                           <h3 id="titlestatistik">
-                            Statistik Perkerjaan Pasien
+                            Statistik Pekerjaan Pasien
                           </h3>
                           <div id="statbutton">
                             <button
                               id="yearbutton"
-                              onClick={() => setTimeRange("year")}
+                              onClick={() => setTime("year")}
                             >
                               Year
                             </button>
                             <button
                               id="monthbutton"
-                              onClick={() => setTimeRange("month")}
+                              onClick={() => setTime("month")}
                             >
                               Month
                             </button>
                             <button
                               id="weekbutton"
-                              onClick={() => setTimeRange("week")}
+                              onClick={() => setTime("week")}
                             >
                               Week
                             </button>
@@ -279,30 +418,30 @@ const DashBoard = () => {
                       </div>
                     </div>
                     <div id="progressbar3" className="px-4 mt-2">
-                      {Object.keys(progressData).map((key) => (
+                      {Object.keys(Pekerjaan).map((key) => (
                         <div key={key}>
                           <p>
-                            {progressData[key].value} of {jumlahPasien} /{" "}
-                            <b>{progressData[key].label}</b>
+                            {Pekerjaan[key].value} of {jumlahPasien} /{" "}
+                            <b>{Pekerjaan[key].label}</b>
                           </p>
                           <ProgressBar
                             id="progress"
                             variant={
-                              key === "demam"
+                              key === "Wiraswasta"
                                 ? "warning"
-                                : key === "jantung"
+                                : key === "Penyanyi"
                                 ? "success"
-                                : key === "flu"
+                                : key === "Guru"
                                 ? "danger"
-                                : key === "anemia"
+                                : key === "Polisi"
                                 ? "Primary"
-                                : key === "ginjal"
+                                : key === "Tentara"
                                 ? "warning"
-                                : key === "kangker"
+                                : key === "Pelajar"
                                 ? "danger"
                                 : "dark"
                             }
-                            now={(progressData[key].value / jumlahPasien) * 100}
+                            now={(Pekerjaan[key].value / jumlahPasien) * 100}
                           />
                         </div>
                       ))}
@@ -318,50 +457,46 @@ const DashBoard = () => {
                           <div id="statbutton">
                             <button
                               id="yearbutton"
-                              onClick={() => setTimeRange("year")}
+                              onClick={() => setDate("year")}
                             >
                               Year
                             </button>
                             <button
                               id="monthbutton"
-                              onClick={() => setTimeRange("month")}
+                              onClick={() => setDate("month")}
                             >
                               Month
                             </button>
                             <button
                               id="weekbutton"
-                              onClick={() => setTimeRange("week")}
+                              onClick={() => setDate("week")}
                             >
                               Week
                             </button>
                           </div>
                         </div>
                         <div id="progressbar3" className="px-4 mt-2">
-                          {Object.keys(progressData).map((key) => (
+                          {Object.keys(Gdarah).map((key) => (
                             <div key={key}>
                               <p>
-                                {progressData[key].value} of {jumlahPasien} /{" "}
-                                <b>{progressData[key].label}</b>
+                                {Gdarah[key].value} of {jumlahPasien} /{" "}
+                                <b>{Gdarah[key].label}</b>
                               </p>
                               <ProgressBar
                                 id="progress"
                                 variant={
-                                  key === "demam"
+                                  key === "A"
                                     ? "warning"
-                                    : key === "jantung"
+                                    : key === "B"
                                     ? "success"
-                                    : key === "flu"
+                                    : key === "AB"
                                     ? "danger"
-                                    : key === "anemia"
+                                    : key === "O"
                                     ? "Primary"
-                                    : key === "ginjal"
-                                    ? "warning"
-                                    : key === "kangker"
-                                    ? "danger"
                                     : "dark"
                                 }
                                 now={
-                                  (progressData[key].value / jumlahPasien) * 100
+                                  (Gdarah[key].value / jumlahPasien) * 100
                                 }
                               />
                             </div>

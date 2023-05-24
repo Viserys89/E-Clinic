@@ -1,5 +1,5 @@
-import React,{ useContext, useState, useEffect } from "react";
-import { loginContext, remembermelogin } from "../App";
+import React,{ useContext, useState, useEffect} from "react";
+import { loginContext, API_URL } from "../App";
 import { makeContext } from "../UseContext";
 import { useNavigate } from "react-router-dom";
 
@@ -14,111 +14,116 @@ const Logins = () => {
   const {setUserData} = useContext(makeContext);
   const navigate = useNavigate();
 
-  const retrieveJwt = async () => {
-    try {
-      const jwt = await localStorage.getItem('remember');
-      if (jwt) {
-        setToken(jwt.password);
-        setRememberLogin(jwt.username);
-      }
-      return jwt;
-    } catch (err) {
-      console.log(err);
-      }
-  };
-
-  useEffect(() => {
-    retrieveJwt();
-  }, [retrieveJwt]);
-
-  async function setLogin(nik, pass) {
-    const payload = { 
-        nik,
-        pass, 
-        remember 
-      };
-
+  async function setLogin(nik, pass, remember) {
+    const payload = {
+      nik,
+      pass,
+      remember: remember ? "remember" : "forgot",
+    };
+  
     const res = await fetch("http://localhost:5000/login/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        Accept: "application/json",
       },
       body: JSON.stringify(payload),
     }).then(async (res) => {
-    try {
-        const jsonRest = await res.json();
-        if (res.status === 200) {
-        remember
-          ? await localStorage.setItem('remember', jsonRest.token)
-          : await localStorage.setItem('forgot', jsonRest.token)
-          setUserData(jsonRest);
-          console.log(jsonRest);
-          if (jsonRest.level === 1) {
-            window.alert("Login Berhasil");
-            setIsLogin(2);
-            navigate('/DashBoard');
-            setUserData();
-          } else if (jsonRest.level === 2) {
-            setIsLogin(4);
-            navigate('/Diagnosa');
-          } else if (jsonRest.level === 3) {
-            setIsLogin(3);
-            navigate('/DashBoardAdmin');
-          }
+      const jsonRest = await res.json();
+      if (res.status === 200) {
+        if (remember) {
+          localStorage.setItem("remember", jsonRest.token);
         } else {
-          alert(jsonRest.alert);
+          localStorage.removeItem("remember");
         }
-      } catch (err) {
-        console.log(err);
+        setUserData(jsonRest);
+        console.log(jsonRest);
+        if (jsonRest.level === 1) {
+          navigate('/DashBoard');
+          window.alert("Login Berhasil");
+          setIsLogin(2);
+        } else if (jsonRest.level === 2) {
+          setIsLogin(4);
+          navigate('Diagnosa');
+        } else if (jsonRest.level === 3) {
+          setIsLogin(3);
+          navigate('DashBoardAdmin');
+        }
+      } else {
+        alert(jsonRest.alert);
+        console.error('Login Failed!');
       }
     });
-    return res;
   }
+  
+  const retrieveJwt = async () => {
+    try {
+      const rememberToken = await localStorage.getItem("remember");
+      if (rememberToken) {
+        setToken(rememberToken);
+        setRememberLogin("remember");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+  
+  useEffect(() => {
+    retrieveJwt();
+  }, []);
 
+  async function rememberMeLogin(token) {
+    const res = await fetch(`${API_URL}/login/rememberauth`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  
+    if (!res.ok) {
+      // Token tidak valid atau permintaan gagal, lakukan penanganan sesuai kebutuhan
+      throw new Error('Request failed with status: ' + res.status);
+    }
+  
+    const contentType = res.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      return res.json(); // Parsing respons JSON jika content-type adalah application/json
+    } else {
+      const text = await res.text(); // Baca respons sebagai teks
+      try {
+        const jsonData = JSON.parse(text); // Coba untuk memparsing sebagai JSON
+        return jsonData;
+      } catch (error) {
+        throw new Error('Invalid response format');
+      }
+    }
+  }
+    
   useEffect(() => {
     if (rememberlogin === 'remember' && !rememberloggedin) {
-      remembermelogin(token).then(async res => {
-        try {
-          const userdata = await res.json();
-          if (res.status === 200) {
-            setRememberLoggedIn(true);
-            setUserData(userdata);
+      rememberMeLogin(token)
+        .then(userdata => {
+          setRememberLoggedIn(true);
+          setUserData(userdata);
           if (userdata.level === 1) {
             setIsLogin(2);
             alert("Selamat datang kembali");
-            }
+            navigate('/Dashboard');
           } else {
             alert(userdata.alert);
-            setLoading(false);
           }
-        } catch (err) {
-          console.log(err);
-        }
-      });
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
     }
   }, [token, rememberlogin]);
-
-      // useEffect(() => {
-      //   if (rememberlogin === 'remember' && !rememberLoggedIn) {
-      //     remembermelogin(token)
-      //       .then(async (res) => {
-      //         const userdata = await res.json();
-      //         if (res.status === 200) {
-      //           setRememberLoggedIn(true);
-      //           setUserData(userdata);
-      //         if (userdata.level === 1) {
-      //           setIsLogin(2);
-      //           alert("Selamat datang kembali");
-      //           }
-      //         } else {
-      //           alert(userdata.alert);
-      //           setLoading(false);
-      //         }
-      //       });
-      //     }
-      // }, [token, rememberlogin]);
-
+  
+  
+  
   return (
     <div id="containersatu">
       <div className="container-fluid h-custom">
@@ -182,10 +187,11 @@ const Logins = () => {
                   <input
                     className="form-check-input me-2"
                     type="checkbox"
-                    defaultValue
+                    checked={remember}
                     id="form2Example3"
+                    onChange={(e) => setRemember(e.target.checked)}
                   />
-                  <label className="form-check-label" htmlFor="form2Example3" onClick={() => setRemember(!remember)}>
+                  <label className="form-check-label" htmlFor="form2Example3" >
                     Remember me
                   </label>
                 </div>
@@ -196,7 +202,7 @@ const Logins = () => {
               <div id="tombol" className="text-center text-lg-start mt-4 pt-2">
                 <button
                   id="btnLogin"
-                  onClick={() => setLogin(nik, pass)}
+                  onClick={() => setLogin(nik, pass, remember)}
                   type="button"
                   className="btn btn-lg"
                   style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
