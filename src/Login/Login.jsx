@@ -39,7 +39,7 @@ const Logins = () => {
         setUserData(jsonRest);
         console.log(jsonRest);
         if (jsonRest.level === 1) {
-          navigate('/DashBoard');
+          navigate('/');
           window.alert("Login Berhasil");
           setIsLogin(2);
         } else if (jsonRest.level === 2) {
@@ -111,7 +111,7 @@ const Logins = () => {
           if (userdata.level === 1) {
             setIsLogin(2);
             alert("Selamat datang kembali");
-            navigate('/Dashboard');
+            navigate('/');
           } else {
             alert(userdata.alert);
           }
@@ -127,7 +127,7 @@ const Logins = () => {
   return (
     <div id="containersatu">
       <div className="container-fluid h-custom">
-        <img id="logo" src="../../public/img/nama&logo.png" />{" "}
+        <img id="logo" src="../../public/img/nama&logo.png" />{"  "}
         <h2 id="clinic" className="fw-bold">
           E-Clinic
         </h2>

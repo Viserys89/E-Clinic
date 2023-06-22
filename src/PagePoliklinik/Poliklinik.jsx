@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { makeContext } from "../UseContext";
 
 const Poliklinik = () => {
+  const {userdata} = useContext(makeContext);
   const poliLinks = [
     {
       name: "Anak & Ibu Hamil",
@@ -85,7 +87,7 @@ const Poliklinik = () => {
                   className="nav-link text-body  font-weight-bold px-0"
                 >
                   <span className="d-sm-inline d-none m-lg-2">
-                    Mukhammad Vicky
+                    {userdata.namalengkap}
                   </span>
                   <i className="fa fa-user me-sm-1 ml-2" />
                 </Link>

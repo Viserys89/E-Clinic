@@ -6,12 +6,10 @@ import moment from "moment";
 import { API_URL } from "../App";
 
 const DashBoard = () => {
+  const [refreshing, setRefreshing] = React.useState(false);
   const [member, setMember] = useState(0);
-  const [hasilActive, setHasilActive] = useState(false)
-  const {userdata} = useContext(makeContext)
-  const [hasilDokter, setHasilDokter] = useState('')
-  const [diagnosId, setDiagnosId] = useState('')
-  var jumlahPasien = 1000;
+  const {userdata} = useContext(makeContext);
+  
   const [jumlah, setJumlah] = useState();
   useEffect(() => {
     async function setUsers() {
@@ -53,46 +51,51 @@ const DashBoard = () => {
         if (res.status === 200) {
           setMember(jsonRes.id);
           const mergedData = jsonRes.data.map(({ pekerjaan: nama, count: jumlah }) => {
-            return { nama, jumlah};
+            return { nama, jumlah };
           });
           setPekerjaan(mergedData);
-
         } else {
           alert(jsonRes.alert);
         }
     });
 
-    // fetch(`${API_URL}/data/count/gDarah`)
-    // .then(res => res.json())
-    // .then(data => {  
-    //   setGdarah(data);
-    // })
-
-    // function getHasilDiagnosa(){
-    //   fetch(`${API_URL}/pasien/hasil/${userdata.id}/${moment().locale('id').format('YYYY-MM-DD')}/false`, {
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       Authorization: `Bearer ${userdata.token}`,
-    //   }
-    //   }).then(res => res.json())
-    //   .then(list => {
-    //     if(list.found === true){
-    //       setHasilActive(true)
-    //       setHasilDokter(list.namaDok)
-    //       setDiagnosId(list.id)
-    //     }
-    //     else{
-    //       setHasilActive(false)
-    //     }
-    //   })
-    // }
-    // getHasilDiagnosa()
+    fetch(`${API_URL}/data/darah`)
+    .then(res => res.json())
+    .then(data => {  
+      setGdarah(data);
+    })
 
     return () => {
       subscribe = true
     }
 
   }, [userdata]);
+
+  const onRefresh = React.useCallback(async () => {
+    setRefreshing(true)
+    fetch(`${API_URL}/data/users`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    }).then(async res => {
+      try {
+        const jsonRes = await res.json();
+        if (res.status === 200) {
+          setMember(jsonRes.id);
+        } else {
+          alert(jsonRes.alert);
+        }
+      } catch (err) {
+        console.log(err)
+      }
+    }).finally(() => {
+      setRefreshing(false)
+    });
+  }, [refreshing]);
+
+  var jumlahPasien = 1000;
 
   const [timeRange, setTimeRange] = useState("year");
   const [progressData, setProgressData] = useState({
@@ -222,7 +225,7 @@ const DashBoard = () => {
 
   return (
     <>
-      <div id="content">
+      <div id="content" refreshing={refreshing} onRefresh={onRefresh}>
         <nav
           className="navbar navbar-main navbar-expand-lg px-4 shadow-none border-radius-xl"
           id="navbarBlur"
@@ -257,7 +260,7 @@ const DashBoard = () => {
                     className="nav-link text-body  font-weight-bold px-0"
                   >
                     <span className="d-sm-inline d-none m-lg-2">
-                      Mukhammad Vicky
+                      {userdata.namalengkap}
                     </span>
                     <i className="fa fa-user me-sm-1 ml-2" />
                   </Link>

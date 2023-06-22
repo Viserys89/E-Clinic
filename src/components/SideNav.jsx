@@ -17,7 +17,6 @@ const SideNav = (props) => {
     { label: "Dashboard", to: "/DashBoard", iconClass: "fa fa-home" },
     { label: "Doctor", to: "/Doctor", iconClass: "fa fa-user-md" },
     { label: "Aplikasi", to: "/Aplikasi", iconClass: "fa fa-briefcase" },
-    { label: "Obat", to: "/Obat", iconClass: "fa fa-plus-square" },
     { label: "Riwayat", to: "/Riwayat", iconClass: "far fa-clock" },
   ];
 

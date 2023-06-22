@@ -49,6 +49,7 @@ import Diagnosa from "./DoctorVer/PageDiagnosis/Diagnosa";
 import SesiDiagnosa from "./DoctorVer/PageDiagnosis/SesiDiagnosa";
 import HasilDiagnosa from "./DoctorVer/PageDiagnosis/HasilDiagnosa";
 import { UserData } from "./UseContext";
+import { KlinikNama } from "./KlinikContext";
 
 export const loginContext = createContext();
 export const API_URL = ("http://localhost:5000");
@@ -56,91 +57,93 @@ export const API_URL = ("http://localhost:5000");
 function App() {
   const [isLogin, setIsLogin] = useState(1);
   return (
-    <loginContext.Provider value={[isLogin, setIsLogin]}>
+  <loginContext.Provider value={[isLogin, setIsLogin]}>
+    <KlinikNama>
       <UserData>
-      <BrowserRouter basename="/">
-        {isLogin == 1 ? (
-          <Routes>
-            <Route exact path="/" element={<Logins />} />
-            <Route path="/ForgotPassword" element={<ForgotPassword />} />
-            <Route path="/ResetPassword" element={<ResetPassword />} />
-            <Route path="/Register" element={<Register />} />
-          </Routes>
-        ) : isLogin == 2 ? (
-          <div className="App">
-            <SideNav>
-              <Routes>
-                <Route exact path="/" element={<DashBoard />} />
-                <Route path="/DashBoard" element={<DashBoard />} />
-                <Route path="/Doctor" element={<Doctor />} />
-                <Route path="/Aplikasi" element={<Aplikasi />} />
-                <Route path="/Obat" element={<Obat />} />
-                <Route path="/MainPasien" element={<MainPasien />} />
-                <Route path="/Riwayat" element={<Riwayat />} />
-                <Route path="/Profile" element={<Profile />} />
-                <Route path="/Poliklinik" element={<Poliklinik />} />
-                <Route
-                  path="/PenyakitDalamUmum"
-                  element={<PenyakitDalamUmum />}
-                />
-                <Route path="/Antrian" element={<Antrian />} />
-                <Route path="/Hasil" element={<Hasil />} />
-                <Route path="/BuktiPembayaran" element={<BuktiPembayaran />} />
-                <Route
-                  path="/PembayaranBerhasil"
-                  element={<PembayaranBerhasil />}
-                />
-              </Routes>
-              <Footer />
-            </SideNav>
-          </div>
-        ) : isLogin == 3 ? (
-          <div className="App">
-            <SideNavAdmin>
-              <Routes>
-                <Route exact path="/" element={<DashBoardAdmin />} />
-                <Route path="/DashBoardAdmin" element={<DashBoardAdmin />} />
-                <Route path="/DoctorAdmin" element={<DoctorAdmin />} />
-                <Route path="/ObatAdmin" element={<ObatAdmin />} />
-                <Route path="/Pasienadmin" element={<DaftarPasien />} />
-                <Route path="/Riwayat" element={<Riwayat />} />
-                <Route path="/ProfileAdmin" element={<ProfileAdmin />} />
-                <Route path="/PoliklinikAdmin" element={<PoliklinikAdmin />} />
-                <Route path="/Announcement" element={<Announcement />} />
-                <Route
-                  path="/PoliklinikDokter"
-                  element={<PoliklinikDokter />}
-                />
-                <Route path="/JadwalDokter" element={<JadwalDokter />} />
-                <Route
-                  path="/PoliklinikAntrian"
-                  element={<PoliklinikAntrian />}
-                />
-                <Route path="/HapusAntrian" element={<HapusAntrian />} />
-                <Route path="/ProfilePasien" element={<ProfilePasien />} />
-                <Route path="/RiwayatPasien" element={<RiwayatPasien />} />
-              </Routes>
-              <Footer />
-            </SideNavAdmin>
-          </div>
-        ) : isLogin == 4 ? (
-          <div className="App">
-            <SideNavDoctor>
-              <Routes>
-                <Route exact path="/" element={<Diagnosa />} />
-                <Route path="/Diagnosa" element={<Diagnosa />} />
-                <Route path="/SesiDiagnosa" element={<SesiDiagnosa />} />
-                <Route path="/HasilDiagnosa" element={<HasilDiagnosa />} />
-              </Routes>
-              <Footer />
-            </SideNavDoctor>
-          </div>
-        ) : (
-          ""
-        )}
-      </BrowserRouter>
+        <BrowserRouter basename="/">
+          {isLogin == 1 ? (
+            <Routes>
+              <Route exact path="/" element={<Logins />} />
+              <Route path="/ForgotPassword" element={<ForgotPassword />} />
+              <Route path="/ResetPassword" element={<ResetPassword />} />
+              <Route path="/Register" element={<Register />} />
+            </Routes>
+          ) : isLogin == 2 ? (
+            <div className="App">
+              <SideNav>
+                <Routes>
+                  <Route exact path="/" element={<DashBoard />} />
+                  <Route path="/DashBoard" element={<DashBoard />} />
+                  <Route path="/Doctor" element={<Doctor />} />
+                  <Route path="/Aplikasi" element={<Aplikasi />} />
+                  <Route path="/Obat" element={<Obat />} />
+                  <Route path="/MainPasien" element={<MainPasien />} />
+                  <Route path="/Riwayat" element={<Riwayat />} />
+                  <Route path="/Profile" element={<Profile />} />
+                  <Route path="/Poliklinik" element={<Poliklinik />} />
+                  <Route
+                    path="/PenyakitDalamUmum"
+                    element={<PenyakitDalamUmum />}
+                  />
+                  <Route path="/Antrian" element={<Antrian />} />
+                  <Route path="/Hasil" element={<Hasil />} />
+                  <Route path="/BuktiPembayaran" element={<BuktiPembayaran />} />
+                  <Route
+                    path="/PembayaranBerhasil"
+                    element={<PembayaranBerhasil />}
+                  />
+                </Routes>
+                <Footer />
+              </SideNav>
+            </div>
+          ) : isLogin == 3 ? (
+            <div className="App">
+              <SideNavAdmin>
+                <Routes>
+                  <Route exact path="/" element={<DashBoardAdmin />} />
+                  <Route path="/DashBoardAdmin" element={<DashBoardAdmin />} />
+                  <Route path="/DoctorAdmin" element={<DoctorAdmin />} />
+                  <Route path="/ObatAdmin" element={<ObatAdmin />} />
+                  <Route path="/Pasienadmin" element={<DaftarPasien />} />
+                  <Route path="/Riwayat" element={<Riwayat />} />
+                  <Route path="/ProfileAdmin" element={<ProfileAdmin />} />
+                  <Route path="/PoliklinikAdmin" element={<PoliklinikAdmin />} />
+                  <Route path="/Announcement" element={<Announcement />} />
+                  <Route
+                    path="/PoliklinikDokter"
+                    element={<PoliklinikDokter />}
+                  />
+                  <Route path="/JadwalDokter" element={<JadwalDokter />} />
+                  <Route
+                    path="/PoliklinikAntrian"
+                    element={<PoliklinikAntrian />}
+                  />
+                  <Route path="/HapusAntrian" element={<HapusAntrian />} />
+                  <Route path="/ProfilePasien" element={<ProfilePasien />} />
+                  <Route path="/RiwayatPasien" element={<RiwayatPasien />} />
+                </Routes>
+                <Footer />
+              </SideNavAdmin>
+            </div>
+          ) : isLogin == 4 ? (
+            <div className="App">
+              <SideNavDoctor>
+                <Routes>
+                  <Route exact path="/" element={<Diagnosa />} />
+                  <Route path="/Diagnosa" element={<Diagnosa />} />
+                  <Route path="/SesiDiagnosa" element={<SesiDiagnosa />} />
+                  <Route path="/HasilDiagnosa" element={<HasilDiagnosa />} />
+                </Routes>
+                <Footer />
+              </SideNavDoctor>
+            </div>
+          ) : (
+            ""
+          )}
+        </BrowserRouter>
       </UserData>
-    </loginContext.Provider>
+    </KlinikNama>
+  </loginContext.Provider>
   );
 }
 
@@ -171,6 +174,88 @@ export function logout(id) {
   if (window.confirm('Anda yakin ingin logout?')) {
     handleLogout();
   }
+}
+
+export function getListDokter(nama, namaKlinik, navigation) {
+  const payload = {
+    keahlian: `Dokter ${nama}`,
+    namaKlinik,
+  };
+  fetch(`${API_URL}/klinik/ambil`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(payload),
+  }).then(async res => {
+    try {
+      const jsonRes = await res.json();
+      if (res.status === 200) {
+        navigation.navigate('AmbilNomor', {
+          jsonRes,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  });
+}
+
+
+export async function getUpdateToken() {
+  const jwt = await localStorage.getItem();
+
+  const res = await fetch(`${API_URL}/profile/updatetoken`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${jwt.password}`,
+    },
+  });
+  try {
+    const dataRes = await res.json();
+    const token = dataRes.token;
+    if (res.status === 200) {
+      return token;
+    } else {
+      alert(dataRes.alert);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function daftar(pasien_id, dokter_id, klinik, hari, navigation){
+  const jwt = await localStorage.getItem();
+  const keyToken = jwt.password;
+  const payload = {
+    pasien_id,
+    dokter_id,
+    klinik,
+    hari
+  };
+  fetch(`${API_URL}/daftar/daftar`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${keyToken}`,
+    },
+    body: JSON.stringify(payload),
+  })
+    .then(async res => {
+      const dataRes = await res.json();
+      if (res.status !== 200) {
+        return alert(dataRes.alert);
+      }
+      alert(dataRes.alert);
+      navigation.navigate('NomorAntrian');
+    })
+    .catch(err => {
+      console.log(err);
+    });
 }
 
 export default App;

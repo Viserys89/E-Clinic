@@ -87,7 +87,7 @@ exports.getGolonganDarah = (req, res) => {
 exports.signup = [
   // Validasi data pendaftaran menggunakan express-validator untuk menghindari sql injection
   body("sNamaLengkap")
-  .isAlpha()
+  .isString()
   .trim()
   .escape(true)
   .withMessage("Mohon Isi Nama Lengkap Anda"),

@@ -1,8 +1,73 @@
-import React from "react";
+import React, {useContext, useState, useEffect} from "react";
 import "../css/global.css";
 import { Link } from "react-router-dom";
+import { API_URL } from "../App";
+import { klinikContext } from "../KlinikContext";
+import { makeContext } from "../UseContext";
 
 const Doctor = () => {
+  const {userdata} = useContext(makeContext);
+
+  // useEffect(() => {
+  //   function getListDokter() {
+  //     const payload = {
+  //       klinik,
+  //     };
+  //     fetch(`${API_URL}/dokter/dokter`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         Accept: 'application/json',
+  //       },
+  //       body: JSON.stringify(payload),
+  //     }).then(async res => {
+  //       try {
+  //         const jsonRes = await res.json();
+  //         if (res.status === 200) {
+  //           const dokterArray = jsonRes.map(dokter => {
+  //             return {
+  //               nama: dokter.nama_dokter,
+  //               keahlian: dokter.keahlian.nama_keahlian,
+  //             };
+  //           });
+  //           setDokter(dokterArray);
+  //         }
+  //       } catch (err) {
+  //         console.log(err);
+  //       }
+  //     });
+  //   }
+  //   function getListKeahlian() {
+  //     fetch(`${API_URL}/dokter/keahlian`, {
+  //       method: 'GET',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         Accept: 'application/json',
+  //       },
+  //     }).then(async res => {
+  //       try {
+  //         const jsonRes = await res.json();
+  //         const keahlianArray = jsonRes.map(keahlian => {
+  //           return {key: keahlian.id_keahlian, value: keahlian.nama_keahlian};
+  //         });
+
+  //         setKeahlianList(keahlianArray);
+  //       } catch (err) {
+  //         console.log(err);
+  //       }
+  //     });
+  //   }
+  //   getListKeahlian();
+  //   getListDokter();
+  // }, []);
+
+  // useEffect(() => {
+  //   const filterKeahlian = keahlianList.filter(data => {
+  //     return data.value === cariKeahlian;
+  //   });
+  //   setOutKeahlian(filterKeahlian[0]);
+  // }, [cariKeahlian]);
+
   const doctors = [
     {
       id: 1,
@@ -86,7 +151,7 @@ const Doctor = () => {
                 className="breadcrumb-item text-sm text-dark active"
                 aria-current="page"
               >
-                <b>Dashboard</b>
+                <b>Doctor</b>
               </li>
             </ol>
           </nav>
@@ -103,7 +168,7 @@ const Doctor = () => {
                   className="nav-link text-body  font-weight-bold px-0"
                 >
                   <span className="d-sm-inline d-none m-lg-2">
-                    Mukhammad Vicky
+                    {userdata.namalengkap}
                   </span>
                   <i className="fa fa-user me-sm-1 ml-2" />
                 </Link>

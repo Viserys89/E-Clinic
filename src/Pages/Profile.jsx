@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { makeContext } from "../UseContext";
 
 const Profile = () => {
+  const {userdata} = useContext(makeContext);
   const fields = [
     { label: "Nama", type: "text", placeholder: "Masukan nama" },
     {
@@ -124,7 +126,7 @@ const Profile = () => {
                   to="/ProfileAdmin"
                   className="nav-link text-body  font-weight-bold px-0"
                 >
-                  <span className="d-sm-inline d-none m-lg-2">Admin</span>
+                  <span className="d-sm-inline d-none m-lg-2">{userdata.namalengkap}</span>
                   <i className="fa fa-user me-sm-1 ml-2" />
                 </Link>
               </li>

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import Footer from "../components/footer";
+import { makeContext } from "../UseContext";
 
 const Obat = () => {
+  const {userdata} = useContext(makeContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [data, setData] = useState([
     {
@@ -237,7 +238,7 @@ const Obat = () => {
                     className="nav-link text-body  font-weight-bold px-0"
                   >
                     <span className="d-sm-inline d-none m-lg-2">
-                      Mukhammad Vicky
+                      {userdata.namalengkap}
                     </span>
                     <i className="fa fa-user me-sm-1 ml-2" />
                   </Link>

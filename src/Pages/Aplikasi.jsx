@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { makeContext } from "../UseContext";
 
 const Aplikasi = () => {
+  const {userdata} = useContext(makeContext);
   return (
     <>
       <div id="aplikasiPage">
@@ -19,7 +21,7 @@ const Aplikasi = () => {
                   </Link>
                 </li>
                 <li
-                  className="breadcrumb-item text-sm text-dark active"
+                  class="breadcrumb-item text-sm text-dark active"
                   aria-current="page"
                 >
                   <b>Aplikasi</b>
@@ -39,7 +41,7 @@ const Aplikasi = () => {
                     className="nav-link text-body  font-weight-bold px-0"
                   >
                     <span className="d-sm-inline d-none m-lg-2">
-                      Mukhammad Vicky
+                      {userdata.namalengkap}
                     </span>
                     <i className="fa fa-user me-sm-1 ml-2" />
                   </Link>
