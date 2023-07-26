@@ -178,7 +178,7 @@ exports.forgotPassword = [
       const token = jwt.sign({id: data.pasien_id}, secret_key, {
         expiresIn: '30m',
       })
-      const link = `localhost:5000/passwordReset?token=${token}`
+      const link = `localhost:5173/ResetPassword?token=${token}`
       sendEmail(data.email,"Password Reset Request",{name: data.namalengkap,link: link,},"../utils/template/forgotPassword.handlebars");
       res.status(200).json({ alert: 'Email terkirim'});
       return link;
